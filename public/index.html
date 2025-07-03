@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Battery Monitor</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <img src="img/13228401.png" alt="Decoration" class="corner-decoration">
+  <div class="corner-clip"></div>
+  <header class="header">
+    <div class="container">
+      <h1 class="logo">🔋 Smart Battery Monitor</h1>
+      <div class="header-buttons">
+        <button class="icon-btn github-btn" onclick="window.open('https://github.com/MuathHassoun/battorion-version', '_blank')" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+            <path d="M12 0.5C5.65 0.5 0.5 5.65 0.5 12C0.5 17.3 4.05 21.8 8.8 23.3C9.4 23.4 9.65 23.05 9.65 22.75C9.65 22.5 9.65 21.8 9.65 20.95C6.3 21.65 5.55 19.55 5.55 19.55C5 18.15 4.2 17.8 4.2 17.8C3.05 17.05 4.3 17.1 4.3 17.1C5.55 17.2 6.2 18.4 6.2 18.4C7.35 20.35 9.15 19.8 9.85 19.5C9.95 18.7 10.25 18.15 10.6 17.8C7.85 17.5 4.9 16.45 4.9 11.8C4.9 10.5 5.35 9.45 6.1 8.65C5.95 8.3 5.55 7 6.25 5.3C6.25 5.3 7.25 4.95 9.65 6.5C10.6 6.25 11.6 6.1 12.6 6.1C13.6 6.1 14.6 6.25 15.55 6.5C17.95 4.95 18.95 5.3 18.95 5.3C19.65 7 19.25 8.3 19.1 8.65C19.85 9.45 20.3 10.5 20.3 11.8C20.3 16.45 17.35 17.5 14.6 17.8C15.05 18.25 15.45 19.1 15.45 20.4C15.45 22.3 15.45 23.4 15.45 23.75C15.45 24.05 15.7 24.4 16.3 24.3C21.05 22.8 24.6 18.3 24.6 12C24.5 5.65 19.35 0.5 13 0.5H12Z"/>
+          </svg>
+        </button>
+        <button id="theme-toggle" class="icon-btn theme-toggle">☀️</button>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <h2 class="fade-in">Monitor Your Battery Like Never Before</h2>
+      <p class="fade-in delay">An intelligent tool to keep your device's power usage optimized.</p>
+      <div class="action-buttons fade-in delay2">
+        <a href="https://github.com/MuathHassoun/battorion-version/releases/download/v6.0.2/_battorion-6.0.2-setup.exe" class="download-btn">
+          ⬇️ Download Latest Version
+        </a>
+        <a href="#" class="modal-trigger">🎬 Demo</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="feature-container">
+    <h2 class="feature-title fade-in">Key Features</h2>
+    <p class="feature-subtitle fade-in delay">Discover the smart tools that keep your battery healthy and efficient.</p>
+  </div>
+  <section class="features">
+    <div class="grid">
+      <div class="card slide-up delay text-card">
+        <div class="text">
+          <h4>Real-Time Monitoring</h4>
+          <p>Track your battery's health, usage, and charging cycles in real time.</p>
+        </div>
+      </div>
+      <div class="card slide-up delay image-card">
+        <img src="https://via.placeholder.com/350x250" alt="Real-Time Monitoring" />
+      </div>
+
+      <div class="card slide-up delay2 image-card">
+        <img src="https://via.placeholder.com/150" alt="Smart Alerts" />
+      </div>
+      <div class="card slide-up delay2 text-card">
+        <div class="text">
+          <h4>Smart Alerts</h4>
+          <p>Custom notifications for charge limits, temperature spikes, and more.</p>
+        </div>
+      </div>
+
+      <div class="card slide-up delay3 text-card">
+        <div class="text">
+          <h4>Graphical Reports</h4>
+          <p>Visualize battery data with interactive graphs and analytics.</p>
+        </div>
+      </div>
+      <div class="card slide-up delay3 image-card">
+        <img src="https://via.placeholder.com/150" alt="Graphical Reports" />
+      </div>
+
+      <div class="card slide-up delay4 image-card">
+        <img src="https://via.placeholder.com/150" alt="Custom Profiles" />
+      </div>
+      <div class="card slide-up delay4 text-card">
+        <div class="text">
+          <h4>Custom Profiles</h4>
+          <p>Set different profiles for work, gaming, and travel modes.</p>
+        </div>
+      </div>
+
+      <div class="card slide-up delay5 text-card">
+        <div class="text">
+          <h4>Cloud Sync</h4>
+          <p>Back up and sync battery logs across your devices.</p>
+        </div>
+      </div>
+      <div class="card slide-up delay5 image-card">
+        <img src="https://via.placeholder.com/150" alt="Cloud Sync" />
+      </div>
+
+      <div class="card slide-up delay6 image-card">
+        <img src="https://via.placeholder.com/150" alt="System Integrations" />
+      </div>
+      <div class="card slide-up delay6 text-card">
+        <div class="text">
+          <h4>System Integrations</h4>
+          <p>Integrate with other apps and automation tools.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="modal hidden" id="media-modal">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <video controls>
+        <source src="assets/demo.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© 2025 Smart Battery Monitor. All rights reserved.</p>
+    </div>
+  </footer>
+  <script src="js/app.js"></script>
+  <script src="js/card.js"></script>
+</body>
+</html>
