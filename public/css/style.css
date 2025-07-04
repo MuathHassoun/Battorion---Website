@@ -163,13 +163,13 @@ body {
 
 .card.text-card {
   width: 100%;
-  max-width: 700px;
+  max-width: 400px;
   min-height: 250px;
 }
 
 .card.image-card {
   width: 100%;
-  max-width: 300px;
+  max-width: 600px;
   padding: 1em;
 }
 
