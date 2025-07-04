@@ -75,7 +75,7 @@ window.addEventListener("click", e => {
 
 document.addEventListener("keydown", e => {
   const key = e.key.toLowerCase();
-  if ((e.ctrlKey || e.metaKey) && key === "s") {
+  if ((e.ctrlKey || e.metaKey) && (key === "s" || key === "س")) {
     e.preventDefault();
     e.stopImmediatePropagation();
     return false;
