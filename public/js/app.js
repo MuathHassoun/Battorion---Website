@@ -6,7 +6,12 @@ if (toggle) {
     const isDark = html.dataset.theme === "dark";
     const newTheme = isDark ? "light" : "dark";
     html.dataset.theme = newTheme;
-    toggle.textContent = isDark ? "🌙" : "☀️";
+
+    const icon = toggle.querySelector("i");
+    if (icon) {
+      icon.classList.remove("fa-circle-half-stroke", "fa-moon");
+      icon.classList.add(newTheme === "dark" ? "fa-moon" : "fa-circle-half-stroke");
+    }
 
     document.querySelectorAll(".features img").forEach((img) => {
       const src = img.getAttribute("src");
