@@ -27,3 +27,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
   cards.forEach(card => observer.observe(card));
 });
+
+const dashboardSection = document.querySelector('.dashboard-section');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      dashboardSection.classList.add('visible');
+    } else {
+      dashboardSection.classList.remove('visible');
+    }
+  });
+}, {
+  threshold: 0.3
+});
+observer.observe(dashboardSection);

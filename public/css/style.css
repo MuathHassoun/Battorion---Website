@@ -95,6 +95,7 @@ body {
   border-radius: var(--radius);
   cursor: pointer;
   transition: transform 0.3s ease, background 0.3s ease;
+  z-index: 100;
 }
 
 .icon-btn:hover {
@@ -105,7 +106,7 @@ body {
 .header-content-container {
   background: var(--header-bg);
   border-radius: 80% 40% 70% 30%;
-  padding: 20px 0;
+  padding: 50px 0;
   box-shadow: 0 2px 20px var(--header-border);
   backdrop-filter: blur(var(--blur));
 }
@@ -115,28 +116,30 @@ body {
   border: 3px solid var(--header-border);
   border-radius: 50% 50% / 50% 50%;
   filter: blur(2px);
-  animation: tilt-diagonal 15s ease-out infinite;
+  /*animation: tilt-diagonal 240s ease-out infinite;*/
   transform-origin: center center;
 }
 
 .orbit-1 {
   width: 120%;
-  height: 90%;
+  height: 100%;
   top: 10%;
   left: -10%;
+  transform: rotate(35deg);
 }
 
 .orbit-2 {
-  width: 130%;
+  width: 120%;
   height: 100%;
   top: 15%;
   left: -15%;
+  transform: rotate(35deg);
 }
 
-@keyframes tilt-diagonal {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
+/*@keyframes tilt-diagonal {*/
+/*  from { transform: rotate(0deg); }*/
+/*  to { transform: rotate(360deg); }*/
+/*}*/
 
 .hero {
   text-align: center;
@@ -248,7 +251,7 @@ body {
   margin: 0 auto;
 }
 
-.grid {
+.dashboard, .grid {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -257,14 +260,23 @@ body {
 }
 
 .card {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5em;
   background: var(--card-bg);
   backdrop-filter: blur(var(--blur));
   border-radius: var(--radius);
-  padding: 2em;
+  padding: 1.5em;
   box-shadow: var(--card-shadow);
   transition: transform 0.3s ease, opacity 0.3s ease;
   opacity: 0;
   transform: translateY(40px);
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .card.visible {
@@ -272,10 +284,76 @@ body {
   transform: translateY(0);
 }
 
-.card img {
+.card .text-card {
+  flex: 1 1 350px;
+  min-width: 300px;
+}
+
+.card .text-card h4 {
+  margin-top: 0;
+  margin-bottom: 0.4em;
+  font-size: 1.5em;
+  font-weight: 600;
+}
+
+.card .text-card p {
+  margin: 0;
+  color: var(--subtitle-color);
+  line-height: 1.6;
+}
+
+.card .image-card {
+  flex: 1 1 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 300px;
+}
+
+.card .image-card img {
+  width: calc(100% - 10px);
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+.dashboard-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 4em auto;
+  opacity: 0;
+  transform: translateY(80px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.dashboard-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.dashboard-title {
+  font-size: 2.2em;
+  font-weight: 700;
+  margin-bottom: 1em;
+  color: var(--text-muted);
+}
+
+.dashboard-img {
+  max-width: 1000px;
+  width: 90%;
+  padding: 1em;
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--card-shadow);
+  backdrop-filter: blur(var(--blur));
+}
+
+.dashboard-img img {
   width: 100%;
   height: auto;
   border-radius: 12px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
 }
 
 .modal {
@@ -381,6 +459,40 @@ body {
   }
 }
 
+/* هواتف صغيرة */
+@media (max-width: 480px) {
+  .hero h2 {
+    font-size: 1.6em;
+  }
+
+  .feature-title {
+    font-size: 1.4em;
+  }
+
+  .feature-subtitle {
+    font-size: 1em;
+  }
+
+  .card {
+    padding: 1em;
+  }
+
+  .card .text-card,
+  .card .image-card {
+    min-width: unset;
+    width: 100%;
+  }
+
+  .header {
+    flex-direction: column;
+    gap: 1em;
+  }
+
+  .header-buttons {
+    justify-content: center;
+  }
+}
+
 @media (max-width: 768px) {
   .grid {
     flex-direction: column;
@@ -396,7 +508,64 @@ body {
   }
 
   .battery-container {
-    margin-left: 0;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .card .image-card {
+    margin-top: 1em;
+  }
+
+  .dashboard-img {
+    padding: 0.5em;
+  }
+}
+
+@media (max-width: 1024px) {
+  .container {
+    width: 95%;
+  }
+
+  .feature-title {
+    font-size: 2em;
+  }
+
+  .feature-subtitle {
+    font-size: 1.1em;
+  }
+
+  .card {
+    gap: 1em;
+  }
+}
+
+@media (min-width: 1441px) {
+  .container {
+    max-width: 1400px;
+  }
+
+  .hero h2 {
+    font-size: 3.2em;
+  }
+
+  .feature-title {
+    font-size: 2.8em;
+  }
+
+  .feature-subtitle {
+    font-size: 1.4em;
+  }
+
+  .card {
+    max-width: 1200px;
+  }
+
+  .dashboard-img {
+    max-width: 1200px;
   }
 }

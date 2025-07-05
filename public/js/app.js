@@ -4,8 +4,22 @@ const html = document.documentElement;
 if (toggle) {
   toggle.addEventListener("click", () => {
     const isDark = html.dataset.theme === "dark";
-    html.dataset.theme = isDark ? "light" : "dark";
+    const newTheme = isDark ? "light" : "dark";
+    html.dataset.theme = newTheme;
     toggle.textContent = isDark ? "🌙" : "☀️";
+
+    document.querySelectorAll(".features img").forEach((img) => {
+      const src = img.getAttribute("src");
+      if (!src) return;
+
+      if (newTheme === "dark") {
+        if (!src.includes("-dark.png")) {
+          img.setAttribute("src", src.replace(/\.png$/, "-dark.png"));
+        }
+      } else {
+        img.setAttribute("src", src.replace("-dark.png", ".png"));
+      }
+    });
   });
 }
 
