@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Downloading Battorion...</title>
+  <link rel="stylesheet" href="../css/downloading-style.css" />
+  <link rel="icon" href="../img/battorion.png" />
+</head>
+<body>
+  <header>
+    <div class="message">
+      Your download is starting...
+    </div>
+    <div class="small">
+      If it doesn't start in a few seconds, <a id="manual-link" href="#">click here</a> to download manually.
+    </div>
+    <div class="loading">⏳</div>
+  </header>
+
+  <main>
+    <h1>Installation Warning – How to Safely Run the Installer</h1>
+    <p class="intro">
+      When downloading the installer (e.g., <code>battorion-setup.exe</code>), your browser or Windows may show a warning.
+      This is completely normal and happens because the file is either new, not commonly downloaded, or hasn't been digitally signed yet.
+      <br>
+      Rest assured – Battorion is safe to install. Just follow the steps below to complete the installation.
+    </p>
+
+    <div class="gallery">
+      <div class="card">
+        <img src="../img/instruction/step1.png" alt="Step 1">
+        <div class="caption">
+          You may see this warning icon near the download. This is a standard message shown for new or uncommon files — nothing to worry about.
+        </div>
+      </div>
+      <div class="card">
+        <img src="../img/instruction/step2.png" alt="Step 2">
+        <div class="caption">Click the menu (⋯) to reveal more options.</div>
+      </div>
+      <div class="card">
+        <img src="../img/instruction/step3.png" alt="Step 3">
+        <div class="caption">Select <strong>Keep</strong> to allow the download.</div>
+      </div>
+      <div class="card">
+        <img src="../img/instruction/step4.png" alt="Step 4">
+        <div class="caption">Click <strong>Show more</strong> to continue with the installer.</div>
+      </div>
+      <div class="card">
+        <img src="../img/instruction/step5.png" alt="Step 5">
+        <div class="caption">Click <strong>Keep anyway</strong> to confirm the download.</div>
+      </div>
+      <div class="card">
+        <img src="../img/instruction/step6.png" alt="Step 6">
+        <div class="caption">Click <strong>More info</strong> to reveal the "Run anyway" option.</div>
+      </div>
+      <div class="card">
+        <img src="../img/instruction/step7.png" alt="Step 7">
+        <div class="caption">Click <strong>Run anyway</strong> to start the installation.</div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    fetch("https://api.github.com/repos/MuathHassoun/battorion-version/releases/latest")
+      .then(res => res.json())
+      .then(data => {
+        const version = data.tag_name.replace("v", "");
+        const downloadUrl = `https://github.com/MuathHassoun/battorion-version/releases/download/v${version}/_battorion-${version}-setup.exe`;
+
+        document.getElementById("manual-link").href = downloadUrl;
+
+        setTimeout(() => {
+          const link = document.createElement("a");
+          link.href = downloadUrl;
+          link.download = "";
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        }, 1500);
+      });
+  </script>
+</body>
+</html>
