@@ -3,6 +3,13 @@ const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fet
 const BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
 const CHAT_ID = process.env.TELEGRAM_CHAT_ID;
 
+function escapeHtml(text) {
+  return text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+}
+
 module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method Not Allowed' });
@@ -20,12 +27,11 @@ module.exports = async function handler(req, res) {
   }
 
   const message = `
-📝 *FEEDBACK FORM* 📝
-👤 *UserID:* ${UserID}
-📛 *UserName:* ${UserName}
-📧 *Email:* ${UserEmail}
-💬 *Feedback:*
-${UserFeedback}
+<b>📝 FEEDBACK FORM 📝</b>
+<b>👤 UserID:</b> ${escapeHtml(UserID)}
+<b>📛 UserName:</b> ${escapeHtml(UserName)}
+<b>📧 Email:</b> ${escapeHtml(UserEmail)}
+<b>💬 Feedback:</b><br>${escapeHtml(UserFeedback).replace(/\n/g, '<br>')}
 `;
 
   try {
@@ -35,7 +41,7 @@ ${UserFeedback}
       body: JSON.stringify({
         chat_id: CHAT_ID,
         text: message,
-        parse_mode: 'Markdown',
+        parse_mode: 'HTML',
       }),
     });
 
