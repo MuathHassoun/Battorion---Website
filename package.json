@@ -1,13 +1,12 @@
 {
-  "name": " ",
+  "name": "feedback-api-project",
   "version": "0.0.1",
-  "description": "",
+  "description": "Feedback API for Telegram integration",
   "private": true,
-  "keywords": [
-    ""
-  ],
-  "license": "",
-  "author": "",
+  "keywords": ["feedback", "api", "telegram", "vercel"],
+  "license": "MIT",
+  "author": "Your Name",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack serve --open --config webpack.config.dev.js",
