@@ -1,5 +1,4 @@
 const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
-
 const BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
 const CHAT_ID = process.env.TELEGRAM_CHAT_ID;
 
@@ -27,12 +26,13 @@ module.exports = async function handler(req, res) {
   }
 
   const message = `
-<b>📝 FEEDBACK FORM 📝</b>
-<b>👤 UserID:</b> ${escapeHtml(UserID)}
-<b>📛 UserName:</b> ${escapeHtml(UserName)}
-<b>📧 Email:</b> ${escapeHtml(UserEmail)}
-<b>💬 Feedback:</b><br>${escapeHtml(UserFeedback).replace(/\n/g, '<br>')}
-`;
+  📝 FEEDBACK FORM 📝
+  👤 UserID: ${escapeHtml(UserID)}
+  📛 UserName: ${escapeHtml(UserName)}
+  📧 Email: ${escapeHtml(UserEmail)}
+  💬 Feedback:
+  ${escapeHtml(UserFeedback)}
+  `;
 
   try {
     const response = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
@@ -41,7 +41,7 @@ module.exports = async function handler(req, res) {
       body: JSON.stringify({
         chat_id: CHAT_ID,
         text: message,
-        parse_mode: 'HTML',
+        parse_mode: 'HTML'
       }),
     });
 
