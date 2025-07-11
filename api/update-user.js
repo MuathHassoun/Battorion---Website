@@ -7,6 +7,7 @@ export default async function handler(req, res) {
 
   try {
     const updates = req.body;
+
     if (!updates || typeof updates !== 'object' || Array.isArray(updates)) {
       return res.status(400).json({ status: 'error', message: 'Invalid request body' });
     }
@@ -31,11 +32,13 @@ export default async function handler(req, res) {
     }
 
     let responseData;
+
     if (!existingUser) {
       const { data, error } = await supabase
         .from('users')
         .insert([{ id: userId, ...sanitizedUpdates }])
         .single();
+
       if (error) throw error;
       responseData = data;
     } else {
@@ -45,11 +48,13 @@ export default async function handler(req, res) {
         .update(mergedData)
         .eq('id', userId)
         .single();
+
       if (error) throw error;
       responseData = data;
     }
 
     const action = existingUser ? 'User updated successfully' : 'User created successfully';
+
     return res.status(200).json({
       status: 'success',
       message: action,
@@ -57,10 +62,19 @@ export default async function handler(req, res) {
     });
 
   } catch (error) {
+    const safeError = {
+      code: error.code || null,
+      message: error.message || 'Unknown error',
+      hint: error.hint || null,
+      details: error.details || null
+    };
+
+    console.error('[API ERROR]:', safeError);
+
     return res.status(500).json({
       status: 'error',
       message: 'Server error while updating user',
-      details: error.message
+      error: safeError
     });
   }
 }
