@@ -48,12 +48,21 @@ module.exports = async function handler(req, res) {
     if (!response.ok) {
       const err = await response.json();
       console.error('Telegram API error:', err);
-      return res.status(500).json({ error: 'Telegram Error', details: err });
+      return res.status(500).json({
+        status: 'warning',
+        message: 'Telegram failed to receive message',
+      });
     }
 
-    res.status(200).json({ message: 'Feedback sent successfully!' });
+    return res.status(200).json({
+      status: 'success',
+      message: 'Your feedback has been received. Thank you!',
+    });
   } catch (error) {
     console.error('Server error:', error);
-    res.status(500).json({ error: 'Server Error', details: error.message });
+    return res.status(500).json({
+      status: 'error',
+      message: 'Internal Server Error',
+    });
   }
 };
