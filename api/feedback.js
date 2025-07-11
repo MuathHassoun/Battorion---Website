@@ -15,7 +15,7 @@ module.exports = async function handler(req, res) {
   }
 
   if (!BOT_TOKEN || !CHAT_ID) {
-    console.error('Missing TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID in environment variables');
+    console.error('Missing TOKEN or ID in environment variables');
     return res.status(500).json({ error: 'Server configuration error: missing environment variables' });
   }
 
