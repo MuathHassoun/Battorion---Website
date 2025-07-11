@@ -10,7 +10,7 @@ module.exports = async function handler(req, res) {
   if (!name || typeof name !== 'string' || !name.endsWith('.json')) {
     return res.status(400).json({ status: 'error', message: 'Invalid or missing file name' });
   }
-  const filePath = path.join(process.cwd(), name);
+  const filePath = path.join(process.cwd(), 'data', name);
 
   try {
     const data = fs.readFileSync(filePath, 'utf8');
