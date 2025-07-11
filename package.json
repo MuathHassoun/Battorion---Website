@@ -3,7 +3,12 @@
   "version": "0.0.1",
   "description": "Feedback API for Telegram integration",
   "private": true,
-  "keywords": ["feedback", "api", "telegram", "vercel"],
+  "keywords": [
+    "feedback",
+    "api",
+    "telegram",
+    "vercel"
+  ],
   "license": "MIT",
   "author": "Your Name",
   "scripts": {
@@ -20,6 +25,7 @@
     "webpack-merge": "^5.10.0"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.50.5",
     "node-fetch": "^3.3.2"
   }
 }

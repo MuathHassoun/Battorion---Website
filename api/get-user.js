@@ -1,17 +1,6 @@
-const fs = require('fs');
-const path = require('path');
+import { supabase } from '../lib/supabase';
 
-function readJsonFileSync(filePath) {
-  if (!fs.existsSync(filePath)) return null;
-  const data = fs.readFileSync(filePath, 'utf-8');
-  try {
-    return JSON.parse(data);
-  } catch {
-    return null;
-  }
-}
-
-module.exports = async function handler(req, res) {
+export default async function handler(req, res) {
   if (req.method !== 'GET') {
     return res.status(405).json({ status: 'error', message: 'Method Not Allowed' });
   }
@@ -22,24 +11,23 @@ module.exports = async function handler(req, res) {
   }
 
   try {
-    const indexFile = path.join(process.cwd(), 'data', 'users_index.json');
-    const indexData = readJsonFileSync(indexFile);
+    const { data, error } = await supabase
+      .from('users')
+      .select('*')
+      .eq('id', userId)
+      .single();
 
-    if (!indexData || !indexData[userId]) {
+    if (error && (error.code === 'PGRST116' || error.message.includes('Results contain 0 rows'))) {
       return res.status(404).json({ status: 'error', message: 'User ID not found' });
     }
 
-    const userFileName = indexData[userId];
-    const userFile = path.join(process.cwd(), 'data', 'users', userFileName);
-    const userData = readJsonFileSync(userFile);
-
-    if (!userData) {
-      return res.status(404).json({ status: 'error', message: 'User data file not found or corrupted' });
+    if (error) {
+      throw error;
     }
-    
+
     return res.status(200).json({
       status: 'success',
-      data: userData
+      data: data
     });
   } catch (error) {
     return res.status(500).json({
@@ -48,4 +36,4 @@ module.exports = async function handler(req, res) {
       details: error.message
     });
   }
-};
+}

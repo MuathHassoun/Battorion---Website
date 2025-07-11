@@ -1,74 +1,59 @@
-const fs = require('fs');
-const path = require('path');
-const crypto = require('crypto');
+import { supabase } from '../lib/supabase';
 
-function getSafeFilename(userId) {
-  return crypto.createHash('sha256').update(userId).digest('hex');
-}
-
-function readJsonFileSync(filePath) {
-  if (!fs.existsSync(filePath)) return {};
-  const data = fs.readFileSync(filePath, 'utf-8');
-  try {
-    return JSON.parse(data);
-  } catch {
-    return {};
-  }
-}
-
-function writeJsonFileSync(filePath, data) {
-  fs.writeFileSync(filePath, JSON.stringify(data, null, 2), 'utf-8');
-}
-
-module.exports = async function handler(req, res) {
+export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ status: 'error', message: 'Method Not Allowed' });
   }
 
   try {
     const updates = req.body;
+    if (!updates || typeof updates !== 'object' || Array.isArray(updates)) {
+      return res.status(400).json({ status: 'error', message: 'Invalid request body' });
+    }
+
     const userId = updates.id;
     if (!userId || typeof userId !== 'string') {
       return res.status(400).json({ status: 'error', message: 'Missing or invalid user ID' });
     }
 
-    const safeName = getSafeFilename(userId);
-    const usersDir = path.join(process.cwd(), 'data', 'users');
-    if (!fs.existsSync(usersDir)) {
-      fs.mkdirSync(usersDir, { recursive: true });
-    }
-
-    const userFile = path.join(usersDir, `${safeName}.json`);
-    const indexFile = path.join(process.cwd(), 'data', 'users_index.json');
-
-    const isFirstTime = !fs.existsSync(userFile);
-    let existingData = {};
-    if (!isFirstTime) {
-      existingData = readJsonFileSync(userFile);
-    }
-
     const protectedKeys = ['id', 'hardware-id'];
-    for (const key of protectedKeys) {
-      if (!isFirstTime && updates.hasOwnProperty(key)) {
-        delete updates[key];
-      }
+    const sanitizedUpdates = { ...updates };
+    protectedKeys.forEach((key) => delete sanitizedUpdates[key]);
+
+    const { data: existingUser, error: fetchError } = await supabase
+      .from('users')
+      .select('*')
+      .eq('id', userId)
+      .single();
+
+    if (fetchError && fetchError.code !== 'PGRST116') {
+      throw fetchError;
     }
 
-    const updatedUser = { ...existingData, ...updates };
-    updatedUser.id = existingData.id || updates.id;
-
-    writeJsonFileSync(userFile, updatedUser);
-
-    if (isFirstTime) {
-      const indexData = readJsonFileSync(indexFile);
-      indexData[userId] = `${safeName}.json`;
-      writeJsonFileSync(indexFile, indexData);
+    let responseData;
+    if (!existingUser) {
+      const { data, error } = await supabase
+        .from('users')
+        .insert([{ id: userId, ...sanitizedUpdates }])
+        .single();
+      if (error) throw error;
+      responseData = data;
+    } else {
+      const mergedData = { ...existingUser, ...sanitizedUpdates, id: userId };
+      const { data, error } = await supabase
+        .from('users')
+        .update(mergedData)
+        .eq('id', userId)
+        .single();
+      if (error) throw error;
+      responseData = data;
     }
 
+    const action = existingUser ? 'User updated successfully' : 'User created successfully';
     return res.status(200).json({
       status: 'success',
-      message: isFirstTime ? 'User created successfully' : 'User updated successfully',
-      data: updatedUser
+      message: action,
+      data: responseData
     });
 
   } catch (error) {
@@ -78,4 +63,4 @@ module.exports = async function handler(req, res) {
       details: error.message
     });
   }
-};
+}
