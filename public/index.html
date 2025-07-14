@@ -21,7 +21,7 @@
             <path d="M12 0.5C5.65 0.5 0.5 5.65 0.5 12C0.5 17.3 4.05 21.8 8.8 23.3C9.4 23.4 9.65 23.05 9.65 22.75C9.65 22.5 9.65 21.8 9.65 20.95C6.3 21.65 5.55 19.55 5.55 19.55C5 18.15 4.2 17.8 4.2 17.8C3.05 17.05 4.3 17.1 4.3 17.1C5.55 17.2 6.2 18.4 6.2 18.4C7.35 20.35 9.15 19.8 9.85 19.5C9.95 18.7 10.25 18.15 10.6 17.8C7.85 17.5 4.9 16.45 4.9 11.8C4.9 10.5 5.35 9.45 6.1 8.65C5.95 8.3 5.55 7 6.25 5.3C6.25 5.3 7.25 4.95 9.65 6.5C10.6 6.25 11.6 6.1 12.6 6.1C13.6 6.1 14.6 6.25 15.55 6.5C17.95 4.95 18.95 5.3 18.95 5.3C19.65 7 19.25 8.3 19.1 8.65C19.85 9.45 20.3 10.5 20.3 11.8C20.3 16.45 17.35 17.5 14.6 17.8C15.05 18.25 15.45 19.1 15.45 20.4C15.45 22.3 15.45 23.4 15.45 23.75C15.45 24.05 15.7 24.4 16.3 24.3C21.05 22.8 24.6 18.3 24.6 12C24.5 5.65 19.35 0.5 13 0.5H12Z"/>
           </svg>
         </button>
-        <a href="mailto:maho.sites29@gmail.com?subject=Battorion%20Support%20Request&body=Please%20describe%20your%20issue%20here..." id="support-btn" class="icon-btn support-btn" style="display: none !important;">
+        <a href="html/Contactus.html" id="support-btn" class="icon-btn support-btn">
           <i class="fas fa-circle-question fa-2x"></i>
         </a>
         <button id="theme-toggle" class="icon-btn theme-toggle" aria-label="Toggle Theme">
@@ -83,7 +83,7 @@
       <div class="dashboard-section">
         <h2 class="dashboard-title">Dashboard</h2>
         <div class="dashboard-img">
-          <img src="img/application/dashboard.png" alt="Battorion dashboard" />
+          <img src="img/application/dashboard-dark.png" alt="Battorion dashboard" />
         </div>
       </div>
     </section>
@@ -99,7 +99,7 @@
           <p>Monitor your battery health, charge level, and discharging rate with up-to-the-second accuracy. Battorion operates in the background to ensure you're always informed.</p>
         </div>
         <div class="card slide-up delay image-card">
-          <img src="img/application/real-time.png" alt="Real-Time Monitoring" />
+          <img src="img/application/real-time-dark.png" alt="Real-Time Monitoring" onclick="openImageModal(this.src)" />
         </div>
       </div>
       <div class="card slide-up delay2 text-card">
@@ -108,7 +108,7 @@
           <p>Receive instant alerts when your battery hits critical levels or starts overheating. Fully customizable sound and text notifications help you act before it's too late.</p>
         </div>
         <div class="card slide-up delay2 image-card">
-          <img src="img/application/smart-alerts.png" alt="Smart Alerts" />
+          <img src="img/application/smart-alerts-dark.png" alt="Smart Alerts" onclick="openImageModal(this.src)" />
         </div>
       </div>
       <div class="card slide-up delay3 text-card">
@@ -117,7 +117,20 @@
           <p>Dive into visual analytics with detailed battery charts. Zoom, hover, and track trends over time to better understand your battery’s behavior.</p>
         </div>
         <div class="card slide-up delay3 image-card">
-          <img src="img/application/graphical.png" alt="Graphical Reports" />
+          <img src="img/application/graphical-dark.png" alt="Graphical Reports" onclick="openImageModal(this.src)" />
+        </div>
+      </div>
+      <div class="card slide-up delay8 text-card">
+        <div class="text">
+          <h4>Battery Health Report</h4>
+          <p>
+            Get a clear overview of your battery's long-term condition with Battorion’s Battery Health Report.
+            Understand how your battery is aging, track capacity loss over time, and make informed decisions to
+            extend its lifespan — all in a clean, easy-to-read panel.
+          </p>
+        </div>
+        <div class="card slide-up delay8 image-card">
+          <img src="img/application/battery-health-dark.png" alt="Battery Health Report" onclick="openImageModal(this.src)" />
         </div>
       </div>
       <div class="card slide-up delay4 text-card">
@@ -126,7 +139,7 @@
           <p>Switch between preset or custom profiles tailored for different scenarios like work, gaming, or travel. Control power use with precision.</p>
         </div>
         <div class="card slide-up delay4 image-card">
-          <img src="img/application/custom-profiles.png" alt="Custom Profiles" />
+          <img src="img/application/custom-profiles-dark.png" alt="Custom Profiles" onclick="openImageModal(this.src)" />
         </div>
       </div>
       <div class="card slide-up delay5 text-card">
@@ -135,7 +148,7 @@
           <p>Keep a complete history of your battery usage saved securely on your system — export anytime, anywhere.</p>
         </div>
         <div class="card slide-up delay5 image-card">
-          <img src="img/application/offline-log-backup.png" alt="Offline Log Backup" />
+          <img src="img/application/offline-log-backup-dark.png" alt="Offline Log Backup" onclick="openImageModal(this.src)" />
         </div>
       </div>
       <div class="card slide-up delay6 text-card">
@@ -144,7 +157,7 @@
           <p>Battorion works hand-in-hand with your OS. Manage system tray behavior, adjust sound devices, and automate power control with built-in integrations.</p>
         </div>
         <div class="card slide-up delay6 image-card">
-          <img src="img/application/system-integrations.png" alt="System Integrations" />
+          <img src="img/application/system-integrations-dark.png" alt="System Integrations" onclick="openImageModal(this.src)" />
         </div>
       </div>
       <div class="card slide-up delay7 text-card">
@@ -153,24 +166,14 @@
           <p>Stay informed without distractions using the lightweight tray dashboard — a compact control panel designed for efficiency, minimalism, and extended battery awareness.</p>
         </div>
         <div class="card slide-up delay7 image-card">
-          <img src="img/application/tray.png" alt="Tray Controls & Notifications" />
+          <img src="img/application/tray-dark.png" alt="Tray Controls & Notifications" onclick="openImageModal(this.src)" />
         </div>
         <div class="card slide-up delay7 image-card">
-          <img src="img/application/tray-settings.png" alt="Tray Controls & Notifications" />
+          <img src="img/application/tray-settings-dark.png" alt="Tray Controls & Notifications" onclick="openImageModal(this.src)" />
         </div>
       </div>
     </div>
   </section>
-
-  <div class="modal hidden" id="media-modal">
-    <div class="modal-content">
-      <span class="close-btn">&times;</span>
-      <video controls>
-        <source src="assets/demo.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-    </div>
-  </div>
 
   <footer class="footer">
     <div class="container">
@@ -182,6 +185,19 @@
       </div>
     </div>
   </footer>
+  <div class="modal hidden" id="media-modal">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <video controls>
+        <source src="assets/demo.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
+  <div id="image-modal" class="hidden">
+    <span id="close-modal">&times;</span>
+    <img id="modal-img" src="" alt="Preview">
+  </div>
 
   <script src="js/app.js"></script>
   <script src="js/card.js"></script>
@@ -197,6 +213,22 @@
 
     setInterval(updateBatteryInfo, 2000);
     updateBatteryInfo();
+  </script>
+  <script>
+    function openImageModal(src) {
+      document.getElementById('modal-img').src = src;
+      document.getElementById('image-modal').classList.remove('hidden');
+      document.querySelectorAll('body > *:not(#image-modal)').forEach(el => {
+        el.style.display = 'none';
+      });
+    }
+
+    document.getElementById('close-modal').onclick = function() {
+      document.getElementById('image-modal').classList.add('hidden');
+      document.querySelectorAll('body > *:not(#image-modal)').forEach(el => {
+        el.style.display = '';
+      });
+    };
   </script>
 </body>
 </html>
