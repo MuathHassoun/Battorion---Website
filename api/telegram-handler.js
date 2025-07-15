@@ -7,7 +7,7 @@ const BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
 const CHAT_ID = process.env.TELEGRAM_CHAT_ID;
 
 function escapeHtml(text) {
-  return text
+  return String(text || '')
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;");
@@ -33,13 +33,17 @@ module.exports = async function handler(req, res) {
         return res.status(400).json({ error: 'Missing required fields' });
       }
 
+      const safePhone = phone || "N/A";
+      const safeSubject = subject || "N/A";
+      const safeCategory = category || "N/A";
+
       const text = `
       📬 <b>New Contact Message</b>
       👤 <b>Name:</b> ${escapeHtml(name)}
       📧 <b>Email:</b> ${escapeHtml(email)}
-      📞 <b>Phone:</b> ${escapeHtml(phone || "N/A")}
-      🏷️ <b>Subject:</b> ${escapeHtml(subject || "N/A")}
-      📂 <b>Category:</b> ${escapeHtml(category || "N/A")}
+      📞 <b>Phone:</b> ${escapeHtml(safePhone)}
+      🏷️ <b>Subject:</b> ${escapeHtml(safeSubject)}
+      📂 <b>Category:</b> ${escapeHtml(safeCategory)}
       💬 <b>Message:</b>
       ${escapeHtml(message)}
       `;
