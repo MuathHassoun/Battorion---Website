@@ -28,7 +28,6 @@ module.exports = async function handler(req, res) {
 
       const { name, email, phone, subject, category, message } = fields;
       const screenshot = files.screenshot;
-
       if (!name || !email || !message) {
         return res.status(400).json({ error: 'Missing required fields' });
       }
@@ -64,7 +63,8 @@ module.exports = async function handler(req, res) {
         return res.status(500).json({ error: 'Failed to send message' });
       }
 
-      if (screenshot) {
+      let imageSent = false;
+      if (screenshot && screenshot.mimetype) {
         const mime = screenshot.mimetype;
         if (!mime.startsWith('image/')) {
           return res.status(400).json({ error: 'Uploaded file must be an image' });
@@ -85,9 +85,11 @@ module.exports = async function handler(req, res) {
           console.error('Telegram photo send error:', errBody);
           return res.status(500).json({ error: 'Failed to send image to Telegram' });
         }
+        imageSent = true;
       }
 
-      return res.status(200).json({ message: 'Message (and image) sent successfully' });
+      const responseMessage = imageSent ? 'with_image' : 'no_image';
+      return res.status(200).json({ result: responseMessage });
     } catch (error) {
       console.error('Server error:', error);
       return res.status(500).json({ error: 'Internal Server Error' });
