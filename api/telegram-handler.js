@@ -63,8 +63,8 @@ module.exports = async function handler(req, res) {
       headers: formData.getHeaders(),
     });
 
-    if (!sendMessage.ok) {
-      const errBody = await sendMessage.text();
+    if (!response.ok) {
+      const errBody = await response.text();
       console.error(errBody);
       return res.status(500).json({ error: 'Failed to send message' });
     }
