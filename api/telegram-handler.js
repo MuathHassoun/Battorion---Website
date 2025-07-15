@@ -49,20 +49,12 @@ module.exports = async function handler(req, res) {
     ${escapeHtml(message)}
     `;
 
-    const formData = new FormData();
-    formData.append('chat_id', CHAT_ID);
-    formData.append(
-      'photo',
-      fs.createReadStream(screenshot.filepath),
-      screenshot.originalFilename || 'screenshot.png'
-    );
-
     const sendMessage = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         chat_id: CHAT_ID,
-        formData,
+        text,
         parse_mode: 'HTML',
       }),
     });
