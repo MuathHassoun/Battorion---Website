@@ -49,7 +49,7 @@ document.getElementById("contact-form").addEventListener("submit", async functio
       responseDiv.className = "success";
       responseDiv.innerText = `✅ Thank you! Your message has been received. Our team will contact you soon.${data.result === 'with_image' ? ' 📎 Your screenshot was attached successfully.' : ''}`;
       form.reset();
-      document.getElementById("selected-file").innerText = "";
+      document.getElementById("selected-file").style.display = "none";
     } else {
       responseDiv.className = "error";
       responseDiv.innerText = `❌ Error: ${data.error || "Unable to send."}`;
