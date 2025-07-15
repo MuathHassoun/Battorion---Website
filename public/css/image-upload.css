@@ -1,0 +1,128 @@
+:root {
+  --bg: linear-gradient(to bottom, #0f2027, #203a43, #2c5364);
+  --btn-bg: #1de9b6;
+  --btn-hover: #00bfa5;
+  --text: #e0e7eb;
+  --text-muted: #a0b1bb;
+  --radius: 16px;
+  --blur: 10px;
+  --shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+  --fade-duration: 0.5s;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  animation: fadeIn var(--fade-duration) ease-out;
+}
+
+.container {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius);
+  padding: 40px 32px;
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(var(--blur));
+  animation: fadeIn var(--fade-duration) ease-out;
+}
+
+h2 {
+  margin-bottom: 24px;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--btn-bg);
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.custom-file-upload {
+  display: inline-block;
+  padding: 14px 28px;
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--btn-bg);
+  border: 2px dashed var(--btn-bg);
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+}
+
+.custom-file-upload:hover {
+  background: var(--btn-bg);
+  color: white;
+}
+
+button {
+  background: var(--btn-bg);
+  border: none;
+  color: #fff;
+  padding: 14px 28px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: var(--radius);
+  cursor: pointer;
+  width: 100%;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  background: var(--btn-hover);
+}
+
+#status,
+.file-message {
+  margin-top: 18px;
+  padding: 10px 16px;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(6px);
+  animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 28px 20px;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  .custom-file-upload,
+  button {
+    padding: 12px 20px;
+    font-size: 0.95rem;
+  }
+}
