@@ -23,21 +23,20 @@ module.exports = async function handler(req, res) {
     keepExtensions: true
   });
 
-  form.parse(req, async (err, fields, files) => {
+  await form.parse(req, async (err, fields, files) => {
     if (err) {
-      return res.status(400).json({ error: 'Failed to parse form' });
+      return res.status(400).json({error: 'Failed to parse form'});
     }
 
-    const { name, email, phone, subject, category, message } = fields;
+    const {name, email, phone, subject, category, message} = fields;
     const screenshot = files.screenshot;
     if (!name || !email || !message) {
-      return res.status(400).json({ error: 'Missing required fields' });
+      return res.status(400).json({error: 'Missing required fields'});
     }
 
     const safePhone = phone || "N/A";
     const safeSubject = subject || "N/A";
     const safeCategory = category || "N/A";
-
     const text = `
     📬 <b>New Contact Message</b>
     👤 <b>Name:</b> ${escapeHtml(name)}
@@ -51,7 +50,7 @@ module.exports = async function handler(req, res) {
 
     const sendMessage = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
         chat_id: CHAT_ID,
         text,
@@ -62,7 +61,7 @@ module.exports = async function handler(req, res) {
     if (!sendMessage.ok) {
       const errBody = await sendMessage.text();
       console.error(errBody);
-      return res.status(500).json({ error: 'Failed to send message' });
+      return res.status(500).json({error: 'Failed to send message'});
     }
 
     let imageSent = false;
@@ -83,15 +82,15 @@ module.exports = async function handler(req, res) {
         if (!sendPhoto.ok) {
           const errBody = await sendPhoto.text();
           console.error(errBody);
-          return res.status(500).json({ error: 'Failed to send image to Telegram' });
+          return res.status(500).json({error: 'Failed to send image to Telegram'});
         }
 
         imageSent = true;
       } catch (readErr) {
         console.error('Error reading uploaded file:', readErr);
-        return res.status(500).json({ error: 'Failed to read uploaded file' });
+        return res.status(500).json({error: 'Failed to read uploaded file'});
       }
     }
-    return res.status(200).json({ result: imageSent ? 'with_image' : 'no_image' });
+    return res.status(200).json({result: imageSent ? 'with_image' : 'no_image'});
   });
 };
