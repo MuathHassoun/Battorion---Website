@@ -1,5 +1,6 @@
 const { IncomingForm } = require('formidable');
 const fs = require('fs');
+const path = require('path');
 const FormData = require('form-data');
 const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
 
@@ -18,11 +19,16 @@ module.exports = async function handler(req, res) {
     return res.status(405).json({ error: 'Method Not Allowed' });
   }
 
-  const form = new IncomingForm({ multiples: false });
+  const form = new IncomingForm({
+    multiples: false,
+    keepExtensions: true,
+    maxFileSize: 5 * 1024 * 1024,
+    uploadDir: path.join(__dirname, 'tmp')
+  });
+
   form.parse(req, async (err, fields, files) => {
     try {
       if (err) {
-        console.error('Form parse error:', err);
         return res.status(400).json({ error: 'Failed to parse form' });
       }
 
@@ -59,7 +65,6 @@ module.exports = async function handler(req, res) {
 
       if (!sendMessage.ok) {
         const errBody = await sendMessage.text();
-        console.error('Telegram text send error:', errBody);
         return res.status(500).json({ error: 'Failed to send message' });
       }
 
@@ -69,7 +74,7 @@ module.exports = async function handler(req, res) {
         const filename = screenshot.originalFilename || '';
         if (mime && !mime.startsWith('image/')) {
           return res.status(400).json({ error: 'Uploaded file must be an image' });
-        } if (!mime && !filename.match(/\.(jpg|jpeg|png|gif|webp)$/i)) {
+        } else if (!mime && !filename.match(/\.(jpg|jpeg|png|gif|webp)$/i)) {
           return res.status(400).json({ error: 'Uploaded file must be an image (by extension check)' });
         }
 
@@ -85,18 +90,14 @@ module.exports = async function handler(req, res) {
 
         if (!sendPhoto.ok) {
           const errBody = await sendPhoto.text();
-          console.error('Telegram photo send error:', errBody);
           return res.status(500).json({ error: 'Failed to send image to Telegram' });
         }
         imageSent = true;
-      } else {
-        console.log('No valid screenshot to send.');
       }
 
       const responseMessage = imageSent ? 'with_image' : 'no_image';
       return res.status(200).json({ result: responseMessage });
     } catch (error) {
-      console.error('Server error:', error);
       return res.status(500).json({ error: 'Internal Server Error' });
     }
   });
