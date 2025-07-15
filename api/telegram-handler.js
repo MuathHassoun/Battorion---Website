@@ -30,7 +30,7 @@ module.exports = async function handler(req, res) {
     }
 
     const { name, email, phone, subject, category, message } = fields;
-    const screenshot = files.screenshot;
+    const screenshot = Array.isArray(files.screenshot) ? files.screenshot[0] : files.screenshot;
     if (!name || !email || !message) {
       return res.status(400).json({ error: 'Missing required fields' });
     }
