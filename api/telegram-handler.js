@@ -64,10 +64,13 @@ module.exports = async function handler(req, res) {
       }
 
       let imageSent = false;
-      if (screenshot && screenshot.mimetype) {
-        const mime = screenshot.mimetype;
-        if (!mime.startsWith('image/')) {
+      if (screenshot && screenshot.filepath && fs.existsSync(screenshot.filepath)) {
+        const mime = screenshot.mimetype || '';
+        const filename = screenshot.originalFilename || '';
+        if (mime && !mime.startsWith('image/')) {
           return res.status(400).json({ error: 'Uploaded file must be an image' });
+        } if (!mime && !filename.match(/\.(jpg|jpeg|png|gif|webp)$/i)) {
+          return res.status(400).json({ error: 'Uploaded file must be an image (by extension check)' });
         }
 
         const formData = new FormData();
@@ -86,6 +89,8 @@ module.exports = async function handler(req, res) {
           return res.status(500).json({ error: 'Failed to send image to Telegram' });
         }
         imageSent = true;
+      } else {
+        console.log('No valid screenshot to send.');
       }
 
       const responseMessage = imageSent ? 'with_image' : 'no_image';
