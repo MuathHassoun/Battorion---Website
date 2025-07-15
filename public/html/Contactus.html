@@ -5,8 +5,6 @@
   <title>Contact Support</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link rel="stylesheet" href="../css/contact-modern.css" />
-  <link rel="icon" href="../img/battorion.png" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
 </head>
 <body>
   <header>
@@ -16,18 +14,18 @@
 
   <section class="contact-form">
     <h2>Reach Out To Us</h2>
-    <form id="contact-form" data-form-title="Form Name">
+    <form id="contact-form" enctype="multipart/form-data">
       <label for="name">Full Name</label>
-      <input type="text" id="name" name="name" placeholder="John Doe" required>
+      <input type="text" id="name" name="name" required>
 
       <label for="email">Email Address</label>
-      <input type="email" id="email" name="email" placeholder="you@example.com" required>
+      <input type="email" id="email" name="email" required>
 
       <label for="phone">Phone (optional)</label>
-      <input type="tel" id="phone" name="phone" placeholder="+1234567890">
+      <input type="tel" id="phone" name="phone">
 
       <label for="subject">Subject</label>
-      <input type="text" id="subject" name="subject" placeholder="e.g. Problem with the app" required>
+      <input type="text" id="subject" name="subject" required>
 
       <label for="category">Category</label>
       <select id="category" name="category" required>
@@ -39,7 +37,7 @@
       </select>
 
       <label for="message">Your Message</label>
-      <textarea id="message" name="message" placeholder="Write your message here..." required></textarea>
+      <textarea id="message" name="message" required></textarea>
 
       <div class="buttons">
         <button type="submit">Send Message</button>
@@ -48,31 +46,71 @@
         <button type="reset">Clear</button>
       </div>
       <br>
-      <div id="selected-file" class="mt-3" style="display: none;"></div>
-      <div id="form-response" class="mt-3" style="display: none;"></div>
+      <div id="selected-file" style="display: none;"></div>
+      <div id="form-response" style="display: none;"></div>
     </form>
   </section>
 
   <footer>
     <p>🔒 Your message is secure. Expect a reply within 24 hours.</p>
-    <p>&copy; 2025 Smart Battery Monitor – All rights reserved.</p>
   </footer>
+  <script src="../js/app.js"></script>
   <script>
-    document.getElementById("uploadBtn").addEventListener("click", function () {
+    document.getElementById("uploadBtn").addEventListener("click", () => {
       document.getElementById("screenshotInput").click();
     });
-
-    document.getElementById("screenshotInput").addEventListener("change", function (event) {
+    document.getElementById("screenshotInput").addEventListener("change", (event) => {
       const file = event.target.files[0];
+      const selectedFileDiv = document.getElementById("selected-file");
       if (file) {
-        const selectedFileDiv = document.getElementById("selected-file");
         selectedFileDiv.style.display = "block";
         selectedFileDiv.className = "success";
         selectedFileDiv.innerText = "Selected file: " + file.name;
+      } else {
+        selectedFileDiv.style.display = "none";
+        selectedFileDiv.innerText = "";
+      }
+    });
+
+    document.getElementById("contact-form").addEventListener("submit", async function (e) {
+      e.preventDefault();
+      const form = e.target;
+      const file = document.getElementById("screenshotInput").files[0];
+      const responseDiv = document.getElementById("form-response");
+      responseDiv.style.display = "block";
+      responseDiv.className = "";
+      responseDiv.innerText = "⏳ Sending your message, please wait...";
+
+      const formData = new FormData();
+      formData.append("name", form.name.value.trim());
+      formData.append("email", form.email.value.trim());
+      formData.append("phone", form.phone.value.trim());
+      formData.append("subject", form.subject.value.trim());
+      formData.append("category", form.category.value);
+      formData.append("message", form.message.value.trim());
+      if (file) formData.append("screenshot", file);
+
+      try {
+        const res = await fetch("/api/telegram-handler", {
+          method: "POST",
+          body: formData,
+        });
+
+        const data = await res.json();
+        if (res.ok) {
+          responseDiv.className = "success";
+          responseDiv.innerText = `✅ Thank you! Your message has been received. Our team will contact you soon.${data.result === 'with_image' ? ' 📎 Your screenshot was attached successfully.' : ''}`;
+          document.getElementById("selected-file").innerText = "";
+          form.reset();
+        } else {
+          responseDiv.className = "error";
+          responseDiv.innerText = `❌ Error: ${data.error || "Failed to send message."}`;
+        }
+      } catch (err) {
+        responseDiv.className = "error";
+        responseDiv.innerText = "❌ Error: " + err.message;
       }
     });
   </script>
-  <script src="../js/app.js"></script>
-  <script src="../js/submit.js"></script>
 </body>
 </html>
