@@ -42,18 +42,19 @@ module.exports = async function handler(req, res) {
       const safeSubject = subject || "N/A";
       const safeCategory = category || "N/A";
 
-      const text = `
-      📬 <b>New Contact Message</b>
-      👤 <b>Name:</b> ${escapeHtml(name)}
-      📧 <b>Email:</b> ${escapeHtml(email)}
-      📞 <b>Phone:</b> ${escapeHtml(safePhone)}
-      🏷️ <b>Subject:</b> ${escapeHtml(safeSubject)}
-      📂 <b>Category:</b> ${escapeHtml(safeCategory)}
-      💬 <b>Message:</b>
-      ${escapeHtml(message)}
-      `;
+      const fullMessage = `
+📬 <b>New Contact Message</b>
+👤 <b>Name:</b> ${escapeHtml(name)}
+📧 <b>Email:</b> ${escapeHtml(email)}
+📞 <b>Phone:</b> ${escapeHtml(safePhone)}
+🏷️ <b>Subject:</b> ${escapeHtml(safeSubject)}
+📂 <b>Category:</b> ${escapeHtml(safeCategory)}
+💬 <b>Message:</b>
+${escapeHtml(message)}
+      `.trim();
 
       let imageSent = false;
+
       if (screenshot && screenshot.filepath && fs.existsSync(screenshot.filepath)) {
         const mime = screenshot.mimetype || '';
         const filename = screenshot.originalFilename || '';
@@ -66,7 +67,10 @@ module.exports = async function handler(req, res) {
         const formData = new FormData();
         formData.append('chat_id', CHAT_ID);
         formData.append('photo', fs.createReadStream(screenshot.filepath));
-        formData.append('caption', text);
+
+        // ✅ إرسال كابشن مختصر فقط لتفادي تجاوز الحد
+        const shortCaption = `🧾 ${escapeHtml(name)} – ${escapeHtml(safeSubject)}`;
+        formData.append('caption', shortCaption);
         formData.append('parse_mode', 'HTML');
 
         const sendPhoto = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendPhoto`, {
@@ -79,14 +83,28 @@ module.exports = async function handler(req, res) {
           const errBody = await sendPhoto.text();
           return res.status(500).json({ error: 'Failed to send image to Telegram' });
         }
+
         imageSent = true;
+
+        // ✅ أرسل الرسالة الكاملة كنص بعد إرسال الصورة
+        await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            chat_id: CHAT_ID,
+            text: fullMessage,
+            parse_mode: 'HTML',
+          }),
+        });
+
       } else {
+        // لا يوجد صورة، أرسل فقط الرسالة النصية الكاملة
         const sendMessage = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             chat_id: CHAT_ID,
-            text,
+            text: fullMessage,
             parse_mode: 'HTML',
           }),
         });
@@ -96,6 +114,7 @@ module.exports = async function handler(req, res) {
           return res.status(500).json({ error: 'Failed to send message' });
         }
       }
+
       const responseMessage = imageSent ? 'with_image' : 'no_image';
       return res.status(200).json({ result: responseMessage });
     } catch (error) {
