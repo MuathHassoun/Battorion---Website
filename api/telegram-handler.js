@@ -161,7 +161,10 @@ ${escapeHtml(message)}
     }
 
     let imageSent = false;
+    console.log("Reach");
+
     if (screenshot && screenshot.filepath && screenshot.size > 0) {
+      console.log("Entered image size");
       try {
         const formData = new FormData();
         formData.append('chat_id', CHAT_ID);
@@ -184,7 +187,7 @@ ${escapeHtml(message)}
         console.error('Error sending photo:', error);
       }
     }
-
+    console.log("Get out");
     return res.status(200).json({ result: imageSent ? 'with_image' : 'no_image' });
   });
 };
