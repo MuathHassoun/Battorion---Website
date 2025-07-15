@@ -10,9 +10,13 @@ document.getElementById("contact-form").addEventListener("submit", async functio
   responseDiv.className = "";
   responseDiv.innerText = "⏳ Sending your message, please wait...";
 
-  if (file && !allowedTypes.includes(file.type)) {
+  if (file && (!file.type || !allowedTypes.includes(file.type))) {
     responseDiv.className = "error";
     responseDiv.innerText = "❌ Only image files are allowed (JPG, PNG, WebP, GIF).";
+    return;
+  } if (file && file.size === 0) {
+    responseDiv.className = "error";
+    responseDiv.innerText = "❌ Selected file is empty.";
     return;
   }
 
