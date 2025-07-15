@@ -109,7 +109,7 @@ header p {
 
 .buttons {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   gap: 12px;
 }
 
@@ -128,7 +128,8 @@ header p {
   color: white;
 }
 
-.contact-form button[type="reset"] {
+.contact-form button[type="reset"],
+.contact-form button[type="button"] {
   background: rgba(255, 255, 255, 0.1);
   color: var(--text-muted);
 }
@@ -155,6 +156,31 @@ select:focus {
   border-color: var(--header-border);
   outline: none;
   background-color: rgba(40, 40, 40, 1);
+}
+
+#selected-file,
+#form-response {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  padding: 12px 16px;
+  margin-top: 12px;
+  color: var(--text);
+  font-size: 0.95rem;
+  box-shadow: var(--card-shadow);
+  backdrop-filter: blur(var(--blur));
+  animation: fadeIn 0.5s ease-out;
+  transition: background 0.3s ease;
+}
+
+#form-response.success {
+  border-color: #1de9b6;
+  color: #1de9b6;
+}
+
+#form-response.error {
+  border-color: #ff7675;
+  color: #ff7675;
 }
 
 @keyframes fadeIn {
