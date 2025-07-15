@@ -49,26 +49,6 @@ module.exports = async function handler(req, res) {
     ${escapeHtml(message)}
     `;
 
-    const formData = new FormData();
-    formData.append('chat_id', CHAT_ID);
-    formData.append(
-      'photo',
-      fs.createReadStream(screenshot.filepath),
-      screenshot.originalFilename || 'screenshot.png'
-    );
-
-    const response = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendPhoto`, {
-      method: 'POST',
-      body: formData,
-      headers: formData.getHeaders(),
-    });
-
-    if (!response.ok) {
-      const errBody = await response.text();
-      console.error(errBody);
-      return res.status(500).json({ error: 'Failed to send message' });
-    }
-
     const sendMessage = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
