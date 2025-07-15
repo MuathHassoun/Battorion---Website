@@ -53,21 +53,6 @@ module.exports = async function handler(req, res) {
       ${escapeHtml(message)}
       `;
 
-      const sendMessage = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          chat_id: CHAT_ID,
-          text,
-          parse_mode: 'HTML',
-        }),
-      });
-
-      if (!sendMessage.ok) {
-        const errBody = await sendMessage.text();
-        return res.status(500).json({ error: 'Failed to send message' });
-      }
-
       let imageSent = false;
       if (screenshot && screenshot.filepath && fs.existsSync(screenshot.filepath)) {
         const mime = screenshot.mimetype || '';
@@ -81,6 +66,8 @@ module.exports = async function handler(req, res) {
         const formData = new FormData();
         formData.append('chat_id', CHAT_ID);
         formData.append('photo', fs.createReadStream(screenshot.filepath));
+        formData.append('caption', text);
+        formData.append('parse_mode', 'HTML');
 
         const sendPhoto = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendPhoto`, {
           method: 'POST',
@@ -93,8 +80,22 @@ module.exports = async function handler(req, res) {
           return res.status(500).json({ error: 'Failed to send image to Telegram' });
         }
         imageSent = true;
-      }
+      } else {
+        const sendMessage = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            chat_id: CHAT_ID,
+            text,
+            parse_mode: 'HTML',
+          }),
+        });
 
+        if (!sendMessage.ok) {
+          const errBody = await sendMessage.text();
+          return res.status(500).json({ error: 'Failed to send message' });
+        }
+      }
       const responseMessage = imageSent ? 'with_image' : 'no_image';
       return res.status(200).json({ result: responseMessage });
     } catch (error) {
