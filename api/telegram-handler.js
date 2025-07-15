@@ -39,22 +39,30 @@ module.exports = async function handler(req, res) {
     const safeSubject = subject || "N/A";
     const safeCategory = category || "N/A";
     const text = `
-📬 <b>New Contact Message</b>
-👤 <b>Name:</b> ${escapeHtml(name)}
-📧 <b>Email:</b> ${escapeHtml(email)}
-📞 <b>Phone:</b> ${escapeHtml(safePhone)}
-🏷️ <b>Subject:</b> ${escapeHtml(safeSubject)}
-📂 <b>Category:</b> ${escapeHtml(safeCategory)}
-💬 <b>Message:</b>
-${escapeHtml(message)}
-`;
+    📬 <b>New Contact Message</b>
+    👤 <b>Name:</b> ${escapeHtml(name)}
+    📧 <b>Email:</b> ${escapeHtml(email)}
+    📞 <b>Phone:</b> ${escapeHtml(safePhone)}
+    🏷️ <b>Subject:</b> ${escapeHtml(safeSubject)}
+    📂 <b>Category:</b> ${escapeHtml(safeCategory)}
+    💬 <b>Message:</b>
+    ${escapeHtml(message)}
+    `;
+
+    const formData = new FormData();
+    formData.append('chat_id', CHAT_ID);
+    formData.append(
+      'photo',
+      fs.createReadStream(screenshot.filepath),
+      screenshot.originalFilename || 'screenshot.png'
+    );
 
     const sendMessage = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         chat_id: CHAT_ID,
-        text,
+        formData,
         parse_mode: 'HTML',
       }),
     });
@@ -66,8 +74,6 @@ ${escapeHtml(message)}
     }
 
     let imageSent = false;
-
-    // ✅ طريقة رفع الصورة مثل sendPhoto في كود JS (باستخدام FormData + stream)
     if (screenshot && screenshot.filepath && screenshot.size > 0) {
       try {
         const formData = new FormData();
