@@ -94,11 +94,12 @@ window.addEventListener("click", e => {
 
 document.addEventListener("keydown", e => {
   const key = e.key.toLowerCase();
-  if ((e.ctrlKey || e.metaKey) && (key === "s" || key === "س")) {
+  if ((e.ctrlKey || e.metaKey) && e.code === 'KeyS') {
     e.preventDefault();
     e.stopImmediatePropagation();
     return false;
   }
+
 
   if (
     key === "f12" ||
