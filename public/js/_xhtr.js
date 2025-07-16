@@ -1,53 +1,53 @@
 (function () {
-  let _0x1a = false;
-  const _0x2b = 160;
+  let _0xa1 = false, _0xb2 = false;
 
-  function _0x3c() {
-    const _0x4d = window['outerWidth'] - window['innerWidth'] > _0x2b;
-    const _0x5e = window['outerHeight'] - window['innerHeight'] > _0x2b;
-    return _0x4d || _0x5e;
+  function _0xc3() {
+    return (window['outerWidth'] - window['innerWidth'] > 0xa0) || (window['outerHeight'] - window['innerHeight'] > 0xa0);
   }
 
-  function _0x6f() {
-    const _0x7g = Date['now']();
+  function _0xd4() {
+    const _0xe5 = Date['now']();
     debugger;
-    return Date['now']() - _0x7g > 50;
+    return Date['now']() - _0xe5 > 0x32;
   }
 
-  function _0x8h() {
-    let _0x9i = false;
-    const _0xaj = new Image();
-    Object['defineProperty'](_0xaj, 'id', {
+  function _0xf6() {
+    let _0x17 = false;
+    const _0x28 = new Image();
+    Object['defineProperty'](_0x28, 'id', {
       'get': function () {
-        _0x9i = true;
+        _0x17 = true;
       }
     });
-
-    const _0xbk = document['createElement']('div');
-    _0xbk['style']['display'] = 'none';
-    _0xbk['appendChild'](_0xaj);
-    document['body']['appendChild'](_0xbk);
-    window['_0xl'] = _0xaj;
-
+    const _0x39 = document['createElement']('div');
+    _0x39['style']['display'] = 'none';
+    _0x39['appendChild'](_0x28);
+    document['body']['appendChild'](_0x39);
     setTimeout(function () {
-      if (_0xbk['parentNode']) {
-        _0xbk['parentNode']['removeChild'](_0xbk);
-      }
-    }, 100);
+      _0x39['parentNode'] && _0x39['parentNode']['removeChild'](_0x39);
+    }, 0x64);
+    return _0x17;
+  }
 
-    return _0x9i;
+  function _0xexit() {
+    window['location']['href'] = 'https://www.google.com/';
   }
 
   setInterval(function () {
-    const _0xcd = _0x3c();
-    const _0xde = _0x6f();
-    const _0xef = _0x8h();
-
-    if ((_0xcd || _0xde || _0xef) && !_0x1a) {
-      _0x1a = true;
-      window['location']['href'] = 'https://www.google.com/';
-    } else if (!(_0xcd || _0xde || _0xef) && _0x1a) {
-      _0x1a = false;
+    if (_0xc3() && !_0xa1) {
+      _0xa1 = true;
+      _0xexit();
+    } else if (!_0xc3() && _0xa1) {
+      _0xa1 = false;
     }
-  }, 1000);
+  }, 0x5dc); // 1500ms
+
+  setInterval(function () {
+    if ((_0xd4() || _0xf6()) && !_0xb2) {
+      _0xb2 = true;
+      _0xexit();
+    } else if (!(_0xd4() || _0xf6()) && _0xb2) {
+      _0xb2 = false;
+    }
+  }, 0x3e8); // 1000ms
 })();
