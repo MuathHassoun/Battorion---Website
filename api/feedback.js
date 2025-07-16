@@ -80,7 +80,7 @@ module.exports = async function handler(req, res) {
 
       return res.status(200).json({
         status: 'success',
-        message: 'Your feedback and image have been received. Thank you!'
+        message: 'Your feedback and support image have been received. Thank you!'
       });
     } else {
       const response = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
