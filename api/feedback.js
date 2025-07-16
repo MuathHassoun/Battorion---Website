@@ -19,8 +19,7 @@ module.exports = async function handler(req, res) {
     return res.status(500).json({ error: 'Server configuration error: missing environment variables' });
   }
 
-  const { UserID, UserName, UserEmail, UserFeedback } = req.body;
-
+  const { UserID, UserName, UserEmail, UserFeedback, SupportImage } = req.body;
   if (!UserID || !UserName || !UserEmail || !UserFeedback) {
     return res.status(400).json({ error: 'Missing required fields' });
   }
@@ -35,34 +34,86 @@ module.exports = async function handler(req, res) {
   `;
 
   try {
-    const response = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        chat_id: CHAT_ID,
-        text: message,
-        parse_mode: 'HTML'
-      }),
-    });
+    if (SupportImage) {
+      let buffer;
+      try {
+        buffer = Buffer.from(SupportImage, 'base64');
+      } catch (e) {
+        return res.status(400).json({ error: 'Invalid image encoding' });
+      }
 
-    if (!response.ok) {
-      const err = await response.json();
-      console.error('Telegram API error:', err);
-      return res.status(500).json({
-        status: 'warning',
-        message: 'Telegram failed to receive message',
+      const pngSignature = '89504e47';
+      const jpgSignature = 'ffd8ffe0';
+      const jpgSignatureAlt = 'ffd8ffe1';
+      const jpgSignatureAlt2 = 'ffd8ffe2';
+      const hexHeader = buffer.toString('hex', 0, 4);
+
+      if (
+        hexHeader !== pngSignature &&
+        hexHeader !== jpgSignature &&
+        hexHeader !== jpgSignatureAlt &&
+        hexHeader !== jpgSignatureAlt2
+      ) {
+        return res.status(400).json({ error: 'Invalid image format (only PNG/JPEG supported)' });
+      }
+
+      const formData = new FormData();
+      formData.append('chat_id', CHAT_ID);
+      formData.append('caption', message);
+      formData.append('parse_mode', 'HTML');
+      formData.append('photo', buffer, {
+        filename: 'feedback_image.jpg',
+        contentType: 'image/jpeg'
+      });
+
+      const response = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendPhoto`, {
+        method: 'POST',
+        body: formData
+      });
+
+      if (!response.ok) {
+        const err = await response.json();
+        console.error('Telegram API error:', err);
+        return res.status(500).json({
+          status: 'warning',
+          message: 'Telegram failed to receive image'
+        });
+      }
+
+      return res.status(200).json({
+        status: 'success',
+        message: 'Your feedback and image have been received. Thank you!'
+      });
+    } else {
+      const response = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          chat_id: CHAT_ID,
+          text: message,
+          parse_mode: 'HTML'
+        }),
+      });
+
+      if (!response.ok) {
+        const err = await response.json();
+        console.error('Telegram API error:', err);
+        return res.status(500).json({
+          status: 'warning',
+          message: 'Telegram failed to receive message'
+        });
+      }
+
+      return res.status(200).json({
+        status: 'success',
+        message: 'Your feedback has been received. Thank you!'
       });
     }
-
-    return res.status(200).json({
-      status: 'success',
-      message: 'Your feedback has been received. Thank you!',
-    });
   } catch (error) {
     console.error('Server error:', error);
     return res.status(500).json({
       status: 'error',
-      message: 'Internal Server Error',
+      message: 'Internal Server Error'
     });
   }
 };
