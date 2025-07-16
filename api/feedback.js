@@ -61,10 +61,8 @@ module.exports = async function handler(req, res) {
       formData.append('chat_id', CHAT_ID);
       formData.append('caption', message);
       formData.append('parse_mode', 'HTML');
-      formData.append('photo', buffer, {
-        filename: 'feedback_image.jpg',
-        contentType: 'image/jpeg'
-      });
+      const blob = new Blob([buffer], { type: 'image/jpeg' });
+      formData.append('photo', blob, 'feedback_image.jpg');
 
       const response = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendPhoto`, {
         method: 'POST',
