@@ -1,62 +1,116 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <title>Page Not Found</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>404 Page Not Found · Battorion</title>
+  <link rel="icon" href="./public/img/battorion.png" />
   <style>
     * {
-      line-height: 1.2;
+      box-sizing: border-box;
       margin: 0;
-    }
-
-    html {
-      color: #888;
-      display: table;
-      font-family: sans-serif;
-      height: 100%;
-      text-align: center;
-      width: 100%;
+      padding: 0;
     }
 
     body {
-      display: table-cell;
-      vertical-align: middle;
-      margin: 2em auto;
+      font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #fff;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    header svg {
+      max-width: 100%;
+      height: auto;
+      filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.5));
+      margin-bottom: 2rem;
+      margin-left: 100px;
+    }
+
+    .message {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(10px);
+      border-radius: 24px;
+      padding: 3rem 2rem;
+      max-width: 600px;
+      width: 100%;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      animation: fadeIn 1.2s ease;
     }
 
     h1 {
-      color: #555;
-      font-size: 2em;
-      font-weight: 400;
+      font-size: 112px;
+      font-weight: 300;
+      margin-bottom: 1rem;
+      text-shadow: 2px 4px 10px rgba(0, 0, 0, 0.4);
     }
 
-    p {
-      margin: 0 auto;
-      width: 280px;
+    h2 {
+      font-size: 2rem;
+      font-weight: 500;
+      color: #e0e0e0;
     }
 
-    @media only screen and (max-width: 280px) {
+    a {
+      text-decoration: none;
+    }
 
-      body,
-      p {
-        width: 95%;
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
       }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
+    @media (max-width: 600px) {
       h1 {
-        font-size: 1.5em;
-        margin: 0 0 0.3em;
+        font-size: 72px;
       }
 
+      h2 {
+        font-size: 1.5rem;
+      }
+
+      .message {
+        padding: 2rem 1rem;
+      }
     }
   </style>
 </head>
-
 <body>
-  <h1>Page Not Found</h1>
-  <p>Sorry, but the page you were trying to view does not exist.</p>
-</body>
+  <header>
+    <a href="https://battorion-website.vercel.app/">
+      <header style="display: flex; align-items: center; gap: 2rem;">
+        <a href="https://battorion-website.vercel.app/" style="display: flex; align-items: center;">
+          <svg width="600" height="150" viewBox="0 0 600 150" xmlns="http://www.w3.org/2000/svg">
+            <g transform="rotate(-5, 60, 75)">
+              <rect x="30" y="20" width="60" height="110" rx="10" fill="#1de9b6" stroke="#fff" stroke-width="3"/>
+              <rect x="45" y="5" width="30" height="15" rx="4" fill="#ffffffcc"/>
+              <polygon points="60,40 50,75 65,75 55,110" fill="#fff"/>
+            </g>
+            <text x="120" y="95" font-size="70" fill="#ffffffcc" font-family="Segoe UI, sans-serif" font-weight="600">Battorion</text>
+            <text x="122" y="125" font-size="20" fill="#ffffff99" font-family="Segoe UI, sans-serif">Smart Power Systems</text>
+          </svg>
+        </a>
+      </header>
+    </a>
+  </header>
 
+  <div class="message">
+    <h1>404</h1>
+    <h2>Oops! This page doesn’t exist.</h2>
+  </div>
+  <script src="./public/js/app.js"></script>
+  <script src="./public/js/_xhtr.js"></script>
+</body>
 </html>
-<!-- IE needs 512+ bytes: https://docs.microsoft.com/archive/blogs/ieinternals/friendly-http-error-pages -->
