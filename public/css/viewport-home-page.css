@@ -1,0 +1,268 @@
+/* ========== Extra Small Devices (max-width: 480px) ========== */
+body.media-480 {
+  font-size: 14px;
+}
+
+body.media-480 .container {
+  padding: 0 1em;
+}
+
+body.media-480 .header,
+body.media-480 .header-buttons {
+  flex-direction: column;
+  text-align: center;
+  gap: 1em;
+}
+
+body.media-480 .corner-decoration,
+body.media-480 .corner-clip,
+body.media-480 .orbit {
+  display: none;
+}
+
+body.media-480 .header-content-container {
+  background: var(--header-bg);
+  border-radius: 20px;
+  padding: 2em 1em;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+body.media-480 .hero {
+  padding: 2em 1em;
+  text-align: center;
+  border-radius: 20px;
+  color: #fff;
+}
+
+body.media-480 .hero h2 {
+  font-size: 1.5em;
+}
+
+body.media-480 .grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.2em;
+}
+
+body.media-480 .card {
+  padding: 1em;
+  flex-direction: column;
+  text-align: center;
+  border-radius: 16px;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+  background: var(--card-bg);
+}
+
+body.media-480 .footer {
+  padding: 2em 1em;
+  text-align: center;
+  font-size: 0.9em;
+  color: #fff;
+  border-radius: 16px;
+}
+
+/* ========== Small Devices (481px - 768px) ========== */
+body.media-768 {
+  font-size: 15px;
+}
+
+body.media-768 .container {
+  padding: 0 2em;
+}
+
+body.media-768 .header,
+body.media-768 .header-buttons {
+  flex-direction: column;
+  text-align: center;
+  gap: 1.5em;
+}
+
+body.media-768 .corner-decoration,
+body.media-768 .corner-clip,
+body.media-768 .orbit {
+  display: none;
+}
+
+body.media-768 .header-content-container {
+  background: var(--header-bg);
+  border-radius: 30px;
+  padding: 2.5em 1.5em;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+body.media-768 .hero {
+  padding: 2.5em 1.5em;
+  text-align: center;
+  border-radius: 24px;
+  color: #fff;
+}
+
+body.media-768 .hero h2 {
+  font-size: 1.8em;
+}
+
+body.media-768 .grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2em;
+}
+
+body.media-768 .card {
+  padding: 1.4em;
+  flex-direction: column;
+  text-align: center;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  background: var(--card-bg);
+}
+
+body.media-768 .footer {
+  padding: 2em 1.2em;
+  font-size: 1em;
+  color: #fff;
+  text-align: center;
+  border-radius: 20px;
+}
+
+/* ========== Medium Devices (769px - 1024px) ========== */
+body.media-1024 {
+  font-size: 16px;
+}
+
+body.media-1024 .container {
+  width: 94%;
+  margin: 0 auto;
+}
+
+body.media-1024 .header-buttons {
+  gap: 1em;
+}
+
+body.media-1024 .corner-decoration,
+body.media-1024 .corner-clip,
+body.media-1024 .orbit {
+  display: none;
+}
+
+body.media-1024 .header-content-container {
+  background: var(--header-bg);
+  border-radius: 40px;
+  padding: 3em 2em;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+}
+
+body.media-1024 .hero h2 {
+  font-size: 2.2em;
+}
+
+body.media-1024 .grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2em;
+}
+
+body.media-1024 .card {
+  padding: 2em;
+  border-radius: 24px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.1);
+  background: var(--card-bg);
+}
+
+body.media-1024 .footer {
+  padding: 2.2em;
+  text-align: center;
+  font-size: 1em;
+  color: #fff;
+  border-radius: 24px;
+}
+
+/* ========== Mid-Large Devices (1025px - 1440px) ========== */
+body.media-1250 {
+  font-size: 16.5px;
+}
+
+body.media-1250 .container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+body.media-1250 .grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.5em;
+}
+
+body.media-1250 .card {
+  padding: 2.2em;
+  max-width: 950px;
+  border-radius: 28px;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.12);
+  background: var(--card-bg);
+}
+
+body.media-1250 .dashboard-img {
+  max-width: 700px;
+  border-radius: 16px;
+}
+
+body.media-1250 .corner-decoration,
+body.media-1250 .corner-clip,
+body.media-1250 .orbit {
+  display: none;
+}
+
+body.media-1250 .footer {
+  padding: 2.5em;
+  color: #fff;
+  font-size: 1em;
+  border-radius: 28px;
+}
+
+/* ========== Large Devices (min-width: 1441px) ========== */
+body.media-1990 {
+  font-size: 17px;
+}
+
+body.media-1990 .container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+body.media-1990 .header-content-container {
+  background: var(--header-bg);
+  border-radius: 60px;
+  padding: 4em 3em;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+}
+
+body.media-1990 .grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5em;
+}
+
+body.media-1990 .card {
+  max-width: 1000px;
+  padding: 2.5em;
+  border-radius: 32px;
+  box-shadow: 0 24px 56px rgba(0, 0, 0, 0.2);
+  background: var(--card-bg);
+}
+
+body.media-1990 .dashboard-img {
+  max-width: 800px;
+  border-radius: 20px;
+}
+
+body.media-1990 .corner-decoration,
+body.media-1990 .corner-clip {
+  display: block;
+}
+
+body.media-1990 .footer {
+  padding: 3em;
+  color: #fff;
+  font-size: 1.1em;
+  border-radius: 32px;
+  text-align: center;
+}
