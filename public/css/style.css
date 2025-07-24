@@ -15,6 +15,12 @@
   --header-border-dark: #57e2e5;
   --header-gradient-light: linear-gradient(135deg, #ffecd2, #fcb69f);
   --header-border-light: #ff9a76;
+  --battery-fill-dark: #39f0ba;
+  --battery-fill-light: #00bcd4;
+  --battery-head-fill: #eeeeeecc;
+  --bolt-fill: #ffffff;
+  --logo-text-fill: #ffffff;
+  --logo-subtext-fill: #cccccc;
 
   --radius: 20px;
   --glow: 0 0 30px rgba(255, 255, 255, 0.15);
@@ -35,6 +41,10 @@ html[data-theme="dark"] {
   --card-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
   --clip-gradient: linear-gradient(135deg, #57e2e5, #6c5ce7);
   --clip-glow: rgba(87, 226, 229, 0.35);
+  --header-logo-svg: rgba(255, 255, 255, 0.5);
+  --battery-fill: var(--battery-fill-dark);
+  --logo-text-fill: #ffffff;
+  --logo-subtext-fill: #cccccc;
 }
 
 html[data-theme="light"] {
@@ -51,6 +61,10 @@ html[data-theme="light"] {
   --card-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
   --clip-gradient: linear-gradient(135deg, #845ec2, #00c6ff);
   --clip-glow: rgba(132, 94, 194, 0.3);
+  --header-logo-svg: rgba(0, 0, 0, 0.5);
+  --battery-fill: var(--battery-fill-light);
+  --logo-text-fill: #111111;
+  --logo-subtext-fill: #666666;
 }
 
 body {
@@ -75,6 +89,37 @@ body {
   align-items: center;
 }
 
+.header-logo-svg {
+  max-width: 100%;
+  height: auto;
+  filter: drop-shadow(0 2px 6px var(--header-logo-svg));
+  margin-bottom: 2rem;
+  margin-left: 50px;
+  z-index: 100;
+}
+
+.battery-body {
+  fill: var(--battery-fill);
+  stroke: #fff;
+  stroke-width: 3;
+}
+
+.battery-head {
+  fill: var(--battery-head-fill);
+}
+
+.bolt {
+  fill: var(--bolt-fill);
+}
+
+.logo-text {
+  fill: var(--logo-text-fill);
+}
+
+.logo-subtext {
+  fill: var(--logo-subtext-fill);
+}
+
 .logo {
   font-size: 3em;
   font-weight: 700;
@@ -84,6 +129,8 @@ body {
 .header-buttons {
   display: flex;
   gap: 0.8em;
+  margin-left: 100px;
+  margin-top: -4em;
 }
 
 .icon-btn {

@@ -1,17 +1,26 @@
 const toggle = document.getElementById("theme-toggle");
 const html = document.documentElement;
 
+function setThemeIcon(theme) {
+  const icon = toggle?.querySelector("i");
+  if (!icon) return;
+
+  icon.classList.remove("fa-circle-half-stroke", "fa-moon");
+  icon.classList.add(theme === "dark" ? "fa-circle-half-stroke" : "fa-moon");
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const currentTheme = html.dataset.theme || "light";
+  setThemeIcon(currentTheme);
+});
+
 if (toggle) {
   toggle.addEventListener("click", () => {
     const isDark = html.dataset.theme === "dark";
     const newTheme = isDark ? "light" : "dark";
     html.dataset.theme = newTheme;
 
-    const icon = toggle.querySelector("i");
-    if (icon) {
-      icon.classList.remove("fa-circle-half-stroke", "fa-moon");
-      icon.classList.add(newTheme === "dark" ? "fa-moon" : "fa-circle-half-stroke");
-    }
+    setThemeIcon(newTheme);
 
     document.querySelectorAll(".features img").forEach((img) => {
       const src = img.getAttribute("src");
