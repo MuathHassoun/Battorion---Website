@@ -1,0 +1,76 @@
+.Top-Section {
+  background: radial-gradient(circle at top left, #1de9b6 10%, #0f2027 80%);
+  padding: 2rem 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 2px solid var(--header-border);
+  box-shadow: 0 12px 30px var(--shadow-mid);
+  border-radius: var(--radius);
+  margin-bottom: 2.5rem;
+  animation: slideInDown 0.7s ease-out;
+  position: relative;
+  overflow: hidden;
+  z-index: 10;
+}
+
+.Top-Section::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(from 90deg, #1de9b6cc, transparent 50%, #ffffff22 100%);
+  animation: rotateGlow 6s linear infinite;
+  opacity: 0.07;
+  z-index: 0;
+}
+
+.Top-Section::after {
+  content: "";
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(255,255,255,0.05), transparent 70%);
+  border-radius: 50%;
+  animation: float 6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.Top-Section a {
+  text-decoration: none;
+  transition: transform 0.3s ease;
+  z-index: 1;
+}
+
+.Top-Section a:hover {
+  transform: scale(1.015);
+}
+
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes rotateGlow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(12px); }
+}

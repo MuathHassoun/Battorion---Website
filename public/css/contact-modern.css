@@ -36,6 +36,31 @@ body {
   padding: 40px 16px;
 }
 
+.page-content {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
+  max-width: 1200px;
+  width: 100%;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+
+.left-column {
+  flex: 1 1 400px;
+  min-width: 300px;
+}
+
+.right-column {
+  flex: 1 1 500px;
+  min-width: 300px;
+}
+
+.Top-Section {
+  padding: 2rem 3rem 2rem 9rem;
+}
+
 header {
   background: var(--header-bg);
   border: 1px solid var(--header-border);

@@ -4,62 +4,80 @@
   <meta charset="UTF-8">
   <title>Contact Support</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="stylesheet" href="../css/contact-modern.css" />
-  <link rel="icon" href="../img/battorion.png" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" href="../img/battorion.png" />
+  <link rel="stylesheet" href="../css/top-section-style.css" />
+  <link rel="stylesheet" href="../css/contact-modern.css" />
 </head>
 <body>
-  <header>
-    <h1>📞 Contact Support</h1>
-    <p>If you have any questions or issues, feel free to send us a message with or without a screenshot.</p>
-    <p><strong>Note:</strong> You can also submit just an image if you prefer — no text required!</p>
-    <p>
-      <a href="send-image.html" id="sendImageOnly">
-        Click here to send an image only
-      </a>.
-    </p>
-  </header>
+  <div class="page-content">
+    <div class="left-column">
+      <section class="Top-Section">
+        <a href="https://battorion-website.vercel.app/" style="display: flex; align-items: center;">
+          <svg width="600" height="150" viewBox="0 0 600 150" xmlns="http://www.w3.org/2000/svg">
+            <g transform="rotate(-5, 60, 75)">
+              <rect x="30" y="20" width="60" height="110" rx="10" fill="#28848f" stroke="#fff" stroke-width="3"/>
+              <rect x="45" y="5" width="30" height="15" rx="4" fill="#ffffffcc"/>
+              <polygon points="60,40 50,75 65,75 55,110" fill="#fff"/>
+            </g>
+            <text x="120" y="95" font-size="70" fill="#ffffffcc" font-family="Segoe UI, sans-serif" font-weight="600">Battorion</text>
+            <text x="125" y="125" font-size="20" fill="#ffffff99" font-family="Segoe UI, sans-serif">Next-Gen Battery & System Intelligence</text>
+          </svg>
+        </a>
+      </section>
 
-  <section class="contact-form">
-    <h2>Reach Out To Us</h2>
-    <form id="contact-form" data-form-title="Form Name">
-      <label for="name">Full Name</label>
-      <input type="text" id="name" name="name" placeholder="John Doe" required>
+      <header>
+        <h1>📞 Contact Support</h1>
+        <p>If you have any questions or issues, feel free to send us a message with or without a screenshot.</p>
+        <br>
+        <p><strong>Note:</strong> You can also submit just an image if you prefer — no text required!</p>
+        <p><a href="send-image.html" id="sendImageOnly">Click here to send an image only</a>.</p>
+      </header>
+    </div>
 
-      <label for="email">Email Address</label>
-      <input type="email" id="email" name="email" placeholder="you@example.com" required>
+    <div class="right-column">
+      <section class="contact-form">
+        <h2>Reach Out To Us</h2>
+        <form id="contact-form" data-form-title="Form Name">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" name="name" placeholder="John Doe" required>
 
-      <label for="phone">Phone (optional)</label>
-      <input type="tel" id="phone" name="phone" placeholder="+1234567890">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" required>
 
-      <label for="subject">Subject</label>
-      <input type="text" id="subject" name="subject" placeholder="e.g. Problem with the app" required>
+          <label for="phone">Phone (optional)</label>
+          <input type="tel" id="phone" name="phone" placeholder="+1234567890">
 
-      <label for="category">Category</label>
-      <select id="category" name="category" required>
-        <option value="">-- Select --</option>
-        <option value="technical">Technical Issue</option>
-        <option value="billing">Billing</option>
-        <option value="feedback">Feedback</option>
-        <option value="feature_request">Feature Request</option>
-        <option value="bug_report">Bug Report</option>
-        <option value="other">Other</option>
-      </select>
+          <label for="subject">Subject</label>
+          <input type="text" id="subject" name="subject" placeholder="e.g. Problem with the app" required>
 
-      <label for="message">Your Message</label>
-      <textarea id="message" name="message" placeholder="Write your message here..." required></textarea>
+          <label for="category">Category</label>
+          <select id="category" name="category" required>
+            <option value="">-- Select --</option>
+            <option value="technical">Technical Issue</option>
+            <option value="billing">Billing</option>
+            <option value="feedback">Feedback</option>
+            <option value="feature_request">Feature Request</option>
+            <option value="bug_report">Bug Report</option>
+            <option value="other">Other</option>
+          </select>
 
-      <div class="buttons">
-        <button type="submit">Send Message</button>
-        <input type="file" id="screenshotInput" name="screenshot" accept="image/*" style="display: none;" />
-        <button type="button" id="uploadBtn">Upload Screenshot</button>
-        <button type="reset">Clear</button>
-      </div>
-      <br>
-      <div id="selected-file" class="mt-3" style="display: none;"></div>
-      <div id="form-response" class="mt-3" style="display: none;"></div>
-    </form>
-  </section>
+          <label for="message">Your Message</label>
+          <textarea id="message" name="message" placeholder="Write your message here..." required></textarea>
+
+          <div class="buttons">
+            <button type="submit">Send Message</button>
+            <input type="file" id="screenshotInput" name="screenshot" accept="image/*" style="display: none;" />
+            <button type="button" id="uploadBtn">Upload Screenshot</button>
+            <button type="reset">Clear</button>
+          </div>
+          <br>
+          <div id="selected-file" class="mt-3" style="display: none;"></div>
+          <div id="form-response" class="mt-3" style="display: none;"></div>
+        </form>
+      </section>
+    </div>
+  </div>
 
   <footer>
     <p>🔒 Your message is secure. Expect a reply within 24 hours.</p>
