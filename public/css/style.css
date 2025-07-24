@@ -21,7 +21,6 @@
   --bolt-fill: #ffffff;
   --logo-text-fill: #ffffff;
   --logo-subtext-fill: #cccccc;
-
   --radius: 20px;
   --glow: 0 0 30px rgba(255, 255, 255, 0.15);
   --blur: 10px;
@@ -41,7 +40,7 @@ html[data-theme="dark"] {
   --card-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
   --clip-gradient: linear-gradient(135deg, #57e2e5, #6c5ce7);
   --clip-glow: rgba(87, 226, 229, 0.35);
-  --header-logo-svg: rgba(255, 255, 255, 0.5);
+  --header-logo-svg: rgba(255, 255, 255, 0.4);
   --battery-fill: var(--battery-fill-dark);
   --logo-text-fill: #ffffff;
   --logo-subtext-fill: #cccccc;
@@ -61,7 +60,7 @@ html[data-theme="light"] {
   --card-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
   --clip-gradient: linear-gradient(135deg, #845ec2, #00c6ff);
   --clip-glow: rgba(132, 94, 194, 0.3);
-  --header-logo-svg: rgba(0, 0, 0, 0.5);
+  --header-logo-svg: rgba(0, 0, 0, 0.4);
   --battery-fill: var(--battery-fill-light);
   --logo-text-fill: #111111;
   --logo-subtext-fill: #666666;
@@ -92,7 +91,7 @@ body {
 .header-logo-svg {
   max-width: 100%;
   height: auto;
-  filter: drop-shadow(0 2px 6px var(--header-logo-svg));
+  filter: drop-shadow(0 4px 6px var(--header-logo-svg));
   margin-bottom: 2rem;
   margin-left: 50px;
   z-index: 100;
