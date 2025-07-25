@@ -21,9 +21,18 @@
         <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="var(--shield-glow)" flood-opacity="0.6" />
       </filter>
     </defs>
-
-    <path class="shield-shape" d="M60 10 L105 32 V62 C105 96 60 125 60 125 C60 125 15 96 15 62 V32 Z"
-          fill="url(#shieldGradient)" stroke="var(--shield-border)" stroke-width="1.5" filter="url(#glow)" />
+    <path class="shield-shape"
+          d="M60 15
+         L105 35
+         L105 65
+         C105 105, 60 130, 60 130
+         C60 130, 15 105, 15 65
+         L15 35
+         Z"
+          fill="url(#shieldGradient)"
+          stroke="var(--shield-border)"
+          stroke-width="1.5"
+          filter="url(#glow)" />
     <rect class="battery-body" x="42" y="48" width="36" height="52" rx="7"
           fill="var(--battery-body)" stroke="var(--battery-border)" stroke-width="1.2"/>
     <rect class="battery-head" x="52" y="38" width="16" height="8" rx="2"
