@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="css/viewport-home-page.css" />
 </head>
 <body>
-  <svg class="corner-decoration" viewBox="0 0 120 140" xmlns="http://www.w3.org/2000/svg">
+  <svg class="corner-decoration" viewBox="0 0 120 160" xmlns="http://www.w3.org/2000/svg">
     <defs>
       <linearGradient id="shieldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
         <stop offset="0%" stop-color="var(--shield-gradient-start)" />
@@ -21,24 +21,27 @@
         <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="var(--shield-glow)" flood-opacity="0.6" />
       </filter>
     </defs>
-    <path class="shield-shape"
-          d="M60 15
-         L105 35
-         L105 65
-         C105 105, 60 130, 60 130
-         C60 130, 15 105, 15 65
-         L15 35
-         Z"
-          fill="url(#shieldGradient)"
+    <path fill="url(#shieldGradient)"
           stroke="var(--shield-border)"
-          stroke-width="1.5"
-          filter="url(#glow)" />
-    <rect class="battery-body" x="42" y="48" width="36" height="52" rx="7"
+          stroke-linecap="round" stroke-linejoin="round"
+          stroke-width="1.5" filter="url(#glow)"
+          d="M60 26
+             s-30 12-45 12
+             v36
+             c0 36 22.5 60 45 72
+             c22.5-12 45-36 45-72
+             V38
+             c-15 0-45-12-45-12z"/>
+
+    <rect class="battery-body" x="42" y="60" width="36" height="52" rx="7"
           fill="var(--battery-body)" stroke="var(--battery-border)" stroke-width="1.2"/>
-    <rect class="battery-head" x="52" y="38" width="16" height="8" rx="2"
+    <rect class="battery-head" x="52" y="50" width="16" height="8" rx="2"
           fill="var(--battery-head)" />
-    <polygon class="bolt" points="60,47 53,78 66,78 58,106"
-             fill="var(--bolt-fill)" stroke="var(--bolt-stroke)" stroke-width="1" />
+    <polygon class="bolt"
+             points="66,66 58,88 67,88 53,116 62,92 54,92 60,60"
+             fill="var(--bolt-fill)"
+             stroke="var(--bolt-stroke)"
+             stroke-width="1.05" />
   </svg>
 
   <header class="header">

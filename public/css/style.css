@@ -634,7 +634,7 @@ body {
 
 .corner-decoration {
   position: absolute;
-  top: 180px;
+  top: 150px;
   right: 100px;
   width: 300px;
   z-index: 10000;
