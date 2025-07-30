@@ -19,7 +19,7 @@ async function fetchUsers() {
 
 async function fetchMessages(email) {
   try {
-    const res = await fetch(`/api/chat/messages?email=${encodeURIComponent(email)}`);
+    const res = await fetch(`/api/chat/message?email=${encodeURIComponent(email)}`);
     if (!res.ok) throw new Error('Failed to fetch messages');
     const data = await res.json();
     return data.data || [];

@@ -60,7 +60,7 @@ async function startChatWithEmail(email) {
 
 async function fetchMessages(email) {
   try {
-    const res = await fetch(`/api/chat/messages?email=${encodeURIComponent(email)}`);
+    const res = await fetch(`/api/chat/message?email=${encodeURIComponent(email)}`);
     const result = await res.json();
     if (!res.ok) {
       console.error('Failed to fetch messages:', result);
