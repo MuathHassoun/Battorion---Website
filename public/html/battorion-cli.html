@@ -3,11 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="../img/logo.svg" />
   <title>Battorion CLI Commands</title>
   <link rel="stylesheet" href="../css/cli-style.css" />
 </head>
 <body>
-  <header>
+  <header id="header">
     <a href="https://battorion-website.vercel.app/" class="logo-link">
       <svg width="600" height="150" viewBox="0 0 600 150" xmlns="http://www.w3.org/2000/svg">
         <g transform="rotate(-5, 60, 75)">
@@ -26,10 +27,51 @@
     </div>
   </header>
 
+  <nav class="cli-nav">
+    <a href="#header">Header</a>
+    <a href="#guide">Guide</a>
+    <a href="#install">Install</a>
+    <a href="#install-github">Install from GitHub</a>
+    <a href="#choco-install-section">Install via Chocolatey</a>
+    <a href="#choco-specific-version">Install Specific Version</a>
+    <a href="#update">Update</a>
+    <a href="#offline">Offline</a>
+    <a href="#uninstall">Uninstall</a>
+    <a href="#list-tags">List Tags</a>
+    <a href="#choco-list-section">List Versions</a>
+    <a href="#choco-search-section">Search</a>
+    <a href="#install-log-section">Install with Logging</a>
+  </nav>
+
   <main>
-    <section class="card">
+    <section class="guide-card" id="guide">
+      <div class="guide-description">
+        💡 <strong>How to Run the Command:</strong>
+      </div>
+      <ol class="step-list">
+        <li>
+          <strong>Open PowerShell:</strong> Right-click the <strong>Start</strong> button on your Windows taskbar, then select
+          <strong>"Windows PowerShell"</strong> or <strong>"Terminal"</strong> from the menu.
+        </li>
+        <li>
+          <strong>Copy the Command:</strong> Click the <strong>copy icon</strong> next to the command shown above to copy it to your clipboard.
+        </li>
+        <li>
+          <strong>Paste and Execute:</strong> In the PowerShell or Terminal window, right-click to paste the command, then press <strong>Enter</strong>.
+        </li>
+        <li>
+          <strong>Wait for Installation:</strong> Battorion will automatically begin the installation or update process. No further action is required.
+        </li>
+      </ol>
+      <div class="note">
+        <p>⚠️ For best results, run PowerShell as Administrator. Internet connection is required for online installs and updates.</p>
+      </div>
+    </section>
+
+    <section class="card" id="install">
       <h2>Install Battorion</h2>
-      <div class="command-wrapper">
+      <div class="command-container">
+        <div class="command-wrapper">
           <pre id="install-command" class="command">irm https://battorion-website.vercel.app/api/install | iex</pre>
           <button class="copy-btn" onclick="copyToClipboard('install-command')" aria-label="Copy command">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
@@ -38,15 +80,98 @@
               <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
             </svg>
           </button>
+        </div>
+        <p class="command-description">
+          Installs Battorion CLI from the official repository. No admin permissions required. Works on PowerShell (Windows). Ensure internet connection is available.
+        </p>
       </div>
-      <p class="command-description">
-        Installs Battorion CLI from the official repository. No admin permissions required. Works on PowerShell (Windows). Ensure internet connection is available.
-      </p>
     </section>
 
-    <section class="card">
+    <section class="card" id="install-github">
+      <h2 class="long-command">Install Specific Battorion Version from GitHub</h2>
+      <div class="command-container">
+        <div class="command-wrapper">
+      <pre id="install-github-version" class="command">$version = "1.2.3"  # Change this to the desired version number
+$repo = "MuathHassoun/battorion-version"
+$url = "https://github.com/$repo/releases/download/v$version/_battorion-$version-setup.exe"
+$installerPath = "$env:TEMP\battorion-$version-setup.exe"
+Remove-Item $installerPath -ErrorAction SilentlyContinue
+Write-Host "Downloading from: $url"
+try {
+    Invoke-WebRequest -Uri $url -OutFile $installerPath -ErrorAction Stop
+    Write-Host "Download successful. Starting installer..."
+    Start-Process -FilePath $installerPath -ArgumentList '/S' -Wait
+    Remove-Item $installerPath
+    Write-Host "Installation completed."
+} catch {
+    Write-Error "Download or installation failed: $_"
+}</pre>
+          <button class="copy-btn" onclick="copyToClipboard('install-github-version')" aria-label="Copy command">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+          </button>
+          <a href="../scripts/install-github-version.ps1" download class="download-btn" aria-label="Download .ps1" title="Download script">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+          </a>
+        </div>
+        <p class="command-description">
+          Downloads and installs a specific Battorion version directly from the GitHub releases. Replace <code>1.2.3</code> with your desired version tag.
+          <br /><br />
+          <strong>Note:</strong> It is recommended to save this command to a <code>.txt</code> file, edit the version number there, and then copy-paste it into PowerShell to avoid errors.
+        </p>
+      </div>
+    </section>
+
+    <section class="card" id="choco-install-section">
+      <h2>Install via Chocolatey</h2>
+      <div class="command-container">
+        <div class="command-wrapper">
+          <pre id="choco-install" class="command">choco install battorion</pre>
+          <button class="copy-btn" onclick="copyToClipboard('choco-install')" aria-label="Copy command">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+          </button>
+        </div>
+        <p class="command-description">
+          Installs Battorion using Chocolatey package manager. Recommended for IT admins and automation scripts.
+        </p>
+      </div>
+    </section>
+
+    <section class="card" id="choco-specific-version">
+      <h2>Install Specific Battorion Version</h2>
+      <div class="command-container">
+        <div class="command-wrapper">
+          <pre id="install-specific-version" class="command">choco install battorion --version=1.2.3</pre>
+          <button class="copy-btn" onclick="copyToClipboard('install-specific-version')" aria-label="Copy command">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+          </button>
+        </div>
+        <p class="command-description">
+          Installs a specific version of Battorion by specifying the version number. Replace <code>1.2.3</code> with the desired version tag.
+        </p>
+      </div>
+    </section>
+
+    <section class="card" id="update">
       <h2>Update Battorion</h2>
-      <div class="command-wrapper">
+      <div class="command-container">
+        <div class="command-wrapper">
           <pre id="update-command" class="command">irm https://battorion-website.vercel.app/api/update | iex</pre>
           <button class="copy-btn" onclick="copyToClipboard('update-command')" aria-label="Copy command">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
@@ -55,10 +180,156 @@
               <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
             </svg>
           </button>
+        </div>
+        <p class="command-description">
+          Updates the existing Battorion CLI to the latest version. Keeps your current configuration intact. Requires internet access.
+        </p>
       </div>
-      <p class="command-description">
-        Updates the existing Battorion CLI to the latest version. Keeps your current configuration intact. Requires internet access.
-      </p>
+    </section>
+
+    <section class="card" id="offline">
+      <h2>Install (Offline Mode)</h2>
+      <div class="command-container">
+        <div class="command-wrapper">
+          <pre id="offline-install" class="command">$version = "1.2.0" # Change this to the desired version number
+$downloadUrl = "https://github.com/MuathHassoun/battorion-version/releases/download/sv$version/_battorion-$version-silent-setup.exe"
+$installerPath = "$env:TEMP\battorion-setup.exe"
+Start-BitsTransfer -Source $downloadUrl -Destination $installerPath
+Start-Process -FilePath $installerPath -ArgumentList "/silent" -Wait</pre>
+          <button class="copy-btn" onclick="copyToClipboard('offline-install')" aria-label="Copy command">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+          </button>
+          <a href="../scripts/offline-install.ps1" download class="download-btn" aria-label="Download .ps1" title="Download script">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+          </a>
+        </div>
+        <p class="command-description">
+          Downloads the full installer and runs it silently without user interaction. No need for PowerShell execution policies.
+        </p>
+      </div>
+    </section>
+
+    <section class="card" id="uninstall">
+      <h2>Uninstall Battorion</h2>
+      <div class="command-container">
+        <div class="command-wrapper">
+          <pre id="uninstall-command" class="command">& "$env:ProgramFiles\Battorion\uninstall.exe" /silent</pre>
+          <button class="copy-btn" onclick="copyToClipboard('uninstall-command')" aria-label="Copy command">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+          </button>
+        </div>
+        <p class="command-description">
+          Removes Battorion silently from your system. Useful for clean reinstallation or complete removal.
+        </p>
+      </div>
+    </section>
+
+    <section class="card" id="list-tags">
+      <h2>List Battorion Versions (Tags)</h2>
+      <div class="command-container">
+        <div class="command-wrapper">
+      <pre id="list-tags-command" class="command">$repo = "MuathHassoun/battorion-version"
+$apiUrl = "https://api.github.com/repos/$repo/tags"
+$headers = @{ "User-Agent" = "PowerShellScript" }
+
+try {
+    $tags = Invoke-RestMethod -Uri $apiUrl -Headers $headers
+    foreach ($tag in $tags) {
+        Write-Host $tag.name
+    }
+} catch {
+    Write-Error "Failed to fetch tags: $_"
+}</pre>
+          <button class="copy-btn" onclick="copyToClipboard('list-tags-command')" aria-label="Copy command">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+          </button>
+          <a href="../scripts/list-tags.ps1" download class="download-btn" aria-label="Download .ps1" title="Download script">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+          </a>
+        </div>
+        <p class="command-description">
+          Fetches and lists all available version tags of Battorion from the official GitHub repository using PowerShell.
+        </p>
+      </div>
+    </section>
+
+    <section class="card" id="choco-list-section">
+      <h2>List Available Versions</h2>
+      <div class="command-container">
+        <div class="command-wrapper">
+          <pre id="choco-list" class="command">choco list battorion --all</pre>
+          <button class="copy-btn" onclick="copyToClipboard('choco-list')" aria-label="Copy list command">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+          </button>
+        </div>
+        <p class="command-description">
+          Lists all available versions of the Battorion package.
+        </p>
+      </div>
+    </section>
+
+    <section class="card" id="choco-search-section">
+      <h2>Search the Repository</h2>
+      <div class="command-container">
+        <div class="command-wrapper">
+          <pre id="choco-search" class="command">choco search battorion</pre>
+          <button class="copy-btn" onclick="copyToClipboard('choco-search')" aria-label="Copy search command">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+          </button>
+        </div>
+        <p class="command-description">
+          Searches the Chocolatey repository for the Battorion package.
+        </p>
+      </div>
+    </section>
+
+    <section class="card" id="install-log-section">
+      <h2>Install with Logging</h2>
+      <div class="command-container">
+        <div class="command-wrapper">
+          <pre id="install-log" class="command">irm https://battorion-website.vercel.app/api/install | iex *> "$env:TEMP\battorion-install-log.txt"</pre>
+          <button class="copy-btn" onclick="copyToClipboard('install-log')" aria-label="Copy command">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+          </button>
+        </div>
+        <p class="command-description">
+          Installs Battorion and logs all output to a file for troubleshooting or verification.
+        </p>
+      </div>
     </section>
   </main>
 
