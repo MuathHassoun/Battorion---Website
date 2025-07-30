@@ -79,7 +79,7 @@ chatFormEl.addEventListener('submit', async e => {
   const message = chatInputEl.value.trim();
   const csfrm = 1;
   if (!message || !activeUserEmail) return;
-  renderMessages([...getCurrentMessages(), { sender: 'user', message, csfrm}]);
+  renderMessages([...getCurrentMessages(), { sender: 'user', message, csfrm }]);
   chatInputEl.value = '';
 
   try {
