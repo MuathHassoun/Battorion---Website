@@ -32,40 +32,36 @@ $tag = $tagInfo.tag_name
 $version = $tag.TrimStart("v")
 Write-Host "Latest version: $version"
 
-# 2) Build the correct download URL
+# 2) Build download URL and target path
 $downloadUrl   = "https://github.com/MuathHassoun/battorion-version/releases/download/v$version/_battorion-$version-silent-setup.exe"
 $installerPath = Join-Path $env:TEMP "battorion-$version-silent-setup.exe"
 
 Write-Host "Downloading update from $downloadUrl"
 
-# 3) Download with strict error handling
+# 3) Download using BITS for large file reliability
 if (Test-Path $installerPath) { Remove-Item $installerPath -Force }
+
 try {
-  Invoke-WebRequest -Uri $downloadUrl `
-    -OutFile $installerPath `
-    -UserAgent 'Mozilla/5.0' `
-    -TimeoutSec 600 `
-    -ErrorAction Stop
+  Start-BitsTransfer -Source $downloadUrl -Destination $installerPath -DisplayName "Downloading Battorion Installer" -ErrorAction Stop
 } catch {
-  Write-Error "Download failed: $($_.Exception.Message)"
+  Write-Error "BITS download failed: $($_.Exception.Message)"
   exit 1
 }
 
-# 4) Basic sanity check on the file
+# 4) Sanity check on file size (must be at least 100 KB)
 if (!(Test-Path $installerPath) -or (Get-Item $installerPath).Length -lt 1024*100) {
-  Write-Error "Downloaded file missing or too small. Aborting."
+  Write-Error "Downloaded file is missing or too small. Aborting."
   exit 1
 }
 
-# 5) Start installer (silent)
-Write-Host "Starting update installer..."
+# 5) Run installer silently
+Write-Host "Running installer..."
 $proc = Start-Process -FilePath $installerPath -ArgumentList '/S' -Wait -PassThru
 
 if ($proc.ExitCode -eq 0) {
-  Write-Host "Battorion updated to version $version."
-  # 6) Delete installer after successful run
+  Write-Host "Battorion updated successfully to version $version."
   Remove-FileSafely -Path $installerPath
 } else {
-  Write-Error "Installer failed with exit code $($proc.ExitCode). Keeping the installer for troubleshooting: $installerPath"
+  Write-Error "Installer failed with exit code $($proc.ExitCode). Keeping the installer: $installerPath"
   exit $proc.ExitCode
 }

@@ -39,14 +39,12 @@ $installerPath = Join-Path $env:TEMP "battorion-$tag-setup.exe"
 Write-Host "Downloading update from:"
 Write-Host $downloadUrl
 
-# 3) Download with strict error handling
+# Use BitsTransfer instead of Invoke-WebRequest for reliability
+Import-Module BitsTransfer -ErrorAction Stop
+
 if (Test-Path $installerPath) { Remove-Item $installerPath -Force }
 try {
-  Invoke-WebRequest -Uri $downloadUrl `
-    -OutFile $installerPath `
-    -UserAgent 'Mozilla/5.0' `
-    -TimeoutSec 600 `
-    -ErrorAction Stop
+  Start-BitsTransfer -Source $downloadUrl -Destination $installerPath
 } catch {
   Write-Error "Download failed: $($_.Exception.Message)"
   exit 1
