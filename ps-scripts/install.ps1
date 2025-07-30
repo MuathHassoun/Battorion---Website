@@ -8,7 +8,7 @@ Write-Host "Latest available version: $tag"
 
 # Construct the download URL for the specific version
 $downloadUrl = "https://github.com/MuathHassoun/battorion-version/releases/download/v$tag/_battorion-$tag-setup.exe"
-$installerPath = "$env:TEMP\battorion-update.exe"
+$installerPath = "$env:TEMP\battorion-installer.exe"
 
 Write-Host "Downloading update from:"
 Write-Host $downloadUrl
