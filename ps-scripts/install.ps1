@@ -11,7 +11,7 @@ function Remove-FileSafely {
       return
     } catch {
       if ($i -eq $Retries) {
-        Write-Warning "Couldn't delete $Path: $($_.Exception.Message)"
+        Write-Warning "Couldn't delete ${Path}: $($_.Exception.Message)"
       } else {
         Start-Sleep -Milliseconds $DelayMs
       }
