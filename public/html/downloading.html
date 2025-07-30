@@ -80,7 +80,6 @@
       .then(data => {
         const version = data.tag_name.replace("v", "");
         const downloadUrl = `https://github.com/MuathHassoun/battorion-version/releases/download/v${version}/_battorion-${version}-setup.exe`;
-
         document.getElementById("manual-link").href = downloadUrl;
 
         setTimeout(() => {

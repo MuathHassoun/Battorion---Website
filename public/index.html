@@ -8,7 +8,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="icon" href="img/logo.svg" />
   <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/notification-style.css" />
   <link rel="stylesheet" href="css/viewport-home-page.css" />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
   <svg class="corner-decoration" viewBox="0 0 120 160" xmlns="http://www.w3.org/2000/svg">
@@ -70,6 +72,9 @@
           <a href="html/contactus.html" id="support-btn" class="icon-btn support-btn">
             <i class="fas fa-circle-question fa-2x"></i>
           </a>
+          <a href="html/battorion-cli.html" class="icon-btn cli-btn">
+            <i class="fas fa-terminal fa-2x"></i>
+          </a>
           <button id="theme-toggle" class="icon-btn theme-toggle" aria-label="Toggle Theme">
             <i class="fas fa-circle-half-stroke fa-2x"></i>
           </button>
@@ -86,10 +91,18 @@
         <h2 class="fade-in">Monitor Your Battery Like Never Before</h2>
         <p class="fade-in delay">An intelligent tool to keep your device's power usage optimized.</p>
         <div class="action-buttons fade-in delay2">
-          <a href="html/downloading.html" class="download-btn">
-            ⬇️ Free Download – Battorion for Windows
+          <a href="html/downloading.html" class="main-action-btn" id="download-btn">
+            ⬇️ Free Download &mdash; Battorion<span id="version-text"></span> for Windows
           </a>
-          <a href="#" class="modal-trigger" style="display: none;">🎬 Demo</a>
+          <!--          <a href="#" class="main-action-btn" id="update-btn">-->
+          <!--            ⬇️ Update Battorion - for Windows-->
+          <!--          </a>-->
+          <a href="#" class="main-action-btn" id="launch-btn" onclick="tryLaunchBattorion()" style="display: none;">
+            🚀 Launch Battorion
+          </a>
+          <a href="#" class="modal-trigger" style="display: none;">
+            🎬 Demo
+          </a>
         </div>
       </div>
     </section>
@@ -248,6 +261,8 @@
 
   <script src="js/app.js"></script>
   <script src="js/_xhtr.js"></script>
+  <script src="js/launch-battorion.js"></script>
+  <script src="js/app-version.js"></script>
   <script src="js/card.js"></script>
   <script src="js/viewport.js"></script>
   <script>

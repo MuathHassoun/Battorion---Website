@@ -158,11 +158,11 @@ body {
 .header-nav {
   display: flex;
   background: var(--card-bg);
-  padding: 8px 12px;
+  padding: 10px 14px;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   align-items: center;
-  gap: 1em;
+  gap: 0.5em;
   flex-wrap: wrap;
 }
 
@@ -253,7 +253,7 @@ body {
   margin-top: 2em;
 }
 
-.download-btn, .modal-trigger {
+.main-action-btn, .modal-trigger {
   padding: 1em 2em;
   background: var(--btn-bg);
   color: #fff;
@@ -268,7 +268,7 @@ body {
   z-index: 100;
 }
 
-.download-btn:hover, .modal-trigger:hover {
+.main-action-btn:hover, .modal-trigger:hover {
   filter: var(--hover-brightness);
   transform: translateY(-3px);
 }
