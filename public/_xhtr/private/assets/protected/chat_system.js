@@ -46,7 +46,7 @@ function renderMessages(messages) {
     const div = document.createElement('div');
     div.classList.add('message');
     div.classList.add(msg.sender === 'user' ? 'user' : 'admin');
-    div.textContent = msg.message;
+    div.textContent = msg.message || msg.reply || '[Empty message]';
     chatMessagesEl.appendChild(div);
   });
   chatMessagesEl.scrollTop = chatMessagesEl.scrollHeight;

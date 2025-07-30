@@ -67,11 +67,13 @@ async function fetchMessages(email) {
       return [];
     }
 
-    const userMessages = result.data.map(msg => ({
-      sender: 'user',
-      message: msg.message,
-      timestamp: msg.timestamp
-    }));
+    const userMessages = result.data
+      .filter(msg => msg.message || msg.reply)
+      .map(msg => ({
+        sender: msg.sender,
+        message: msg.message || msg.reply,
+        timestamp: msg.timestamp
+      }));
 
     if (userMessages.length === 0) {
       return [
