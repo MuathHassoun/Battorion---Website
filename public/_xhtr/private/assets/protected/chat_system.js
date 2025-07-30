@@ -79,14 +79,14 @@ chatFormEl.addEventListener('submit', async e => {
   const message = chatInputEl.value.trim();
   const csfrm = 1;
   if (!message || !activeUserEmail) return;
-  renderMessages([...getCurrentMessages(), { sender: 'user', message }]);
+  renderMessages([...getCurrentMessages(), { sender: 'user', message, csfrm}]);
   chatInputEl.value = '';
 
   try {
     const res = await fetch('/api/chat/message', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ user_email: activeUserEmail, message , csfrm })
+      body: JSON.stringify({ user_email: activeUserEmail, message, csfrm })
     });
     if (!res.ok) throw new Error('Failed to send message');
   } catch (err) {
