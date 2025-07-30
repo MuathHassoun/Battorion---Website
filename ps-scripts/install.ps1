@@ -1,6 +1,24 @@
 # Force TLS 1.2 (needed on Windows PowerShell 5.1)
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
+function Remove-FileSafely {
+  param([string]$Path, [int]$Retries = 5, [int]$DelayMs = 500)
+  if (-not (Test-Path $Path)) { return }
+  for ($i=1; $i -le $Retries; $i++) {
+    try {
+      Remove-Item $Path -Force -ErrorAction Stop
+      Write-Host "Deleted: $Path"
+      return
+    } catch {
+      if ($i -eq $Retries) {
+        Write-Warning "Couldn't delete $Path: $($_.Exception.Message)"
+      } else {
+        Start-Sleep -Milliseconds $DelayMs
+      }
+    }
+  }
+}
+
 # 1) Get the latest release tag from GitHub
 $tagApiUrl = "https://api.github.com/repos/MuathHassoun/battorion-version/releases/latest"
 Write-Host "Checking for the latest Battorion release..."
@@ -40,12 +58,15 @@ if (!(Test-Path $installerPath) -or (Get-Item $installerPath).Length -lt 1024*10
   exit 1
 }
 
-# 5) Run installer (use '/S' for silent if your installer supports it)
+# 5) Run installer (use '/S' for silent if supported)
 Write-Host "Download complete. Launching installer..."
 $proc = Start-Process -FilePath $installerPath -ArgumentList '/S' -Wait -PassThru
-if ($proc.ExitCode -ne 0) {
-  Write-Error "Installer failed with exit code $($proc.ExitCode)."
+
+if ($proc.ExitCode -eq 0) {
+  Write-Host "Battorion has been successfully updated to version $tag!"
+  # 6) Delete installer after successful run
+  Remove-FileSafely -Path $installerPath
+} else {
+  Write-Error "Installer failed with exit code $($proc.ExitCode). Keeping the installer for troubleshooting: $installerPath"
   exit $proc.ExitCode
 }
-
-Write-Host "Battorion has been successfully updated to version $tag!"
