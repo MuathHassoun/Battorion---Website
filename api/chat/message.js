@@ -21,17 +21,24 @@ export default async function handler(req, res) {
     }
 
     let tableName;
+    let columnName;
     if (csfrm === 0) {
       tableName = 'chat_messages';
+      columnName = 'message';
     } else if (csfrm === 1) {
       tableName = 'chat_reply';
+      columnName = 'reply';
     } else {
       return res.status(400).json({ status: 'error', message: 'Invalid csfrm type' });
     }
 
     const { data, error } = await supabase
       .from(tableName)
-      .insert([{ user_email, message, timestamp: new Date().toISOString() }]);
+      .insert([{
+        user_email,
+        [columnName]: message,
+        timestamp: new Date().toISOString()
+      }]);
 
     if (error) throw error;
 
