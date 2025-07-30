@@ -19,7 +19,7 @@ async function fetchUsers() {
 
 async function fetchMessages(email) {
   try {
-    const res = await fetch(`/api/chat/fetch?email=${encodeURIComponent(email)}&csfrm=1`);
+    const res = await fetch(`/api/chat/fetch?email=${encodeURIComponent(email)}`);
     if (!res.ok) throw new Error('Failed to fetch messages');
     const data = await res.json();
     return data.data || [];
@@ -77,6 +77,7 @@ function setActiveUser(email) {
 chatFormEl.addEventListener('submit', async e => {
   e.preventDefault();
   const message = chatInputEl.value.trim();
+  const csfrm = 1;
   if (!message || !activeUserEmail) return;
   renderMessages([...getCurrentMessages(), { sender: 'user', message }]);
   chatInputEl.value = '';
@@ -85,7 +86,7 @@ chatFormEl.addEventListener('submit', async e => {
     const res = await fetch('/api/chat/message', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ user_email: activeUserEmail, message })
+      body: JSON.stringify({ user_email: activeUserEmail, message , csfrm })
     });
     if (!res.ok) throw new Error('Failed to send message');
   } catch (err) {

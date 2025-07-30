@@ -60,7 +60,7 @@ async function startChatWithEmail(email) {
 
 async function fetchMessages(email) {
   try {
-    const res = await fetch(`/api/chat/fetch?email=${encodeURIComponent(email)}&csfrm=0`);
+    const res = await fetch(`/api/chat/fetch?email=${encodeURIComponent(email)}`);
     const result = await res.json();
     if (!res.ok) {
       console.error('Failed to fetch messages:', result);
@@ -91,12 +91,13 @@ async function fetchMessages(email) {
 
 async function sendMessage(email, message) {
   console.log('Send message:', message, 'from email:', email);
+  const csfrm = 0;
 
   try {
     const res = await fetch('/api/chat/message', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ user_email: email, message })
+      body: JSON.stringify({ user_email: email, message, csfrm })
     });
 
     const result = await res.json();
