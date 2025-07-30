@@ -198,7 +198,7 @@
 
     async function fetchMessages(email) {
       try {
-        const res = await fetch(`/api/chat/fetch-messages?email=${encodeURIComponent(email)}`);
+        const res = await fetch(`/api/chat/messages?email=${encodeURIComponent(email)}`);
         if (!res.ok) throw new Error('Failed to fetch messages');
         const data = await res.json();
         return data.data || [];
@@ -260,7 +260,7 @@
       chatInputEl.value = '';
 
       try {
-        const res = await fetch('/api/chat/send-message', {
+        const res = await fetch('/api/chat/message', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ user_email: activeUserEmail, message })
