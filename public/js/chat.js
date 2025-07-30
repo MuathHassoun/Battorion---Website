@@ -52,6 +52,8 @@ function hideChatWindow() {
 }
 
 async function startChatWithEmail(email) {
+  const chatMessages = document.getElementById('chat-messages');
+  chatMessages.innerHTML = '';
   const messages = await fetchMessages(email);
   messages.forEach(m => addMessageToChat(m.sender, m.message));
 }
@@ -60,7 +62,6 @@ async function fetchMessages(email) {
   try {
     const res = await fetch(`/api/chat/fetch-messages?email=${encodeURIComponent(email)}`);
     const result = await res.json();
-
     if (!res.ok) {
       console.error('Failed to fetch messages:', result);
       return [];
