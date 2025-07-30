@@ -5,7 +5,7 @@ export default async function handler(req, res) {
     return res.status(405).json({ status: 'error', message: 'Method Not Allowed' });
   }
 
-  const { user_email, message } = req.body;
+  const { user_email, message , csfrm } = req.body;
 
   if (!user_email || typeof user_email !== 'string' || !user_email.includes('@')) {
     return res.status(400).json({ status: 'error', message: 'Invalid or missing email' });
@@ -16,8 +16,21 @@ export default async function handler(req, res) {
   }
 
   try {
+    if (csfrm === undefined || !Number.isInteger(csfrm)) {
+      return res.status(400).json({ status: 'error', message: 'Invalid or missing csfrm value' });
+    }
+
+    let tableName;
+    if (csfrm === 0) {
+      tableName = 'chat_messages';
+    } else if (csfrm === 1) {
+      tableName = 'chat_replay';
+    } else {
+      return res.status(400).json({ status: 'error', message: 'Invalid csfrm type' });
+    }
+
     const { data, error } = await supabase
-      .from('chat_messages')
+      .from(tableName)
       .insert([{ user_email, message, timestamp: new Date().toISOString() }]);
 
     if (error) throw error;
