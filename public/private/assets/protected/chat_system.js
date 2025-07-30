@@ -1,0 +1,115 @@
+const userListEl = document.getElementById('user-list');
+const chatHeaderEl = document.getElementById('chat-header');
+const chatMessagesEl = document.getElementById('chat-messages');
+const chatFormEl = document.getElementById('chat-form');
+const chatInputEl = document.getElementById('chat-input');
+let activeUserEmail = null;
+
+async function fetchUsers() {
+  try {
+    const res = await fetch('/api/chat/users');
+    if (!res.ok) throw new Error('Failed to fetch users');
+    const data = await res.json();
+    return data.users || [];
+  } catch(e) {
+    console.error(e);
+    return [];
+  }
+}
+
+async function fetchMessages(email) {
+  try {
+    const res = await fetch(`/api/chat/fetch-messages?email=${encodeURIComponent(email)}`);
+    if (!res.ok) throw new Error('Failed to fetch messages');
+    const data = await res.json();
+    return data.data || [];
+  } catch(e) {
+    console.error(e);
+    return [];
+  }
+}
+
+function renderUserList(users) {
+  userListEl.innerHTML = '';
+  users.forEach(user => {
+    const li = document.createElement('li');
+    li.textContent = user.email;
+    li.setAttribute('data-email', user.email);
+    li.classList.toggle('active', user.email === activeUserEmail);
+    userListEl.appendChild(li);
+  });
+}
+
+function renderMessages(messages) {
+  chatMessagesEl.innerHTML = '';
+  messages.forEach(msg => {
+    const div = document.createElement('div');
+    div.classList.add('message');
+    div.classList.add(msg.sender === 'user' ? 'user' : 'admin');
+    div.textContent = msg.message;
+    chatMessagesEl.appendChild(div);
+  });
+  chatMessagesEl.scrollTop = chatMessagesEl.scrollHeight;
+}
+
+userListEl.addEventListener('click', async e => {
+  if (e.target.tagName !== 'LI') return;
+  const email = e.target.getAttribute('data-email');
+  if (email === activeUserEmail) return;
+
+  activeUserEmail = email;
+  setActiveUser(email);
+
+  chatHeaderEl.textContent = `Chat with ${email}`;
+  chatInputEl.value = '';
+  chatFormEl.style.display = 'flex';
+
+  const messages = await fetchMessages(email);
+  renderMessages(messages);
+});
+
+function setActiveUser(email) {
+  Array.from(userListEl.children).forEach(li => {
+    li.classList.toggle('active', li.getAttribute('data-email') === email);
+  });
+}
+
+chatFormEl.addEventListener('submit', async e => {
+  e.preventDefault();
+  const message = chatInputEl.value.trim();
+  if (!message || !activeUserEmail) return;
+  renderMessages([...getCurrentMessages(), { sender: 'user', message }]);
+  chatInputEl.value = '';
+
+  try {
+    const res = await fetch('/api/chat/send-message', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ user_email: activeUserEmail, message })
+    });
+    if (!res.ok) throw new Error('Failed to send message');
+  } catch (err) {
+    console.error(err);
+    alert('Failed to send message');
+  }
+});
+
+function getCurrentMessages() {
+  return Array.from(chatMessagesEl.children).map(div => ({
+    sender: div.classList.contains('user') ? 'user' : 'admin',
+    message: div.textContent
+  }));
+}
+
+(async () => {
+  const users = await fetchUsers();
+  renderUserList(users);
+  if(users.length > 0){
+    activeUserEmail = users[0].email;
+    setActiveUser(activeUserEmail);
+    chatHeaderEl.textContent = `Chat with ${activeUserEmail}`;
+    chatFormEl.style.display = 'flex';
+    const messages = await fetchMessages(activeUserEmail);
+    renderMessages(messages);
+  }
+})();
