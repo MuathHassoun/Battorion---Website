@@ -1,211 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Battorion Chat System</title>
   <link rel="icon" href="icon.svg" />
-  <style>
-    :root {
-      --bg-color: #1e1e2f;
-      --card-bg: #2a2a40;
-      --accent: #8b5cf6;
-      --accent-hover: #7c3aed;
-      --text: #e5e7eb;
-      --text-light: #9ca3af;
-      --admin-msg: #374151;
-      --user-msg: #8b5cf6;
-      --font: 'Inter', sans-serif;
-    }
-
-    * {
-      box-sizing: border-box;
-      font-family: var(--font),serif;
-    }
-
-    body, html {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      background: var(--bg-color);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .chat-container {
-      display: flex;
-      width: 950px;
-      height: 650px;
-      background: var(--card-bg);
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 0 30px rgba(0,0,0,0.4);
-    }
-
-    .sidebar {
-      width: 280px;
-      background: #111827;
-      color: var(--text);
-      display: flex;
-      flex-direction: column;
-    }
-
-    .sidebar-header {
-      padding: 20px;
-      font-size: 20px;
-      font-weight: 700;
-      text-align: center;
-      border-bottom: 1px solid #374151;
-      user-select: none;
-      background: #1f2937;
-    }
-
-    .user-list {
-      flex: 1;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      overflow-y: auto;
-    }
-
-    .user-list li {
-      padding: 14px 20px;
-      cursor: pointer;
-      font-weight: 500;
-      color: var(--text-light);
-      transition: background 0.2s, color 0.2s;
-      border-bottom: 1px solid #1f2937;
-    }
-
-    .user-list li:hover {
-      background: #272e3f;
-      color: var(--text);
-    }
-
-    .user-list li.active {
-      background: var(--accent);
-      color: white;
-    }
-
-    .chat-box {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      background: var(--card-bg);
-    }
-
-    .chat-header {
-      padding: 20px 24px;
-      font-size: 18px;
-      font-weight: 600;
-      background: #1f2937;
-      color: var(--text);
-      border-bottom: 1px solid #374151;
-      user-select: none;
-    }
-
-    .chat-messages {
-      flex: 1;
-      padding: 24px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      overflow-y: auto;
-    }
-
-    .message {
-      max-width: 65%;
-      padding: 12px 18px;
-      border-radius: 16px;
-      font-size: 15px;
-      line-height: 1.5;
-      position: relative;
-      word-wrap: break-word;
-      color: white;
-    }
-
-    .message.user {
-      background: var(--user-msg);
-      align-self: flex-end;
-      border-bottom-right-radius: 4px;
-    }
-
-    .message.admin {
-      background: var(--admin-msg);
-      align-self: flex-start;
-      border-bottom-left-radius: 4px;
-    }
-
-    .chat-input-container {
-      display: flex;
-      gap: 12px;
-      padding: 18px 24px;
-      border-top: 1px solid #374151;
-      background: #1f2937;
-    }
-
-    .chat-input-container input[type="text"] {
-      flex: 1;
-      padding: 12px 18px;
-      font-size: 15px;
-      border: 1px solid #4b5563;
-      border-radius: 9999px;
-      background: #111827;
-      color: white;
-      outline: none;
-      transition: border-color 0.3s;
-    }
-
-    .chat-input-container input[type="text"]:focus {
-      border-color: var(--accent);
-    }
-
-    .chat-input-container button {
-      padding: 12px 22px;
-      font-size: 15px;
-      font-weight: 600;
-      border: none;
-      border-radius: 9999px;
-      background: var(--accent);
-      color: white;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    .chat-input-container button:hover {
-      background: var(--accent-hover);
-    }
-
-    .sidebar::-webkit-scrollbar,
-    .chat-messages::-webkit-scrollbar {
-      width: 6px;
-    }
-
-    .sidebar::-webkit-scrollbar-thumb,
-    .chat-messages::-webkit-scrollbar-thumb {
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 3px;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
 </head>
 <body>
-<div class="chat-container">
-  <aside class="sidebar">
-    <div class="sidebar-header">Users</div>
-    <ul class="user-list" id="user-list"></ul>
-  </aside>
-  <section class="chat-box">
-    <header class="chat-header" id="chat-header">Select a user to chat</header>
-    <div class="chat-messages" id="chat-messages"></div>
-    <form class="chat-input-container" id="chat-form" style="display:none;">
-      <input type="text" id="chat-input" placeholder="Type your message..." autocomplete="off" />
-      <button type="submit">Send</button>
-    </form>
-  </section>
-</div>
-<script src="chat_system.js"></script>
-<script src="../../../../js/_xhtr.js"></script>
-<script src="../../../../js/app.js"></script>
+  <div class="chat-wrapper">
+    <div class="theme-toggle" onclick="toggleTheme()">🌓</div>
+    <div class="chat-container">
+      <aside class="sidebar">
+        <div class="sidebar-header">Users</div>
+        <ul class="user-list" id="user-list"></ul>
+      </aside>
+      <main class="chat-box">
+        <header class="chat-header" id="chat-header">Select a user to chat</header>
+        <div class="chat-messages" id="chat-messages"></div>
+        <form class="chat-input-container" id="chat-form" style="display: none;">
+          <input type="text" id="chat-input" placeholder="Type your message..." autocomplete="off" />
+          <button type="submit">Send</button>
+        </form>
+      </main>
+    </div>
+  </div>
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      html.dataset.theme = html.dataset.theme === "light" ? "dark" : "light";
+    }
+  </script>
+  <script src="chat_system.js"></script>
+  <script src="../../../../js/_xhtr.js"></script>
+  <script src="../../../../js/app.js"></script>
 </body>
 </html>
