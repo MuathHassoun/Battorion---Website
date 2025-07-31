@@ -116,6 +116,7 @@ async function sendMessage(email, message) {
 function addMessageToChat(sender, message) {
   const chatMessages = document.getElementById('chat-messages');
   const msgElem = document.createElement('div');
+  msgElem.classList.add('message');
   msgElem.classList.add(sender);
   msgElem.textContent = message;
   chatMessages.appendChild(msgElem);
