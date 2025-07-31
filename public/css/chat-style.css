@@ -109,16 +109,34 @@ html[data-theme="light"] {
   transition: background-color 0.3s ease;
 }
 
-#chat-messages > div.user {
+/*#chat-messages > div.user {*/
+/*  background-color: var(--chat-msg-user-bg);*/
+/*  color: var(--chat-msg-user-text);*/
+/*  align-self: flex-end;*/
+/*}*/
+
+/*#chat-messages > div.admin {*/
+/*  background-color: var(--chat-msg-admin-bg);*/
+/*  color: var(--chat-msg-admin-text);*/
+/*  align-self: flex-start;*/
+/*}*/
+
+#chat-messages.user {
+  align-self: flex-end;
   background-color: var(--chat-msg-user-bg);
   color: var(--chat-msg-user-text);
-  align-self: flex-end;
+  padding: 14px 22px;
+  border-radius: 18px 18px 4px 18px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
 }
 
-#chat-messages > div.admin {
+#chat-messages.admin {
+  align-self: flex-start;
   background-color: var(--chat-msg-admin-bg);
   color: var(--chat-msg-admin-text);
-  align-self: flex-start;
+  padding: 14px 22px;
+  border-radius: 18px 18px 18px 4px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
 }
 
 #chat-form {
