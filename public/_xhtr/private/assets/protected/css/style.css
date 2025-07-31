@@ -171,15 +171,21 @@ html, body {
 }
 
 .message.user {
-  background: var(--user-bg);
   align-self: flex-end;
-  border-bottom-right-radius: 8px;
+  background: linear-gradient(135deg, var(--user-bg), #7d5fff);
+  color: white;
+  padding: 14px 22px;
+  border-radius: 18px 18px 4px 18px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
 }
 
 .message.admin {
-  background: var(--admin-bg);
   align-self: flex-start;
-  border-bottom-left-radius: 8px;
+  background: linear-gradient(135deg, var(--admin-bg), #475569);
+  color: white;
+  padding: 14px 22px;
+  border-radius: 18px 18px 18px 4px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
 }
 
 .chat-input-container {
