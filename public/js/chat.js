@@ -122,16 +122,6 @@ function addMessageToChat(sender, message) {
   msgElem.style.maxWidth = '75%';
   msgElem.style.wordWrap = 'break-word';
 
-  if (sender === 'admin') {
-    msgElem.style.backgroundColor = '#1de9b6';
-    msgElem.style.color = '#000';
-    msgElem.style.alignSelf = 'flex-start';
-  } else {
-    msgElem.style.backgroundColor = '#444';
-    msgElem.style.color = '#fff';
-    msgElem.style.alignSelf = 'flex-end';
-  }
-
   msgElem.textContent = message;
   chatMessages.appendChild(msgElem);
   chatMessages.scrollTop = chatMessages.scrollHeight;
