@@ -185,6 +185,7 @@ body, html {
   gap: 16px;
   background: var(--header-bg);
   border-top: 1px solid rgba(255, 255, 255, 0.1);
+  position: fixed;
 }
 
 .chat-input-container input[type="text"] {
@@ -271,6 +272,7 @@ body, html {
 
   .chat-input-container {
     flex-shrink: 0;
+    position: fixed;
   }
 
   .chat-box {
@@ -325,6 +327,7 @@ body, html {
   .chat-header,
   .chat-input-container {
     flex-shrink: 0;
+    position: fixed;
   }
 
   .message {
@@ -404,6 +407,7 @@ body, html {
   .chat-header,
   .chat-input-container {
     flex-shrink: 0;
+    position: fixed;
   }
 
   .message {
