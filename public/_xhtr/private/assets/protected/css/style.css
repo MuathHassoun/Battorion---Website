@@ -256,7 +256,7 @@ body, html {
   .chat-container {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: 90vh;
     overflow: hidden;
   }
 
@@ -318,7 +318,7 @@ body, html {
   .chat-container {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: 90vh;
     overflow: hidden;
   }
 
@@ -397,7 +397,7 @@ body, html {
   .chat-container {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: 90vh;
     overflow: hidden;
   }
 
