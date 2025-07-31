@@ -112,13 +112,13 @@ html[data-theme="light"] {
 
 .chat-messages > .message.user {
   align-self: flex-end;
-  background-color: var(--chat-msg-user-bg);
+  background: var(--chat-msg-user-bg);
   color: var(--chat-msg-user-text);
 }
 
 .chat-messages > .message.admin {
   align-self: flex-start;
-  background-color: var(--chat-msg-admin-bg);
+  background: var(--chat-msg-admin-bg);
   color: var(--chat-msg-admin-text);
 }
 
