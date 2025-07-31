@@ -116,12 +116,7 @@ async function sendMessage(email, message) {
 function addMessageToChat(sender, message) {
   const chatMessages = document.getElementById('chat-messages');
   const msgElem = document.createElement('div');
-  msgElem.style.marginBottom = '10px';
-  msgElem.style.padding = '8px 12px';
-  msgElem.style.borderRadius = '15px';
-  msgElem.style.maxWidth = '75%';
-  msgElem.style.wordWrap = 'break-word';
-
+  msgElem.classList.add(sender);
   msgElem.textContent = message;
   chatMessages.appendChild(msgElem);
   chatMessages.scrollTop = chatMessages.scrollHeight;
