@@ -157,7 +157,7 @@ html, body {
   flex-direction: column;
   gap: 18px;
   overflow-y: auto;
-  padding: 32px 32px 120px;
+  padding: 32px 32px 200px;
 }
 
 .message.user {
@@ -271,7 +271,7 @@ html, body {
     flex: 1;
     overflow-y: auto;
     gap: 14px;
-    padding: 32px 32px 120px;
+    padding: 32px 32px 200px;
   }
 
   .chat-input-container {
@@ -317,7 +317,7 @@ html, body {
     gap: 10px;
     flex: 1;
     overflow-y: auto;
-    padding: 16px 16px 120px;
+    padding: 16px 16px 200px;
   }
 
   .chat-container {
@@ -394,7 +394,7 @@ html, body {
     gap: 6px;
     flex: 1;
     overflow-y: auto;
-    padding: 12px 12px 120px;
+    padding: 12px 12px 200px;
   }
 
   .chat-container {
