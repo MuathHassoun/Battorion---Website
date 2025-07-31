@@ -7,7 +7,6 @@
   --dark-text: #f0f0f0;
   --dark-muted: #aaaaaa;
   --dark-accent: #6c5ce7;
-
   --light-bg: linear-gradient(to bottom, #f7f8fa, #e1e7ef);
   --light-card: #ffffff;
   --light-text: #222831;
@@ -157,7 +156,7 @@ html, body {
   flex-direction: column;
   gap: 18px;
   overflow-y: auto;
-  padding: 32px 32px 180px;
+  padding: 32px 32px 170px;
 }
 
 .message.user {
@@ -271,7 +270,7 @@ html, body {
     flex: 1;
     overflow-y: auto;
     gap: 14px;
-    padding: 32px 32px 180px;
+    padding: 32px 32px 170px;
   }
 
   .chat-input-container {
@@ -317,7 +316,7 @@ html, body {
     gap: 10px;
     flex: 1;
     overflow-y: auto;
-    padding: 16px 16px 180px;
+    padding: 16px 16px 170px;
   }
 
   .chat-container {
@@ -394,7 +393,7 @@ html, body {
     gap: 6px;
     flex: 1;
     overflow-y: auto;
-    padding: 12px 12px 180px;
+    padding: 12px 12px 170px;
   }
 
   .chat-container {
