@@ -57,7 +57,7 @@ body, html {
 }
 
 .chat-wrapper {
-  min-height: 85vh;
+  min-height: 70vh;
   padding: 2rem;
   display: flex;
   align-items: center;
@@ -185,8 +185,6 @@ body, html {
   gap: 16px;
   background: var(--header-bg);
   border-top: 1px solid rgba(255, 255, 255, 0.1);
-  position: fixed;
-  bottom: 1px;
 }
 
 .chat-input-container input[type="text"] {
@@ -273,7 +271,6 @@ body, html {
 
   .chat-input-container {
     flex-shrink: 0;
-    position: fixed;
   }
 
   .chat-box {
@@ -338,7 +335,6 @@ body, html {
   .chat-input-container {
     padding: 14px;
     gap: 10px;
-    position: fixed;
   }
 
   .chat-input-container input {
@@ -418,7 +414,6 @@ body, html {
   .chat-input-container {
     padding: 12px;
     gap: 8px;
-    position: fixed;
   }
 
   .chat-input-container input {
