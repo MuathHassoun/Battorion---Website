@@ -100,7 +100,7 @@ html[data-theme="light"] {
   border-radius: 4px;
 }
 
-.chat-messages {
+.chat-messages > div {
   padding: 8px 12px;
   border-radius: 15px;
   max-width: 75%;
@@ -109,16 +109,16 @@ html[data-theme="light"] {
   transition: background-color 0.3s ease;
 }
 
-.chat-messages.user {
+.chat-messages > div.user {
   align-self: flex-end;
-  background-color: var(--chat-msg-user-bg);
-  color: var(--chat-msg-user-text);
+  background-color: var(--chat-msg-user-bg) !important;
+  color: var(--chat-msg-user-text) !important;
 }
 
-.chat-messages.admin {
+.chat-messages > div.admin {
   align-self: flex-start;
-  background-color: var(--chat-msg-admin-bg);
-  color: var(--chat-msg-admin-text);
+  background-color: var(--chat-msg-admin-bg) !important;
+  color: var(--chat-msg-admin-text) !important;
 }
 
 #chat-form {
