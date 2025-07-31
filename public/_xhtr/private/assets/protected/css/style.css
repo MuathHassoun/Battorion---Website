@@ -87,7 +87,7 @@ body, html {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
+  flex-direction: row;
   height: 100vh;
   border-radius: var(--radius);
   overflow: hidden;
@@ -373,6 +373,13 @@ body, html {
     padding: 0;
   }
 
+  .chat-box {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+  }
+
   .menu-toggle {
     top: 1rem;
     left: 1rem;
@@ -406,7 +413,7 @@ body, html {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
+    flex-direction: row;
     height: 100vh;
     overflow: hidden;
   }
