@@ -9,7 +9,7 @@
   <link rel="icon" href="img/logo.svg" />
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/notification-style.css" />
-<!--  <link rel="stylesheet" href="css/viewport-home-page.css" />-->
+  <link rel="stylesheet" href="css/viewport-home-page.css" />
   <link rel="stylesheet" href="css/chat-style.css" />
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
@@ -267,7 +267,6 @@
       <line x1="8" y1="14" x2="14" y2="14"/>
     </svg>
   </button>
-
   <div id="email-request" style="display: none;">
     <div class="email-box">
       <label for="user-email">Enter your email to start chatting:</label>
@@ -275,10 +274,9 @@
       <button onclick="submitEmail()" id="email-submit">Continue</button>
     </div>
   </div>
-
   <div id="chat-window" role="dialog" aria-modal="true" aria-labelledby="chat-header" tabindex="-1">
     <div id="chat-header" tabindex="0">Support Chat</div>
-    <div id="chat-messages"></div>
+    <div class="chat-messages" id="chat-messages"></div>
     <form id="chat-form" autocomplete="off">
       <input id="chat-input" type="text" placeholder="Type your message..." aria-label="Message input" />
       <button id="chat-submit" type="submit" aria-label="Send message"></button>
