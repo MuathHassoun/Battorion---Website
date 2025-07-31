@@ -93,6 +93,7 @@ header svg {
   transform: translateY(-50%);
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 0.7rem;
   background: rgba(30, 36, 42, 0.6);
   backdrop-filter: blur(10px);
@@ -136,8 +137,8 @@ header svg {
 }
 
 .cli-nav svg {
-  width: 150px;
-  height: 150px;
+  width: 100px;
+  height: 100px;
   stroke: #fff;
 }
 

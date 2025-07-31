@@ -47,7 +47,7 @@
       <rect x="42" y="10" width="16" height="6" rx="2" fill="#ffffffcc"/>
       <text x="32" y="58" font-family="Consolas, monospace" font-size="18" fill="#1de9b6">&gt;_</text>
       <path d="M30 30 L70 70" stroke="url(#pulse)" stroke-width="2" stroke-linecap="round"/>
-      <polygon points="60,45 58,52 62,52 59,60 65,52 61,52 64,45" fill="#ffde59" />
+      <polygon points="60,33 58,40 62,40 59,48 65,40 61,40 64,33" fill="#ffde59" />
     </svg>
 
     <div class="nav-content">
@@ -58,8 +58,10 @@
       <a href="#choco-install-section">Install via Chocolatey</a>
       <a href="#choco-specific-version">Install Specific Version</a>
       <a href="#update">Update</a>
+      <a href="#upgrade">Upgrade</a>
       <a href="#offline">Offline</a>
       <a href="#uninstall">Uninstall</a>
+      <a href="#uninstall-choco">Uninstall &mdash; Choco</a>
       <a href="#list-tags">List Tags</a>
       <a href="#choco-list-section">List Versions</a>
       <a href="#choco-search-section">Search</a>
@@ -211,6 +213,25 @@ try {
       </div>
     </section>
 
+    <section class="card" id="upgrade">
+      <h2>Upgrade Battorion</h2>
+      <div class="command-container">
+        <div class="command-wrapper">
+          <pre id="upgrade-command" class="command">choco upgrade battorion --version=7.3.0</pre>
+          <button class="copy-btn" onclick="copyToClipboard('upgrade-command')" aria-label="Copy command">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+          </button>
+        </div>
+        <p class="command-description">
+          To upgrade Battorion, run this command from the command line or from PowerShell.
+        </p>
+      </div>
+    </section>
+
     <section class="card" id="offline">
       <h2>Install (Offline Mode)</h2>
       <div class="command-container">
@@ -257,6 +278,25 @@ Start-Process -FilePath $installerPath -ArgumentList "/silent" -Wait</pre>
         </div>
         <p class="command-description">
           Removes Battorion silently from your system. Useful for clean reinstallation or complete removal.
+        </p>
+      </div>
+    </section>
+
+    <section class="card" id="uninstall-choco">
+      <h2>Uninstall Battorion &mdash; Choco</h2>
+      <div class="command-container">
+        <div class="command-wrapper">
+          <pre id="uninstall-command-choco" class="command">choco uninstall battorion --version=7.3.0</pre>
+          <button class="copy-btn" onclick="copyToClipboard('uninstall-command-choco')" aria-label="Copy command">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+          </button>
+        </div>
+        <p class="command-description">
+          To uninstall Battorion, run this command from the command line or from PowerShell:
         </p>
       </div>
     </section>
