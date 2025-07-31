@@ -9,6 +9,8 @@
   --chat-msg-admin-text-dark: #ffffff;
   --chat-scrollbar-thumb-dark: #6c5ce7;
 
+  --user-bg: #6c5ce7;
+  --admin-bg: #374151;
   --chat-bg-light: rgba(255, 255, 255, 0.96);
   --chat-header-bg-light: linear-gradient(135deg, #f5f7fa, #e4e9f0);
   --chat-border-light: #a178df;
