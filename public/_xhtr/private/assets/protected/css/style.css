@@ -88,7 +88,7 @@ body, html {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  height: auto;
+  height: 100vh;
   border-radius: var(--radius);
   overflow: hidden;
   background: var(--card-bg);
@@ -262,7 +262,7 @@ body, html {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    height: auto;
+    height: 100vh;
     overflow: hidden;
   }
 
@@ -273,6 +273,8 @@ body, html {
   .chat-messages {
     flex: 1;
     overflow-y: auto;
+    gap: 14px;
+    max-height: 80vh;
   }
 
   .chat-input-container {
@@ -319,6 +321,7 @@ body, html {
     gap: 10px;
     flex: 1;
     overflow-y: auto;
+    max-height: 80vh;
   }
 
   .chat-container {
@@ -326,7 +329,7 @@ body, html {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    height: auto;
+    height: 100vh;
     overflow: hidden;
   }
 
@@ -400,6 +403,7 @@ body, html {
     gap: 6px;
     flex: 1;
     overflow-y: auto;
+    max-height: 80vh;
   }
 
   .chat-container {
@@ -407,7 +411,7 @@ body, html {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    height: auto;
+    height: 100vh;
     overflow: hidden;
   }
 
