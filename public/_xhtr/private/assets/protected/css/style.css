@@ -254,8 +254,23 @@ body, html {
   }
 
   .chat-container {
+    display: flex;
     flex-direction: column;
     height: 100vh;
+    overflow: hidden;
+  }
+
+  .chat-header {
+    flex-shrink: 0;
+  }
+
+  .chat-messages {
+    flex: 1;
+    overflow-y: auto;
+  }
+
+  .chat-input-container {
+    flex-shrink: 0;
   }
 
   .chat-box {
@@ -296,6 +311,20 @@ body, html {
   .chat-messages {
     padding: 16px;
     gap: 12px;
+    flex: 1;
+    overflow-y: auto;
+  }
+
+  .chat-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .chat-header,
+  .chat-input-container {
+    flex-shrink: 0;
   }
 
   .message {
@@ -361,6 +390,20 @@ body, html {
   .chat-messages {
     padding: 12px;
     gap: 10px;
+    flex: 1;
+    overflow-y: auto;
+  }
+
+  .chat-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .chat-header,
+  .chat-input-container {
+    flex-shrink: 0;
   }
 
   .message {
