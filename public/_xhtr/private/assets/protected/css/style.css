@@ -160,14 +160,14 @@ html, body {
   overflow-y: auto;
 }
 
-.message {
-  max-width: 70%;
-  padding: 16px 24px;
-  border-radius: var(--radius);
-  font-size: 16px;
-  line-height: 1.6;
-  word-wrap: break-word;
-  color: white;
+.chat-messages {
+  flex: 1;
+  min-height: 0;
+  padding: 32px 32px 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  overflow-y: auto;
 }
 
 .message.user {
@@ -183,12 +183,16 @@ html, body {
 }
 
 .chat-input-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
   display: flex;
   padding: 20px 28px;
   gap: 16px;
   background: var(--header-bg);
   border-top: 1px solid rgba(255, 255, 255, 0.1);
-  flex-shrink: 0;
+  z-index: 10;
 }
 
 .chat-input-container input[type="text"] {
