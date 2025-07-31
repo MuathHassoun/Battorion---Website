@@ -57,7 +57,7 @@ body, html {
 }
 
 .chat-wrapper {
-  min-height: 100vh;
+  min-height: 85vh;
   padding: 2rem;
   display: flex;
   align-items: center;
@@ -83,7 +83,7 @@ body, html {
 .chat-container {
   width: 100%;
   max-width: 1400px;
-  height: 90vh;
+  height: 100vh;
   display: flex;
   border-radius: var(--radius);
   overflow: hidden;
@@ -256,7 +256,7 @@ body, html {
   .chat-container {
     display: flex;
     flex-direction: column;
-    height: 90vh;
+    height: 100vh;
     overflow: hidden;
   }
 
@@ -318,7 +318,7 @@ body, html {
   .chat-container {
     display: flex;
     flex-direction: column;
-    height: 90vh;
+    height: 100vh;
     overflow: hidden;
   }
 
@@ -397,7 +397,7 @@ body, html {
   .chat-container {
     display: flex;
     flex-direction: column;
-    height: 80vh;
+    height: 100vh;
     overflow: hidden;
   }
 
