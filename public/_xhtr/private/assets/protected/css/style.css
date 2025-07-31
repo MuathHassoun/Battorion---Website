@@ -269,9 +269,14 @@ body, html {
     left: 1.3rem;
     z-index: 999;
   }
+
+  .menu-toggle,
+  .theme-toggle {
+    position: fixed;
+  }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 800px) {
   .chat-wrapper {
     padding: 0;
   }
@@ -319,6 +324,11 @@ body, html {
     left: 1.3rem;
     z-index: 999;
   }
+
+  .menu-toggle,
+  .theme-toggle {
+    position: fixed;
+  }
 }
 
 @media (max-width: 480px) {
@@ -336,6 +346,11 @@ body, html {
   .theme-toggle {
     top: 4.3rem;
     left: 1.15rem;
+  }
+
+  .menu-toggle,
+  .theme-toggle {
+    position: fixed;
   }
 
   .chat-header {
