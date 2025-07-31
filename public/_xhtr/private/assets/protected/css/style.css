@@ -262,6 +262,13 @@ body, html {
     flex: 1;
     width: 100%;
   }
+
+  .theme-toggle {
+    position: absolute;
+    top: 4.3rem;
+    left: 1.3rem;
+    z-index: 999;
+  }
 }
 
 @media (max-width: 600px) {
@@ -304,5 +311,60 @@ body, html {
   .chat-input-container button {
     font-size: 13px;
     padding: 10px 18px;
+  }
+
+  .theme-toggle {
+    position: absolute;
+    top: 4.3rem;
+    left: 1.3rem;
+    z-index: 999;
+  }
+}
+
+@media (max-width: 480px) {
+  .chat-wrapper {
+    padding: 0;
+  }
+
+  .menu-toggle {
+    top: 1rem;
+    left: 1rem;
+    font-size: 1.2rem;
+    padding: 6px 10px;
+  }
+
+  .theme-toggle {
+    top: 4.3rem;
+    left: 1.3rem;
+  }
+
+  .chat-header {
+    font-size: 14px;
+    padding: 10px 12px 10px 45px;
+  }
+
+  .chat-messages {
+    padding: 12px;
+    gap: 10px;
+  }
+
+  .message {
+    font-size: 13px;
+    padding: 10px 14px;
+  }
+
+  .chat-input-container {
+    padding: 12px;
+    gap: 8px;
+  }
+
+  .chat-input-container input {
+    font-size: 12px;
+    padding: 8px 14px;
+  }
+
+  .chat-input-container button {
+    font-size: 12px;
+    padding: 8px 14px;
   }
 }

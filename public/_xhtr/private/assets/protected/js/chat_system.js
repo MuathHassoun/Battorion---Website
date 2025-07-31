@@ -89,6 +89,8 @@ chatFormEl.addEventListener('submit', async e => {
       body: JSON.stringify({ user_email: activeUserEmail, message, csfrm })
     });
     if (!res.ok) throw new Error('Failed to send message');
+    const messages = document.getElementById('chat-messages');
+    messages.scrollTop = messages.scrollHeight;
   } catch (err) {
     console.error(err);
     alert('Failed to send message');
