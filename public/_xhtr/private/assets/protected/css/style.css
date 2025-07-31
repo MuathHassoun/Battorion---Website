@@ -302,7 +302,6 @@ body, html {
 @media (max-width: 800px) {
   .chat-wrapper {
     padding: 0;
-    max-height: 80vh;
   }
 
   .menu-toggle {
@@ -375,8 +374,6 @@ body, html {
 @media (max-width: 480px) {
   .chat-wrapper {
     padding: 0;
-    max-height: 80vh;
-    overflow: hidden;
   }
 
   .menu-toggle {
