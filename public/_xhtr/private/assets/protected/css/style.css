@@ -83,8 +83,12 @@ body, html {
 .chat-container {
   width: 100%;
   max-width: 1400px;
-  height: 100vh;
+  min-height: 70vh;
   display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
   border-radius: var(--radius);
   overflow: hidden;
   background: var(--card-bg);
@@ -255,6 +259,8 @@ body, html {
 
   .chat-container {
     display: flex;
+    align-items: center;
+    justify-content: center;
     flex-direction: column;
     height: 100vh;
     overflow: hidden;
@@ -317,6 +323,8 @@ body, html {
 
   .chat-container {
     display: flex;
+    align-items: center;
+    justify-content: center;
     flex-direction: column;
     height: 100vh;
     overflow: hidden;
@@ -396,6 +404,8 @@ body, html {
 
   .chat-container {
     display: flex;
+    align-items: center;
+    justify-content: center;
     flex-direction: column;
     height: 100vh;
     overflow: hidden;
