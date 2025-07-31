@@ -7,10 +7,14 @@
   <link rel="icon" href="icon.svg" />
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
+  <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
   <div class="chat-wrapper">
-    <div class="theme-toggle" onclick="toggleTheme()">🌓</div>
+    <div class="theme-toggle" onclick="toggleTheme()">
+      <i class="fas fa-circle-half-stroke fa-2x"></i>
+    </div>
     <div class="chat-container">
       <aside class="sidebar">
         <div class="sidebar-header">Users</div>
@@ -30,6 +34,10 @@
     function toggleTheme() {
       const html = document.documentElement;
       html.dataset.theme = html.dataset.theme === "light" ? "dark" : "light";
+    }
+
+    function toggleSidebar() {
+      document.querySelector('.sidebar').classList.toggle('open');
     }
   </script>
   <script src="chat_system.js"></script>
