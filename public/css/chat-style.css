@@ -9,14 +9,12 @@
   --chat-msg-admin-text-dark: #ffffff;
   --chat-scrollbar-thumb-dark: #6c5ce7;
 
-  --user-bg: #6c5ce7;
-  --admin-bg: #374151;
   --chat-bg-light: rgba(255, 255, 255, 0.96);
   --chat-header-bg-light: linear-gradient(135deg, #f5f7fa, #e4e9f0);
   --chat-border-light: #a178df;
   --chat-text-light: #1e1e2f;
-  --chat-msg-user-bg-light: linear-gradient(135deg, var(--user-bg), #7d5fff);
-  --chat-msg-admin-bg-light: linear-gradient(135deg, var(--admin-bg), #475569);
+  --chat-msg-user-bg-light: linear-gradient(135deg, #a66cff, #8c52ff, #5e60ce);
+  --chat-msg-admin-bg-light: linear-gradient(135deg, #2c3e50, #34495e, #4b6584);
   --chat-msg-user-text-light: #111;
   --chat-msg-admin-text-light: #fff;
   --chat-scrollbar-thumb-light: #845ec2;
