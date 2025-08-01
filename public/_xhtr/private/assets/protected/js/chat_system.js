@@ -88,7 +88,7 @@ async function startChatWithEmail(email) {
     } catch (err) {
       console.error('Error updating messages:', err);
     }
-  }, 3000);
+  }, 2000);
 }
 
 userListEl.addEventListener('click', async e => {
