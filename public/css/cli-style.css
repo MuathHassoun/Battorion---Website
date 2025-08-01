@@ -373,3 +373,30 @@ pre.command {
   font-style: italic;
   box-shadow: 0 1px 2px rgba(0,0,0,0.15);
 }
+
+.copied-message {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
+  font-size: 1em;
+  color: inherit;
+  user-select: none;
+}
+
+.copied-message-icon svg {
+  display: block;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.copied-message-text {
+  position: relative;
+  display: block;
+  font-size: 0.8rem;
+  text-align: right;
+  right: 0;
+  top: -2px;
+  color: gray;
+}

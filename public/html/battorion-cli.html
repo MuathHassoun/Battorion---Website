@@ -99,13 +99,30 @@
       <div class="command-container">
         <div class="command-wrapper">
           <pre id="install-command" class="command">irm https://battorion-website.vercel.app/api/install | iex</pre>
-          <button class="copy-btn" onclick="copyToClipboard('install-command')" aria-label="Copy command">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
+          <button class="copy-btn" onclick="copyToClipboard('install-command', this)" aria-label="Copy command">
+            <svg class="icon copy-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
                  stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
               <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
               <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
             </svg>
+            <span class="icon check-icon" style="display: none;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
+                   stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                <polyline points="4 14 8 22 22 2" stroke="limegreen" stroke-width="5" />
+              </svg>
+            </span>
           </button>
+        </div>
+        <div class="copied-message">
+          <div class="copied-message-icon" style="display: none;">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="#4CAF50" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="10" fill="#E8F5E9"/>
+              <path d="M16 9L10.5 14.5L8 12" stroke="#4CAF50" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="copied-message-text"></div>
         </div>
         <p class="command-description">
           Installs Battorion CLI from the official repository. No admin permissions required. Works on PowerShell (Windows). Ensure internet connection is available.
@@ -132,12 +149,20 @@ try {
 } catch {
     Write-Error "Download or installation failed: $_"
 }</pre>
-          <button class="copy-btn" onclick="copyToClipboard('install-github-version')" aria-label="Copy command">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
+          <button class="copy-btn" onclick="copyToClipboard('install-github-version', this)" aria-label="Copy command">
+            <svg class="icon copy-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
                  stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
               <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
               <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
             </svg>
+            <span class="icon check-icon" style="display: none;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
+                   stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                <polyline points="4 14 8 22 22 2" stroke="limegreen" stroke-width="5" />
+              </svg>
+            </span>
           </button>
           <a href="../scripts/install-github-version.ps1" download class="download-btn" aria-label="Download .ps1" title="Download script">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
@@ -147,6 +172,15 @@ try {
               <line x1="12" y1="15" x2="12" y2="3"/>
             </svg>
           </a>
+        </div>
+        <div class="copied-message">
+          <div class="copied-message-icon" style="display: none;">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="#4CAF50" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="10" fill="#E8F5E9"/>
+              <path d="M16 9L10.5 14.5L8 12" stroke="#4CAF50" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="copied-message-text"></div>
         </div>
         <p class="command-description">
           Downloads and installs a specific Battorion version directly from the GitHub releases. Replace <code>1.2.3</code> with your desired version tag.
@@ -161,13 +195,30 @@ try {
       <div class="command-container">
         <div class="command-wrapper">
           <pre id="choco-install" class="command">choco install battorion</pre>
-          <button class="copy-btn" onclick="copyToClipboard('choco-install')" aria-label="Copy command">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
+          <button class="copy-btn" onclick="copyToClipboard('choco-install', this)" aria-label="Copy command">
+            <svg class="icon copy-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
                  stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
               <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
               <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
             </svg>
+            <span class="icon check-icon" style="display: none;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
+                   stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                <polyline points="4 14 8 22 22 2" stroke="limegreen" stroke-width="5" />
+              </svg>
+            </span>
           </button>
+        </div>
+        <div class="copied-message">
+          <div class="copied-message-icon" style="display: none;">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="#4CAF50" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="10" fill="#E8F5E9"/>
+              <path d="M16 9L10.5 14.5L8 12" stroke="#4CAF50" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="copied-message-text"></div>
         </div>
         <p class="command-description">
           Installs Battorion using Chocolatey package manager. Recommended for IT admins and automation scripts.
@@ -180,13 +231,30 @@ try {
       <div class="command-container">
         <div class="command-wrapper">
           <pre id="install-specific-version" class="command">choco install battorion --version=1.2.3</pre>
-          <button class="copy-btn" onclick="copyToClipboard('install-specific-version')" aria-label="Copy command">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
+          <button class="copy-btn" onclick="copyToClipboard('install-specific-version', this)" aria-label="Copy command">
+            <svg class="icon copy-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
                  stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
               <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
               <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
             </svg>
+            <span class="icon check-icon" style="display: none;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
+                   stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                <polyline points="4 14 8 22 22 2" stroke="limegreen" stroke-width="5" />
+              </svg>
+            </span>
           </button>
+        </div>
+        <div class="copied-message">
+          <div class="copied-message-icon" style="display: none;">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="#4CAF50" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="10" fill="#E8F5E9"/>
+              <path d="M16 9L10.5 14.5L8 12" stroke="#4CAF50" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="copied-message-text"></div>
         </div>
         <p class="command-description">
           Installs a specific version of Battorion by specifying the version number. Replace <code>1.2.3</code> with the desired version tag.
@@ -199,13 +267,30 @@ try {
       <div class="command-container">
         <div class="command-wrapper">
           <pre id="update-command" class="command">irm https://battorion-website.vercel.app/api/update | iex</pre>
-          <button class="copy-btn" onclick="copyToClipboard('update-command')" aria-label="Copy command">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
+          <button class="copy-btn" onclick="copyToClipboard('update-command', this)" aria-label="Copy command">
+            <svg class="icon copy-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
                  stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
               <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
               <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
             </svg>
+            <span class="icon check-icon" style="display: none;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
+                   stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                <polyline points="4 14 8 22 22 2" stroke="limegreen" stroke-width="5" />
+              </svg>
+            </span>
           </button>
+        </div>
+        <div class="copied-message">
+          <div class="copied-message-icon" style="display: none;">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="#4CAF50" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="10" fill="#E8F5E9"/>
+              <path d="M16 9L10.5 14.5L8 12" stroke="#4CAF50" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="copied-message-text"></div>
         </div>
         <p class="command-description">
           Updates the existing Battorion CLI to the latest version. Keeps your current configuration intact. Requires internet access.
@@ -218,13 +303,30 @@ try {
       <div class="command-container">
         <div class="command-wrapper">
           <pre id="upgrade-command" class="command">choco upgrade battorion --version=7.3.0</pre>
-          <button class="copy-btn" onclick="copyToClipboard('upgrade-command')" aria-label="Copy command">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
+          <button class="copy-btn" onclick="copyToClipboard('upgrade-command', this)" aria-label="Copy command">
+            <svg class="icon copy-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
                  stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
               <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
               <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
             </svg>
+            <span class="icon check-icon" style="display: none;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
+                   stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                <polyline points="4 14 8 22 22 2" stroke="limegreen" stroke-width="5" />
+              </svg>
+            </span>
           </button>
+        </div>
+        <div class="copied-message">
+          <div class="copied-message-icon" style="display: none;">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="#4CAF50" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="10" fill="#E8F5E9"/>
+              <path d="M16 9L10.5 14.5L8 12" stroke="#4CAF50" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="copied-message-text"></div>
         </div>
         <p class="command-description">
           To upgrade Battorion, run this command from the command line or from PowerShell.
@@ -241,12 +343,20 @@ $downloadUrl = "https://github.com/MuathHassoun/battorion-version/releases/downl
 $installerPath = "$env:TEMP\battorion-setup.exe"
 Start-BitsTransfer -Source $downloadUrl -Destination $installerPath
 Start-Process -FilePath $installerPath -ArgumentList "/silent" -Wait</pre>
-          <button class="copy-btn" onclick="copyToClipboard('offline-install')" aria-label="Copy command">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
+          <button class="copy-btn" onclick="copyToClipboard('offline-install', this)" aria-label="Copy command">
+            <svg class="icon copy-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
                  stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
               <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
               <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
             </svg>
+            <span class="icon check-icon" style="display: none;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
+                   stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                <polyline points="4 14 8 22 22 2" stroke="limegreen" stroke-width="5" />
+              </svg>
+            </span>
           </button>
           <a href="../scripts/offline-install.ps1" download class="download-btn" aria-label="Download .ps1" title="Download script">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
@@ -256,6 +366,15 @@ Start-Process -FilePath $installerPath -ArgumentList "/silent" -Wait</pre>
               <line x1="12" y1="15" x2="12" y2="3"/>
             </svg>
           </a>
+        </div>
+        <div class="copied-message">
+          <div class="copied-message-icon" style="display: none;">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="#4CAF50" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="10" fill="#E8F5E9"/>
+              <path d="M16 9L10.5 14.5L8 12" stroke="#4CAF50" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="copied-message-text"></div>
         </div>
         <p class="command-description">
           Downloads the full installer and runs it silently without user interaction. No need for PowerShell execution policies.
@@ -268,13 +387,30 @@ Start-Process -FilePath $installerPath -ArgumentList "/silent" -Wait</pre>
       <div class="command-container">
         <div class="command-wrapper">
           <pre id="uninstall-command" class="command">& "$env:ProgramFiles\Battorion\uninstall.exe" /silent</pre>
-          <button class="copy-btn" onclick="copyToClipboard('uninstall-command')" aria-label="Copy command">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
+          <button class="copy-btn" onclick="copyToClipboard('uninstall-command', this)" aria-label="Copy command">
+            <svg class="icon copy-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
                  stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
               <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
               <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
             </svg>
+            <span class="icon check-icon" style="display: none;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
+                   stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                <polyline points="4 14 8 22 22 2" stroke="limegreen" stroke-width="5" />
+              </svg>
+            </span>
           </button>
+        </div>
+        <div class="copied-message">
+          <div class="copied-message-icon" style="display: none;">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="#4CAF50" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="10" fill="#E8F5E9"/>
+              <path d="M16 9L10.5 14.5L8 12" stroke="#4CAF50" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="copied-message-text"></div>
         </div>
         <p class="command-description">
           Removes Battorion silently from your system. Useful for clean reinstallation or complete removal.
@@ -287,13 +423,30 @@ Start-Process -FilePath $installerPath -ArgumentList "/silent" -Wait</pre>
       <div class="command-container">
         <div class="command-wrapper">
           <pre id="uninstall-command-choco" class="command">choco uninstall battorion --version=7.3.0</pre>
-          <button class="copy-btn" onclick="copyToClipboard('uninstall-command-choco')" aria-label="Copy command">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
+          <button class="copy-btn" onclick="copyToClipboard('uninstall-command-choco', this)" aria-label="Copy command">
+            <svg class="icon copy-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
                  stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
               <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
               <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
             </svg>
+            <span class="icon check-icon" style="display: none;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
+                   stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                <polyline points="4 14 8 22 22 2" stroke="limegreen" stroke-width="5" />
+              </svg>
+            </span>
           </button>
+        </div>
+        <div class="copied-message">
+          <div class="copied-message-icon" style="display: none;">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="#4CAF50" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="10" fill="#E8F5E9"/>
+              <path d="M16 9L10.5 14.5L8 12" stroke="#4CAF50" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="copied-message-text"></div>
         </div>
         <p class="command-description">
           To uninstall Battorion, run this command from the command line or from PowerShell:
@@ -317,12 +470,20 @@ try {
 } catch {
     Write-Error "Failed to fetch tags: $_"
 }</pre>
-          <button class="copy-btn" onclick="copyToClipboard('list-tags-command')" aria-label="Copy command">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
+          <button class="copy-btn" onclick="copyToClipboard('list-tags-command', this)" aria-label="Copy command">
+            <svg class="icon copy-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
                  stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
               <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
               <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
             </svg>
+            <span class="icon check-icon" style="display: none;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
+                   stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                <polyline points="4 14 8 22 22 2" stroke="limegreen" stroke-width="5" />
+              </svg>
+            </span>
           </button>
           <a href="../scripts/list-tags.ps1" download class="download-btn" aria-label="Download .ps1" title="Download script">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
@@ -332,6 +493,15 @@ try {
               <line x1="12" y1="15" x2="12" y2="3"/>
             </svg>
           </a>
+        </div>
+        <div class="copied-message">
+          <div class="copied-message-icon" style="display: none;">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="#4CAF50" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="10" fill="#E8F5E9"/>
+              <path d="M16 9L10.5 14.5L8 12" stroke="#4CAF50" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="copied-message-text"></div>
         </div>
         <p class="command-description">
           Fetches and lists all available version tags of Battorion from the official GitHub repository using PowerShell.
@@ -344,13 +514,30 @@ try {
       <div class="command-container">
         <div class="command-wrapper">
           <pre id="choco-list" class="command">choco list battorion --all</pre>
-          <button class="copy-btn" onclick="copyToClipboard('choco-list')" aria-label="Copy list command">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
+          <button class="copy-btn" onclick="copyToClipboard('choco-list', this)" aria-label="Copy list command">
+            <svg class="icon copy-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
                  stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
               <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
               <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
             </svg>
+            <span class="icon check-icon" style="display: none;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
+                   stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                <polyline points="4 14 8 22 22 2" stroke="limegreen" stroke-width="5" />
+              </svg>
+            </span>
           </button>
+        </div>
+        <div class="copied-message">
+          <div class="copied-message-icon" style="display: none;">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="#4CAF50" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="10" fill="#E8F5E9"/>
+              <path d="M16 9L10.5 14.5L8 12" stroke="#4CAF50" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="copied-message-text"></div>
         </div>
         <p class="command-description">
           Lists all available versions of the Battorion package.
@@ -363,13 +550,30 @@ try {
       <div class="command-container">
         <div class="command-wrapper">
           <pre id="choco-search" class="command">choco search battorion</pre>
-          <button class="copy-btn" onclick="copyToClipboard('choco-search')" aria-label="Copy search command">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
+          <button class="copy-btn" onclick="copyToClipboard('choco-search', this)" aria-label="Copy search command">
+            <svg class="icon copy-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
                  stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
               <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
               <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
             </svg>
+            <span class="icon check-icon" style="display: none;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
+                   stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                <polyline points="4 14 8 22 22 2" stroke="limegreen" stroke-width="5" />
+              </svg>
+            </span>
           </button>
+        </div>
+        <div class="copied-message">
+          <div class="copied-message-icon" style="display: none;">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="#4CAF50" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="10" fill="#E8F5E9"/>
+              <path d="M16 9L10.5 14.5L8 12" stroke="#4CAF50" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="copied-message-text"></div>
         </div>
         <p class="command-description">
           Searches the Chocolatey repository for the Battorion package.
@@ -382,13 +586,30 @@ try {
       <div class="command-container">
         <div class="command-wrapper">
           <pre id="install-log" class="command">irm https://battorion-website.vercel.app/api/install | iex *> "$env:TEMP\battorion-install-log.txt"</pre>
-          <button class="copy-btn" onclick="copyToClipboard('install-log')" aria-label="Copy command">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
+          <button class="copy-btn" onclick="copyToClipboard('install-log', this)" aria-label="Copy command">
+            <svg class="icon copy-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
                  stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
               <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
               <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
             </svg>
+            <span class="icon check-icon" style="display: none;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
+                   stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                <polyline points="4 14 8 22 22 2" stroke="limegreen" stroke-width="5" />
+              </svg>
+            </span>
           </button>
+        </div>
+        <div class="copied-message">
+          <div class="copied-message-icon" style="display: none;">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="#4CAF50" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="10" fill="#E8F5E9"/>
+              <path d="M16 9L10.5 14.5L8 12" stroke="#4CAF50" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="copied-message-text"></div>
         </div>
         <p class="command-description">
           Installs Battorion and logs all output to a file for troubleshooting or verification.
@@ -400,13 +621,26 @@ try {
   <script src="../js/app.js"></script>
   <script src="../js/_xhtr.js"></script>
   <script>
-    function copyToClipboard(elementId) {
-      const text = document.getElementById(elementId).innerText.trim();
+    function copyToClipboard(preId, button) {
+      const text = document.getElementById(preId).textContent;
       navigator.clipboard.writeText(text).then(() => {
-        const btn = event.target;
-        const original = btn.innerHTML;
-        btn.innerHTML = "✅";
-        setTimeout(() => btn.innerHTML = original, 1200);
+        const container = button.closest('.command-container');
+        const copyIcon = button.querySelector('.copy-icon');
+        const checkIcon = button.querySelector('.check-icon');
+        const statusDiv = container.querySelector('.copied-message .copied-message-text');
+        const statusIconDiv = container.querySelector('.copied-message .copied-message-icon');
+
+        statusDiv.textContent = "copied!";
+        copyIcon.style.display = 'none';
+        checkIcon.style.display = 'inline';
+        statusIconDiv.style.display = 'inline';
+
+        setTimeout(() => {
+          statusDiv.textContent = "";
+          copyIcon.style.display = 'inline';
+          checkIcon.style.display = 'none';
+          statusIconDiv.style.display = 'none';
+        }, 1500);
       });
     }
 
