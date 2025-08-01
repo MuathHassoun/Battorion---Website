@@ -49,6 +49,10 @@ function showChatWindow() {
 function hideChatWindow() {
   document.getElementById('chat-window').style.display = 'none';
   document.getElementById('chat-toggle-btn').style.display = 'flex';
+  if (window.chatUpdateInterval) {
+    clearInterval(window.chatUpdateInterval);
+    window.chatUpdateInterval = null;
+  }
 }
 
 async function startChatWithEmail(email) {
@@ -56,6 +60,18 @@ async function startChatWithEmail(email) {
   chatMessages.innerHTML = '';
   const messages = await fetchMessages(email);
   messages.forEach(m => addMessageToChat(m.sender, m.message));
+
+  if (window.chatUpdateInterval) {
+    clearInterval(window.chatUpdateInterval);
+  }
+
+  window.chatUpdateInterval = setInterval(async () => {
+    const newMessages = await fetchMessages(email);
+    if (chatMessages.children.length !== newMessages.length) {
+      chatMessages.innerHTML = '';
+      newMessages.forEach(m => addMessageToChat(m.sender, m.message));
+    }
+  }, 3000);
 }
 
 async function fetchMessages(email) {

@@ -4,6 +4,7 @@ const chatMessagesEl = document.getElementById('chat-messages');
 const chatFormEl = document.getElementById('chat-form');
 const chatInputEl = document.getElementById('chat-input');
 let activeUserEmail = null;
+let messageUpdateInterval = null;
 
 async function fetchUsers() {
   try {
@@ -59,14 +60,35 @@ userListEl.addEventListener('click', async e => {
 
   activeUserEmail = email;
   setActiveUser(email);
-
   chatHeaderEl.textContent = `Chat with ${email}`;
   chatInputEl.value = '';
   chatFormEl.style.display = 'flex';
 
   const messages = await fetchMessages(email);
   renderMessages(messages);
+
+  if (messageUpdateInterval) clearInterval(messageUpdateInterval);
+  messageUpdateInterval = setInterval(async () => {
+    if (!activeUserEmail) return;
+
+    try {
+      const latestMessages = await fetchMessages(activeUserEmail);
+      const current = getCurrentMessages();
+      if (latestMessages.length !== current.length) {
+        renderMessages(latestMessages);
+      }
+    } catch (err) {
+      console.error('Error updating messages:', err);
+    }
+  }, 3000);
 });
+
+function stopMessageUpdate() {
+  if (messageUpdateInterval) {
+    clearInterval(messageUpdateInterval);
+    messageUpdateInterval = null;
+  }
+}
 
 function setActiveUser(email) {
   Array.from(userListEl.children).forEach(li => {
@@ -89,8 +111,10 @@ chatFormEl.addEventListener('submit', async e => {
       body: JSON.stringify({ user_email: activeUserEmail, message, csfrm })
     });
     if (!res.ok) throw new Error('Failed to send message');
-    const messages = document.getElementById('chat-messages');
-    messages.scrollTop = messages.scrollHeight;
+    // const messages = document.getElementById('chat-messages');
+    // messages.scrollTop = messages.scrollHeight;
+    const updatedMessages = await fetchMessages(activeUserEmail);
+    renderMessages(updatedMessages);
   } catch (err) {
     console.error(err);
     alert('Failed to send message');
