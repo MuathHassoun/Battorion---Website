@@ -71,6 +71,14 @@ html[data-theme="light"] {
   z-index: 99999;
 }
 
+#chat-window {
+  background-color: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+}
+
 #chat-header {
   background: var(--chat-header-bg);
   color: var(--chat-text);
@@ -112,11 +120,42 @@ html[data-theme="light"] {
   white-space: pre-wrap;
 }
 
+.chat-messages > .message {
+  animation: fadeInChat 0.35s ease-in-out;
+}
+
+@keyframes fadeInChat {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .chat-messages > .message.user {
   align-self: flex-end;
   background: var(--chat-msg-user-bg);
   color: var(--chat-msg-user-text);
   border-radius: 18px 18px 4px 18px;
+}
+
+.chat-messages > .message.user {
+  position: relative;
+  background: var(--chat-msg-user-bg);
+}
+
+.chat-messages > .message.user::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 18px 18px 4px 18px;
+  padding: 1px;
+  background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
 }
 
 .chat-messages > .message.admin {
@@ -165,6 +204,17 @@ html[data-theme="light"] {
   align-items: center;
   justify-content: center;
   transition: background-color 0.3s ease;
+}
+
+#chat-submit {
+  background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+  box-shadow: 0 0 12px rgba(108, 92, 231, 0.6);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+#chat-submit:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 18px rgba(108, 92, 231, 0.9);
 }
 
 #chat-submit:hover {
@@ -254,4 +304,31 @@ html[data-theme="light"] {
 
 #email-request button#email-submit:hover {
   filter: brightness(1.1);
+}
+
+button {
+  overflow: hidden;
+  position: relative;
+}
+
+button::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  transform: scale(1);
+  opacity: 0;
+  transition: width 0.4s ease, height 0.4s ease, opacity 0.8s;
+}
+
+button:active::after {
+  width: 120px;
+  height: 120px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 1;
+  transition: 0s;
 }
