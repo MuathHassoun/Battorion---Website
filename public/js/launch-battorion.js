@@ -9,7 +9,6 @@ function tryLaunchBattorion() {
   };
 
   window.addEventListener('blur', handleBlur);
-
   setTimeout(() => {
     window.removeEventListener('blur', handleBlur);
     document.body.removeChild(iframe);
