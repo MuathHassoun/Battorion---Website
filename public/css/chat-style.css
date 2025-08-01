@@ -140,21 +140,21 @@ html[data-theme="light"] {
   border-radius: 18px 18px 4px 18px;
 }
 
-.chat-messages > .message.user {
-  position: relative;
-  background: var(--chat-msg-user-bg);
-}
+/*.chat-messages > .message.user {*/
+/*  position: relative;*/
+/*  background: var(--chat-msg-user-bg);*/
+/*}*/
 
-.chat-messages > .message.user::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 18px 18px 4px 18px;
-  padding: 1px;
-  background: linear-gradient(135deg, #6c5ce7, #a29bfe);
-  -webkit-mask-composite: destination-out;
-  mask-composite: exclude;
-}
+/*.chat-messages > .message.user::after {*/
+/*  content: "";*/
+/*  position: absolute;*/
+/*  inset: 0;*/
+/*  border-radius: 18px 18px 4px 18px;*/
+/*  padding: 1px;*/
+/*  background: linear-gradient(135deg, #6c5ce7, #a29bfe);*/
+/*  -webkit-mask-composite: destination-out;*/
+/*  mask-composite: exclude;*/
+/*}*/
 
 .chat-messages > .message.admin {
   align-self: flex-start;
