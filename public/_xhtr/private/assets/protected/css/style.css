@@ -81,7 +81,7 @@ html, body {
 
 .chat-container {
   width: 100%;
-  max-width: 1400px;
+  max-width: 1000px;
   height: 100vh;
   display: flex;
   align-items: center;
@@ -100,6 +100,7 @@ html, body {
   display: flex;
   flex-direction: column;
   max-height: 600px;
+  min-height: 600px;
 }
 
 .sidebar-header {
@@ -155,7 +156,6 @@ html, body {
 .chat-messages {
   flex: 1;
   min-height: 0;
-  max-height: 500px;
   display: flex;
   flex-direction: column;
   gap: 18px;
@@ -250,6 +250,7 @@ html, body {
     height: 100vh;
     z-index: 998;
     width: 250px;
+    max-height: max-content;
     transition: left 0.3s ease;
     box-shadow: 10px 0 30px rgba(0, 0, 0, 0.3);
     border-radius: 0 var(--radius) var(--radius) 0;
@@ -261,6 +262,7 @@ html, body {
 
   .chat-container {
     flex-direction: column;
+    max-height: max-content;
     height: 100vh;
     overflow: hidden;
   }
@@ -284,6 +286,7 @@ html, body {
   .chat-box {
     flex: 1;
     width: 100%;
+    max-height: max-content;
   }
 
   .theme-toggle {
@@ -311,9 +314,19 @@ html, body {
     padding: 8px 12px;
   }
 
+  .chat-box {
+    flex: 1;
+    width: 100%;
+    max-height: max-content;
+  }
+
   .chat-header {
     font-size: 16px;
     padding: 12px 12px 12px 50px;
+  }
+
+  .sidebar {
+    max-height: max-content;
   }
 
   .chat-messages {
@@ -325,6 +338,7 @@ html, body {
 
   .chat-container {
     flex-direction: column;
+    max-height: max-content;
     height: 100vh;
     overflow: hidden;
   }
@@ -389,9 +403,19 @@ html, body {
     position: fixed;
   }
 
+  .chat-box {
+    flex: 1;
+    width: 100%;
+    max-height: max-content;
+  }
+
   .chat-header {
     font-size: 14px;
     padding: 10px 12px 10px 45px;
+  }
+
+  .sidebar {
+    max-height: max-content;
   }
 
   .chat-messages {
@@ -403,6 +427,7 @@ html, body {
 
   .chat-container {
     flex-direction: column;
+    max-height: max-content;
     height: 100vh;
     overflow: hidden;
   }
