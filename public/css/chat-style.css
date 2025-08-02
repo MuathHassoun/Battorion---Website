@@ -54,7 +54,7 @@ html[data-theme="light"] {
   bottom: 20px;
   right: 20px;
   width: 320px;
-  max-height: 420px;
+  max-height: 520px;
   background-color: var(--chat-bg);
   box-shadow: var(--chat-shadow);
   border-radius: var(--chat-radius);

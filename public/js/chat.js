@@ -18,7 +18,7 @@ async function submitEmail() {
   await saveEmailToDatabase(email);
   document.getElementById('email-request').style.display = 'none';
   showChatWindow();
-  startChatWithEmail(email);
+  await startChatWithEmail(email);
 }
 
 async function saveEmailToDatabase(email) {
