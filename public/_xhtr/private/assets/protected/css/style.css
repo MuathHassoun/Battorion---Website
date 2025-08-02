@@ -161,7 +161,7 @@ html, body {
   flex-direction: column;
   gap: 18px;
   overflow-y: auto;
-  padding: 32px 32px 170px;
+  padding: 32px 32px 50px;
 }
 
 .message.user {
