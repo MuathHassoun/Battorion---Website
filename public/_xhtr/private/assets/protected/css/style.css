@@ -91,6 +91,7 @@ html, body {
   overflow: hidden;
   background: var(--card-bg);
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
+  max-height: 600px;
 }
 
 .sidebar {
@@ -98,6 +99,7 @@ html, body {
   background: var(--header-bg);
   display: flex;
   flex-direction: column;
+  max-height: 600px;
 }
 
 .sidebar-header {
@@ -139,6 +141,7 @@ html, body {
   flex-direction: column;
   background: var(--card-bg);
   min-height: 0;
+  max-height: 600px;
 }
 
 .chat-header {
@@ -152,6 +155,7 @@ html, body {
 .chat-messages {
   flex: 1;
   min-height: 0;
+  max-height: 500px;
   display: flex;
   flex-direction: column;
   gap: 18px;
@@ -178,7 +182,7 @@ html, body {
 }
 
 .chat-input-container {
-  position: fixed;
+  position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
@@ -242,6 +246,7 @@ html, body {
 
   .sidebar {
     position: fixed;
+    max-height: 0;
     top: 0;
     left: -100%;
     height: 100vh;
@@ -258,6 +263,7 @@ html, body {
 
   .chat-container {
     flex-direction: column;
+    max-height: 0;
     height: 100vh;
     overflow: hidden;
   }
@@ -274,10 +280,12 @@ html, body {
   }
 
   .chat-input-container {
+    position: fixed;
     flex-shrink: 0;
   }
 
   .chat-box {
+    max-height: 0;
     flex: 1;
     width: 100%;
   }
@@ -307,9 +315,17 @@ html, body {
     padding: 8px 12px;
   }
 
+  .chat-box {
+    max-height: 0;
+  }
+
   .chat-header {
     font-size: 16px;
     padding: 12px 12px 12px 50px;
+  }
+
+  .sidebar {
+    max-height: 0;
   }
 
   .chat-messages {
@@ -321,6 +337,7 @@ html, body {
 
   .chat-container {
     flex-direction: column;
+    max-height: 0;
     height: 100vh;
     overflow: hidden;
   }
@@ -336,6 +353,7 @@ html, body {
   }
 
   .chat-input-container {
+    position: fixed;
     padding: 14px;
     gap: 10px;
   }
@@ -384,12 +402,21 @@ html, body {
     position: fixed;
   }
 
+  .chat-box {
+    max-height: 0;
+  }
+
+  .sidebar {
+    max-height: 0;
+  }
+
   .chat-header {
     font-size: 14px;
     padding: 10px 12px 10px 45px;
   }
 
   .chat-messages {
+    max-height: 0;
     gap: 6px;
     flex: 1;
     overflow-y: auto;
@@ -398,6 +425,7 @@ html, body {
 
   .chat-container {
     flex-direction: column;
+    max-height: 0;
     height: 100vh;
     overflow: hidden;
   }
@@ -413,6 +441,7 @@ html, body {
   }
 
   .chat-input-container {
+    position: fixed;
     padding: 12px;
     gap: 8px;
   }
