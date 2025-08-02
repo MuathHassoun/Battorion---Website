@@ -119,6 +119,7 @@ html, body {
   margin: 0;
   overflow-y: auto;
   max-height: 500px;
+  min-height: 500px;
 }
 
 .user-list li {
