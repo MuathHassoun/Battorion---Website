@@ -286,7 +286,7 @@ html, body {
     position: absolute;
     top: 4.3rem;
     left: 1.3rem;
-    z-index: 999;
+    z-index: 10;
   }
 
   .menu-toggle,
@@ -353,7 +353,7 @@ html, body {
   .theme-toggle {
     top: 4.3rem;
     left: 1.3rem;
-    z-index: 999;
+    z-index: 10;
   }
 
   .menu-toggle,
