@@ -125,13 +125,15 @@ chatFormEl.addEventListener('submit', async e => {
 });
 
 (async () => {
+  let users;
   const updateUsers = async () => {
-    const users = await fetchUsers();
+    users = await fetchUsers();
     renderUserList(users);
-    if (users.length > 0) {
-      await startChatWithEmail(users[0].email);
-    }
   };
+
   await updateUsers();
+  if (users.length > 0) {
+    await startChatWithEmail(users[0].email);
+  }
   setInterval(updateUsers, 60000);
 })();
