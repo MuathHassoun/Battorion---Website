@@ -230,8 +230,8 @@ html[data-theme="light"] {
 
 #chat-toggle-btn {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
+  bottom: 30px;
+  right: 30px;
   background-color: var(--chat-scrollbar-thumb);
   color: var(--chat-msg-admin-text);
   border: none;
