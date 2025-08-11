@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap');
 :root {
   --bg: linear-gradient(to bottom, #0f2027, #203a43, #2c5364);
   --text: #f0f0f0;
@@ -21,7 +22,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Merriweather', serif;
 }
 
 html {
@@ -197,6 +198,48 @@ header svg {
   padding: 0.4rem 0.8rem;
   cursor: pointer;
   display: none;
+}
+
+.developer-link {
+  color: #40c4ff;
+  text-decoration: none;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: color 0.3s ease, transform 0.3s ease;
+  text-shadow: 0 0 3px rgba(64, 196, 255, 0.5);
+}
+
+.developer-link::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  left: 0;
+  bottom: -4px;
+  background: #40c4ff;
+  transition: width 0.3s ease;
+  border-radius: 2px;
+}
+
+.developer-link:hover,
+.developer-link:focus {
+  color: #00b0ff;
+  text-shadow: 0 0 8px rgba(0, 176, 255, 0.7);
+  transform: scale(1.05);
+}
+
+.developer-link:hover::after,
+.developer-link:focus::after {
+  width: 100%;
+}
+
+.developer-link:active {
+  color: #0081cb;
+  text-shadow: 0 0 6px rgba(0, 129, 203, 0.6);
+  transform: scale(0.98);
 }
 
 main {

@@ -1,4 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap');
+* {
+  font-family: 'Merriweather', serif;
+}
+
 :root {
   --shadowcore-start: #1b1f3a;
   --shadowcore-end: #3a3d67;
@@ -90,7 +95,6 @@ html[data-theme="light"] {
 
 body {
   margin: 0;
-  font-family: 'Inter', sans-serif;
   background: var(--bg);
   color: var(--text);
   transition: background var(--transition), color var(--transition);

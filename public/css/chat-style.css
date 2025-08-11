@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap');
 :root {
   --chat-bg-dark: rgba(255, 255, 255, 0.08);
   --chat-header-bg-dark: linear-gradient(135deg, #2c3e50, #4ca1af);
@@ -23,6 +24,10 @@
   --chat-transition: 0.4s ease-in-out;
   --chat-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
   --chat-blur: 10px;
+}
+
+* {
+  font-family: 'Merriweather', serif;
 }
 
 html[data-theme="dark"] {

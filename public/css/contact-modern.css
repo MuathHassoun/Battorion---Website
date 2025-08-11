@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap');
 :root {
   --bg: linear-gradient(to bottom, #0f2027, #203a43, #2c5364);
   --color-dark: #0f2027;
@@ -23,10 +24,10 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Merriweather', serif;
 }
 
 body {
-  font-family: 'Inter', sans-serif;
   background: var(--bg);
   color: var(--text);
   min-height: 100vh;

@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Battorion CLI Reference</title>
+  <link rel="stylesheet" href="../css/developer-style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="icon" href="../img/logo.svg" />
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="brand">
+        <section class="group">
+          <h1>Battorion CLI Reference</h1>
+          <div class="badge">
+            <i class="fas fa-terminal"></i> CLI Documentation
+          </div>
+        </section>
+        <p class="hint">Complete command tree and syntax table</p>
+        <p class="welcome-message">
+          Welcome developers! Discover all Battorion CLI commands, their details, and usage tips for efficient workflows. This page provides a comprehensive command tree and explanation tables to help you manage your system, battery, audio, and more with confidence and ease.
+        </p>
+      </div>
+      <br>
+      <div class="btn">
+        <button id="toggle-btn">
+          <i class="fas fa-random"></i> Switch View
+        </button>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="card card-a visible">
+        <div class="section-title">Command Tree</div>
+        <div class="tree">
+        <pre>
+                  battorion battery
+                      data-organizer
+                          group --input &lt;file&gt; --output &lt;file&gt;
+                          json-analyzer
+                          run-script --path &lt;file&gt;
+                          extract-info --path &lt;file&gt; --format &lt;json|table&gt;
+                      live-info
+                          get --format &lt;json|table&gt;
+                      report
+                          analyze --path &lt;html&gt; --output &lt;json&gt;
+                          extract-info --path &lt;html&gt;
+                          extract-capacity --path &lt;html&gt;
+                          get-table-after-header --path &lt;html&gt;
+                          extract-last-capacity --path &lt;html&gt;
+                          extract-last-runtime --path &lt;html&gt;
+                      choose-action
+                          create --type &lt;analysis|report|export&gt;
+                      html-opener
+                          open --path &lt;html&gt;
+                          safe-load --path &lt;html&gt;
+                          read-as-text --path &lt;html&gt;
+                          clean-fix --path &lt;html&gt;
+                          format-error --error &lt;message&gt;
+                      time-estimator
+                          get-text --input &lt;data&gt;
+                          compute-weighted-average --data &lt;file&gt;
+                          format-minutes --value &lt;int&gt;
+
+                  battorion disk
+                      alt-space
+                          get-files-number --path &lt;dir&gt;
+                          get-files-size --path &lt;dir&gt; --unit &lt;MB|GB&gt;
+                          get-dir-number --path &lt;dir&gt;
+                          get-dir-size --path &lt;dir&gt; --unit &lt;MB|GB&gt;
+                          clean-temp --path &lt;dir&gt;
+                          format-bytes --value &lt;bytes&gt;
+                      space
+                          get-files-number --path &lt;dir&gt;
+                          get-files-size --path &lt;dir&gt; --unit &lt;MB|GB&gt;
+                          get-dir-number --path &lt;dir&gt;
+                          get-dir-size --path &lt;dir&gt; --unit &lt;MB|GB&gt;
+                          clean-temp --path &lt;dir&gt;
+                          set-under-tracking --path &lt;dir&gt;
+                          make-decision --threshold &lt;value&gt;
+                          print-result --path &lt;dir&gt;
+                          parse-output --path &lt;file&gt;
+                          exhume-number-files --path &lt;dir&gt;
+                          exhume-size-files --path &lt;dir&gt;
+                          parse-file-size --value &lt;string&gt;
+                          parse-dir-size --value &lt;string&gt;
+                          format-bytes --value &lt;bytes&gt;
+
+                  battorion audio
+                      output
+                          set --device &lt;name&gt;
+                          call-command --cmd &lt;string&gt;
+                      device
+                          check --match &lt;name&gt;
+                          get-current
+                          get-families
+                          check-list --type &lt;output|input&gt;
+                          get-full-name --device &lt;id&gt;
+                      volume
+                          get --device &lt;name&gt;
+                          set --device &lt;name&gt; --value &lt;0-100&gt;
+                          unmute --device &lt;name&gt;
+
+                  battorion cmd
+                      run --cmd "&lt;command&gt;" --timeout &lt;sec&gt;
+                      get-os
+                      battery-status
+                      parse-level --value &lt;string&gt;
+                      parse-status --value &lt;string&gt;
+
+                  battorion runtime
+                      estimate
+                          get
+                          first
+                          second
+                          third
+                          run-parse
+                          pb-first
+                          pb-second
+                          pb-third
+
+                  battorion hardware
+                      get-os-full
+                      get-cpu --details
+                      get-hwid
+                      get-ram --details
+                      get-disk --details
+                      run-wmic --cmd &lt;string&gt;
+                      validate
+
+                  battorion sound
+                      devices
+                          find-default
+                          extract-families
+                          extract-keyword --keyword &lt;string&gt;
+                          delete-output-file --path &lt;file&gt;
+                      volume
+                          get
+                          return-level
+        </pre>
+        </div>
+      </div>
+      <div class="card card-b hidden">
+        <div class="section-title">Syntax & Function</div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Syntax</th>
+                <th>Function</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class='syntax'>battorion battery data-organizer group --input &lt;file&gt; --output &lt;file&gt;
+                </td>
+                <td>Group and organize battery data from a file or folder.</td>
+              </tr>
+              <tr>
+                <td class='syntax'>battorion battery json-analyzer run-script --path &lt;file&gt;
+                </td>
+                <td>Run a PowerShell script to process JSON battery reports.</td>
+              </tr>
+              <tr>
+                <td class='syntax'>battorion battery json-analyzer extract-info --path &lt;file&gt; --format &lt;json|table>
+                </td>
+                <td>Extract battery details from a JSON file.</td>
+              </tr>
+              <tr>
+                <td class='syntax'>battorion battery live-info get --format &lt;json|table>
+                </td>
+                <td>Retrieve live battery information from the system.</td>
+              </tr>
+              <tr>
+                <td class='syntax'>battorion battery report analyze --path &lt;html&gt; --output &lt;json>
+                </td>
+                <td>Analyze a battery HTML report and output structured data.</td>
+              </tr>
+              <tr>
+                <td class='syntax'>battorion battery report extract-info --path &lt;html&gt;
+                </td>
+                <td>Extract raw battery information from an HTML report.</td>
+              </tr>
+              <tr>
+                <td class='syntax'>battorion battery report extract-capacity --path &lt;html&gt;
+                </td>
+                <td>Extract battery capacity details from a report.</td>
+              </tr>
+              <tr>
+                <td class='syntax'>battorion battery report get-table-after-header --path &lt;html&gt;
+                </td>
+                <td>Get a data table after a specific header in an HTML report.</td>
+              </tr>
+              <tr>
+                <td class='syntax'>battorion battery report extract-last-capacity --path &lt;html&gt;
+                </td>
+                <td>Extract the most recent recorded battery capacity.</td>
+              </tr>
+              <tr>
+                <td class='syntax'>battorion battery report extract-last-runtime --path &lt;html&gt;
+                </td>
+                <td>Extract the last estimated runtime from the report.</td>
+              </tr>
+              <tr>
+                <td class='syntax'>battorion battery choose-action create --type &lt;analysis|report|export>
+                </td>
+                <td>Create an action panel for battery operations.</td>
+              </tr>
+              <tr>
+                <td class='syntax'>battorion battery html-opener open --path &lt;html&gt;
+                </td>
+                <td>Open an HTML report in a browser.</td>
+              </tr>
+              <tr>
+                <td class='syntax'>battorion battery html-opener safe-load --path &lt;html&gt;
+                </td>
+                <td>Load an HTML file safely.</td>
+              </tr>
+              <tr>
+                <td class='syntax'>battorion battery html-opener read-as-text --path &lt;html&gt;
+                </td>
+                <td>Read HTML content as plain text.</td>
+              </tr>
+              <tr>
+                <td class='syntax'>battorion battery html-opener clean-fix --path &lt;html&gt;
+                </td>
+                <td>Clean and repair HTML structure.</td>
+              </tr>
+              <tr>
+                <td class='syntax'>battorion battery html-opener format-error --error &lt;message&gt;
+                </td>
+                <td>Format HTML-related error messages.</td>
+              </tr>
+              <tr>
+                <td class='syntax'>battorion battery time-estimator get-text --input &lt;data&gt;</td>
+                <td>Get a textual runtime estimation.</td>
+              </tr>
+              <tr>
+                <td class='syntax'>battorion battery time-estimator compute-weighted-average --data &lt;file&gt;
+                </td>
+                <td>Calculate weighted average from battery records.</td>
+              </tr>
+              <tr>
+                <td class='syntax'>battorion battery time-estimator format-minutes --value &lt;int&gt;
+                </td>
+                <td>Format a minute value into a readable string.</td>
+              </tr>
+              <tr>
+                <td class='syntax'>battorion disk alt-space get-files-number --path &lt;dir&gt;
+                </td>
+                <td>Get number of files in a directory (alternative method).</td>
+              </tr>
+              <tr>
+                <td class='syntax'>battorion disk alt-space get-files-size --path &lt;dir&gt; --unit &lt;MB|GB>
+                </td>
+                <td>Get total size of files in a directory (alternative method).</td>
+              </tr>
+              <tr>
+                <td class='syntax'>battorion disk alt-space get-dir-number --path &lt;dir&gt;
+                </td>
+                <td>Get number of subdirectories (alternative method).</td>
+              </tr>
+              <tr>
+                <td class='syntax'>battorion disk alt-space get-dir-size --path &lt;dir&gt; --unit &lt;MB|GB>
+                </td>
+                <td>Get total size of subdirectories (alternative method).</td>
+              </tr>
+              <tr>
+                <td class='syntax'>battorion disk alt-space clean-temp --path &lt;dir&gt;
+                </td>
+                <td>Remove temporary files in a directory (alternative method).</td>
+              </tr>
+              <tr>
+                <td class='syntax'>battorion disk alt-space format-bytes --value &lt;bytes&gt;
+                </td>
+                <td>Format byte values into human-readable units.</td>
+              </tr>
+              <tr>
+                <td class='syntax'>battorion disk space get-files-number --path &lt;dir&gt;
+                </td>
+                <td>Get number of files in a directory.</td>
+              </tr>
+              <tr>
+                <td class='syntax'>battorion disk space get-files-size --path &lt;dir&gt; --unit &lt;MB|GB>
+                </td>
+                <td>Get total size of files in a directory.</td>
+              </tr>
+              <tr>
+                <td class='syntax'>battorion disk space get-dir-number --path &lt;dir&gt;
+                </td>
+                <td>Get number of subdirectories.</td>
+              </tr>
+              <tr>
+                <td class='syntax'>battorion disk space get-dir-size --path &lt;dir&gt; --unit &lt;MB|GB>
+                </td>
+                <td>Get total size of subdirectories.</td>
+              </tr>
+              <tr>
+                <td class='syntax'>battorion disk space clean-temp --path &lt;dir&gt;
+                </td>
+                <td>Remove temporary files in a directory.</td>
+              </tr>
+              <tr>
+                <td class='syntax'>battorion disk space set-under-tracking --path &lt;dir&gt;
+                </td>
+                <td>Mark a directory for tracking.</td>
+              </tr>
+              <tr>
+                <td class='syntax'>battorion disk space make-decision --threshold &lt;value&gt;
+                </td>
+                <td>Make a decision based on disk usage thresholds.</td>
+              </tr>
+              <tr>
+                <td class='syntax'>battorion disk space print-result --path &lt;dir&gt;
+                </td>
+                <td>Print disk analysis results.</td>
+              </tr>
+              <tr>
+                <td class='syntax'>battorion disk space parse-output --path &lt;file&gt;
+                </td>
+                <td>Parse disk space output from a file.</td>
+              </tr>
+              <tr>
+                <td class='syntax'>battorion disk space exhume-number-files --path &lt;dir&gt;
+                </td>
+                <td>Extract number of files from stored records.</td>
+              </tr>
+              <tr>
+                <td class='syntax'>battorion disk space exhume-size-files --path &lt;dir&gt;
+                </td>
+                <td>Extract size of files from stored records.</td>
+              </tr>
+              <tr>
+                <td class='syntax'>battorion disk space parse-file-size --value &lt;string&gt;
+                </td>
+                <td>Parse a file size string into numeric form.</td>
+              </tr>
+              <tr>
+                <td class='syntax'>battorion disk space parse-dir-size --value &lt;string&gt;
+                </td>
+                <td>Parse a directory size string into numeric form.</td>
+              </tr>
+              <tr>
+                <td class='syntax'>battorion disk space format-bytes --value &lt;bytes&gt;
+                </td>
+                <td>Format byte values into human-readable units.</td>
+              </tr>
+              <tr>
+                <td class='syntax'>battorion audio output set --device &lt;name&gt;
+                </td>
+                <td>Set the system's default audio output device.</td>
+              </tr>
+              <tr>
+                <td class='syntax'>battorion audio output call-command --cmd &lt;string&gt;
+                </td>
+                <td>Execute a command to change audio output.</td>
+              </tr>
+              <tr>
+                <td class='syntax'>battorion audio device check --match &lt;name&gt;
+                </td>
+                <td>Check if a specific audio device is currently active.</td>
+              </tr>
+              <tr>
+                <td class='syntax'>battorion audio device get-current</td>
+                <td>Get the name of the currently active audio output device.</td>
+              </tr>
+              <tr>
+                <td class='syntax'>battorion audio device get-families</td>
+                <td>List audio device families.</td>
+              </tr>
+              <tr>
+                <td class='syntax'>battorion audio device check-list --type &lt;output|input>
+                </td>
+                <td>Validate available audio devices by type.</td>
+              </tr>
+              <tr>
+                <td class='syntax'>battorion audio device get-full-name --device &lt;id&gt;
+                </td>
+                <td>Get the full name of a device by ID.</td>
+              </tr>
+              <tr>
+                <td class='syntax'>battorion audio volume get --device &lt;name&gt;
+                </td>
+                <td>Get the volume level of a device.</td>
+              </tr>
+              <tr>
+                <td class='syntax'>battorion audio volume set --device &lt;name&gt; --value <0-100></td>
+                <td>Set the volume for a device.</td>
+              </tr>
+              <tr>
+                <td class='syntax'>battorion audio volume unmute --device &lt;name&gt;
+                </td>
+                <td>Unmute a device.</td>
+              </tr>
+              <tr>
+                <td class='syntax'>battorion cmd run --cmd "&lt;command&gt;" --timeout &lt;sec&gt;
+                </td>
+                <td>Execute a system command.</td>
+              </tr>
+              <tr>
+                <td class='syntax'>battorion cmd get-os</td>
+                <td>Get the current operating system name.</td>
+              </tr>
+              <tr>
+                <td class='syntax'>battorion cmd battery-status parse-level --value &lt;string&gt;
+                </td>
+                <td>Parse battery level from a string.</td>
+              </tr>
+              <tr>
+                <td class='syntax'>battorion cmd battery-status parse-status --value &lt;string&gt;
+                </td>
+                <td>Parse battery status from a string.</td>
+              </tr>
+              <tr>
+                <td class='syntax'>battorion runtime estimate get</td>
+                <td>Get an estimated runtime value.</td>
+              </tr>
+              <tr>
+                <td class='syntax'>battorion runtime estimate first</td>
+                <td>Get the first runtime estimation.</td>
+              </tr>
+              <tr>
+                <td class='syntax'>battorion runtime estimate second</td>
+                <td>Get the second runtime estimation.</td>
+              </tr>
+              <tr>
+                <td class='syntax'>battorion runtime estimate third</td>
+                <td>Get the third runtime estimation.</td>
+              </tr>
+              <tr>
+                <td class='syntax'>battorion runtime estimate run-parse</td>
+                <td>Run and parse runtime estimation data.</td>
+              </tr>
+              <tr>
+                <td class='syntax'>battorion runtime estimate pb-first</td>
+                <td>Get process builder for first runtime estimation.</td>
+              </tr>
+              <tr>
+                <td class='syntax'>battorion runtime estimate pb-second</td>
+                <td>Get process builder for second runtime estimation.</td>
+              </tr>
+              <tr>
+                <td class='syntax'>battorion runtime estimate pb-third</td>
+                <td>Get process builder for third runtime estimation.</td>
+              </tr>
+              <tr>
+                <td class='syntax'>battorion hardware get-os-full</td>
+                <td>Get the full name of the operating system.</td>
+              </tr>
+              <tr>
+                <td class='syntax'>battorion hardware get-cpu --details</td>
+                <td>Get CPU information.</td>
+              </tr>
+              <tr>
+                <td class='syntax'>battorion hardware get-hwid</td>
+                <td>Get hardware ID.</td>
+              </tr>
+              <tr>
+                <td class='syntax'>battorion hardware get-ram --details</td>
+                <td>Get RAM details.</td>
+              </tr>
+              <tr>
+                <td class='syntax'>battorion hardware get-disk --details</td>
+                <td>Get disk information.</td>
+              </tr>
+              <tr>
+                <td class='syntax'>battorion hardware run-wmic --cmd &lt;string&gt;
+                </td>
+                <td>Run a WMIC command.</td>
+              </tr>
+              <tr>
+                <td class='syntax'>battorion hardware validate</td>
+                <td>Validate hardware information.</td>
+              </tr>
+              <tr>
+                <td class='syntax'>battorion sound devices find-default</td>
+                <td>Find the first default valid render device.</td>
+              </tr>
+              <tr>
+                <td class='syntax'>battorion sound devices extract-families</td>
+                <td>Extract audio output families.</td>
+              </tr>
+              <tr>
+                <td class='syntax'>battorion sound devices extract-keyword --keyword &lt;string&gt;
+                </td>
+                <td>Extract matching audio device keyword.</td>
+              </tr>
+              <tr>
+                <td class='syntax'>battorion sound devices delete-output-file --path &lt;file&gt;
+                </td>
+                <td>Delete audio output file.</td>
+              </tr>
+              <tr>
+                <td class='syntax'>battorion sound volume get</td>
+                <td>Get sound volume level.</td>
+              </tr>
+              <tr>
+                <td class='syntax'>battorion sound volume return-level</td>
+                <td>Return current sound volume level.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <p>&copy; 2025 Generated CLI Reference. All rights reserved.</p>
+      <p>Designed & Developed by Muath Hassoun – Software Engineer</p>
+    </div>
+  </div>
+
+  <script src="../js/app.js"></script>
+  <script src="../js/_xhtr.js"></script>
+  <script>
+    const btn = document.getElementById('toggle-btn');
+    const cardA = document.querySelector('.card-a');
+    const cardB = document.querySelector('.card-b');
+
+    btn.addEventListener('click', () => {
+      if (cardA.classList.contains('visible')) {
+        cardA.classList.remove('visible');
+        cardA.classList.add('hidden');
+        cardB.classList.remove('hidden');
+        cardB.classList.add('visible');
+      } else {
+        cardB.classList.remove('visible');
+        cardB.classList.add('hidden');
+        cardA.classList.remove('hidden');
+        cardA.classList.add('visible');
+      }
+    });
+  </script>
+</body>
+</html>
