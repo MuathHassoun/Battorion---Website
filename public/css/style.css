@@ -272,9 +272,38 @@ body {
   z-index: 100;
 }
 
+.main-action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8em;
+  flex-direction: row;
+  padding: 1em 2em;
+}
+
 .main-action-btn:hover, .modal-trigger:hover {
   filter: var(--hover-brightness);
   transform: translateY(-3px);
+}
+
+.main-action-btn-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  line-height: 1.4;
+}
+
+.main-action-btn-content p {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.main-action-btn-content pre {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 500;
 }
 
 .battery-section {

@@ -2,7 +2,7 @@ fetch("https://api.github.com/repos/MuathHassoun/battorion-version/releases/late
   .then(res => res.json())
   .then(data => {
     const version = data.tag_name.replace("v", "");
-    const versionText = `–v${version}`;
+    const versionText = `Version: v${version}`;
 
     const versionBtn = document.getElementById("version-text");
     if (versionBtn) {
