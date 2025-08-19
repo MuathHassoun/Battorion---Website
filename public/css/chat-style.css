@@ -294,7 +294,17 @@ html[data-theme="light"] {
   color: #aaa;
 }
 
-#email-request button#email-submit {
+.btn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 8px;
+  width: 100%;
+}
+
+#email-request button#email-submit,
+#email-request button#cancel {
   background-color: var(--chat-scrollbar-thumb);
   color: var(--chat-msg-admin-text);
   border: none;
@@ -303,9 +313,11 @@ html[data-theme="light"] {
   border-radius: var(--chat-radius);
   cursor: pointer;
   transition: background-color 0.3s ease;
+  min-width: 100px;
 }
 
-#email-request button#email-submit:hover {
+#email-request button#email-submit:hover,
+#email-request button#cancel:hover {
   filter: brightness(1.1);
 }
 

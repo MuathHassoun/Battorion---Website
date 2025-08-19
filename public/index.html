@@ -276,7 +276,10 @@
     <div class="email-box">
       <label for="user-email">Enter your email to start chatting:</label>
       <input type="email" id="user-email" required placeholder="you@example.com" />
-      <button onclick="submitEmail()" id="email-submit">Continue</button>
+      <section class="btn-container">
+        <button onclick="closeSubmitEmailWindow()" id="cancel">Cancel</button>
+        <button onclick="submitEmail()" id="email-submit">Continue</button>
+      </section>
     </div>
   </div>
   <div id="chat-window" role="dialog" aria-modal="true" aria-labelledby="chat-header" tabindex="-1">

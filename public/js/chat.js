@@ -21,6 +21,10 @@ async function submitEmail() {
   await startChatWithEmail(email);
 }
 
+async function closeSubmitEmailWindow() {
+  document.getElementById('email-request').style.display = 'none';
+}
+
 async function saveEmailToDatabase(email) {
   try {
     const res = await fetch('/api/chat/insert-email', {
