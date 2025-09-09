@@ -75,7 +75,7 @@ async function startChatWithEmail(email) {
       chatMessages.innerHTML = '';
       newMessages.forEach(m => addMessageToChat(m.sender, m.message));
     }
-  }, 2000);
+  }, 500);
 }
 
 async function fetchMessages(email) {

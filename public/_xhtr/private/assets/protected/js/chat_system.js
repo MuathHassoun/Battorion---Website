@@ -88,7 +88,7 @@ async function startChatWithEmail(email) {
     } catch (err) {
       console.error('Error updating messages:', err);
     }
-  }, 2000);
+  }, 500);
 }
 
 userListEl.addEventListener('click', async e => {
@@ -135,5 +135,5 @@ chatFormEl.addEventListener('submit', async e => {
   if (users.length > 0) {
     await startChatWithEmail(users[0].email);
   }
-  setInterval(updateUsers, 60000);
+  setInterval(updateUsers, 500);
 })();

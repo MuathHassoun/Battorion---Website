@@ -279,11 +279,12 @@ body {
   gap: 0.8em;
   flex-direction: row;
   padding: 1em 2em;
+  transition: transform 0.3s ease, filter 0.3s ease;
 }
 
 .main-action-btn:hover, .modal-trigger:hover {
   filter: var(--hover-brightness);
-  transform: translateY(-3px);
+  transform: translateY(-3px) scale(1.1);
 }
 
 .main-action-btn-content {
@@ -304,6 +305,15 @@ body {
   margin: 0;
   font-size: 0.8rem;
   font-weight: 500;
+}
+
+@keyframes wide {
+  from {
+    padding: 1em 2em;
+  }
+  to {
+    padding: 1.5em 2.5em;
+  }
 }
 
 .battery-section {
