@@ -21,7 +21,6 @@
     }
     body {
       margin: 0;
-      font-family: 'Inter', sans-serif;
       background: var(--bg);
       color: var(--text);
       display: flex;
@@ -44,8 +43,9 @@
       color: #c0392b;
     }
     p {
-      margin-bottom: 25px;
+      margin-bottom: 20px;
       color: var(--subtitle-color);
+      white-space: pre-line;
     }
     .btn-home {
       background: var(--btn-bg);
@@ -65,18 +65,30 @@
 <body>
   <div class="verification-box">
     <h1>❌ Email Verification Failed</h1>
-    <p>We could not verify your email. Please try again later or request a new verification link.</p>
-    <br>
+    <p id="main_message">We could not verify your email. Please try again later or request a new verification link.</p>
     <p id="error_status"></p>
     <button class="btn-home" onclick="window.location.href='../html/contactus.html'">Back to Contact Us Form</button>
   </div>
-
   <script>
     const urlParams = new URLSearchParams(window.location.search);
     const error = urlParams.get('error');
     const errorPara = document.getElementById('error_status');
+    const mainMessage = document.getElementById('main_message');
+    const errorMessages = {
+      "invalid_email": "Your email address appears to be invalid. Please check it and try again.",
+      "token_generation_failed_500": "We couldn't generate a verification token due to a server error. Please try again later.",
+      "email_sending_failed_400": "There was a problem sending the verification email. Please make sure your email is correct.",
+      "unknown_error": "An unknown error occurred. Please try again later."
+    };
+
     if (error) {
-      errorPara.textContent = `Error Details: ${decodeURIComponent(error)}`;
+      const decodedError = decodeURIComponent(error);
+      if (errorMessages[decodedError]) {
+        mainMessage.textContent = errorMessages[decodedError];
+        errorPara.textContent = "";
+      } else {
+        errorPara.textContent = `Error Details:\n${decodedError}`;
+      }
     } else {
       errorPara.textContent = "An unexpected error occurred, but the exact cause could not be detected.";
     }
