@@ -277,7 +277,7 @@
       <input type="email" id="user-email" required placeholder="you@example.com" />
       <section class="btn-container">
         <button onclick="closeSubmitEmailWindow()" id="cancel">Cancel</button>
-        <button onclick="submitEmail()" id="email-submit">Continue</button>
+        <button onclick="submitEmail()" id="email-submit">Verify your email</button>
       </section>
     </div>
   </div>
@@ -309,6 +309,7 @@
     setInterval(updateBatteryInfo, 2000);
     updateBatteryInfo();
   </script>
+
   <script>
     function openImageModal(src) {
       document.getElementById('modal-img').src = src;
@@ -323,6 +324,16 @@
         el.style.display = '';
       });
     };
+  </script>
+
+  <script>
+    document.getElementById('email-submit').addEventListener('DOMContentLoaded', function() {
+      if(localStorage.getItem('userEmail') !== '' && localStorage.getItem('userEmail') !== null) {
+        document.getElementById('email-submit').innerText = "Continue";
+      } else {
+        document.getElementById('email-submit').innerText = "Verify your email";
+      }
+    });
   </script>
 </body>
 </html>

@@ -14,11 +14,15 @@ async function submitEmail() {
     return;
   }
 
-  setUserEmail(email);
-  await saveEmailToDatabase(email);
   document.getElementById('email-request').style.display = 'none';
-  showChatWindow();
-  await startChatWithEmail(email);
+  if (getUserEmail().trim() === '' || getUserEmail().trim() === null) {
+    window.location.href = "https://battorion-ap-is.vercel.app/?email=" + encodeURIComponent(email) + "&chatting=true";
+  } else {
+    setUserEmail(email);
+    await saveEmailToDatabase(email);
+    showChatWindow();
+    await startChatWithEmail(email);
+  }
 }
 
 async function closeSubmitEmailWindow() {
