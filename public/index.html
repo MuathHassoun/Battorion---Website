@@ -330,8 +330,12 @@
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       const btn = document.getElementById('email-submit');
+      const urlParams = new URLSearchParams(window.location.search);
+      const email = urlParams.get('email');
+
       if (!btn) return;
-      if (localStorage.getItem('userEmail')) {
+      if (email) {
+        localStorage.setItem('userEmail', email);
         btn.innerText = "Chat with Support";
       } else {
         btn.innerText = "Verify your email";
