@@ -331,7 +331,7 @@
     document.addEventListener('DOMContentLoaded', function() {
       const btn = document.getElementById('email-submit');
       const urlParams = new URLSearchParams(window.location.search);
-      const email = urlParams.get('email');
+      const email = urlParams.get('verified_email');
 
       if (!btn) return;
       if (email) {
