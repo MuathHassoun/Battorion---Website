@@ -1,10 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap');
-* {
-  font-family: 'Merriweather', serif;
-}
-
 :root {
-  --font: 'Inter', sans-serif;
   --radius: 20px;
   --transition: 0.3s ease;
   --dark-bg: linear-gradient(to bottom, #0f2027, #203a43, #2c5364);
@@ -47,8 +42,8 @@ html[data-theme='light'] {
 
 * {
   box-sizing: border-box;
-  font-family: var(--font), serif;
   transition: all var(--transition);
+  font-family: 'Merriweather', serif;
 }
 
 html, body {
