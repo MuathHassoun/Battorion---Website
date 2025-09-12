@@ -327,11 +327,12 @@
   </script>
 
   <script>
-    document.getElementById('email-submit').addEventListener('DOMContentLoaded', function() {
-      if(localStorage.getItem('userEmail') !== '' && localStorage.getItem('userEmail') !== null) {
-        document.getElementById('email-submit').innerText = "Continue";
+    document.addEventListener('DOMContentLoaded', function() {
+      const btn = document.getElementById('email-submit');
+      if (localStorage.getItem('userEmail')) {
+        btn.innerText = "Continue";
       } else {
-        document.getElementById('email-submit').innerText = "Verify your email";
+        btn.innerText = "Verify your email";
       }
     });
   </script>
