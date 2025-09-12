@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Battorion | Email Verification Success</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap');
+    * {
+      font-family: 'Merriweather', serif;
+    }
+
+    :root {
+      --bg: linear-gradient(to bottom, #0f2027, #203a43, #2c5364);
+      --text: #f0f0f0;
+      --card-bg: rgba(255, 255, 255, 0.06);
+      --btn-bg: #6c5ce7;
+      --text-muted: #bbbbbb;
+      --subtitle-color: #a8a8a8;
+      --card-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .verification-box {
+      background: var(--card-bg);
+      padding: 40px 60px;
+      border-radius: 15px;
+      box-shadow: var(--card-shadow);
+      text-align: center;
+      max-width: 500px;
+      width: 90%;
+    }
+    h1 {
+      margin-bottom: 15px;
+      font-size: 28px;
+    }
+    p {
+      margin-bottom: 25px;
+      color: var(--subtitle-color);
+    }
+    #form-response {
+      font-size: 18px;
+      padding: 15px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="verification-box">
+    <h1>✅ Email Verified Successfully</h1>
+    <p>Your email has been verified. Submitting your pending feedback automatically.</p>
+    <div id="form-response">⏳ Please wait...</div>
+    <div id="selected-file" style="display:none;"></div>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      readyToSubmit();
+    });
+  </script>
+  <script src="../js/app.js"></script>
+  <script src="../js/_xhtr.js"></script>
+  <script src="../js/ready_to_submit.js"></script>
+</body>
+</html>
