@@ -29,33 +29,7 @@ document.getElementById("contact-form").addEventListener("submit", async functio
   formData.append("message", form.message.value.trim());
   if (file) formData.append("screenshot", file);
 
-  try {
-    const res = await fetch("/api/telegram-handler", {
-      method: "POST",
-      body: formData,
-    });
-
-    const contentType = res.headers.get("content-type") || "";
-    if (!contentType.includes("application/json")) {
-      const text = await res.text();
-      console.error("Response is not JSON:", text);
-      responseDiv.className = "error";
-      responseDiv.innerText = "❌ Server returned an invalid response (not JSON).";
-      return;
-    }
-
-    const data = await res.json();
-    if (res.ok) {
-      responseDiv.className = "success";
-      responseDiv.innerText = `✅ Thank you! Your message has been received. Our team will contact you soon.${data.result === 'with_image' ? ' 📎 Your screenshot was attached successfully.' : ''}`;
-      form.reset();
-      document.getElementById("selected-file").style.display = "none";
-    } else {
-      responseDiv.className = "error";
-      responseDiv.innerText = `❌ Error: ${data.error || "Unable to send."}`;
-    }
-  } catch (err) {
-    responseDiv.className = "error";
-    responseDiv.innerText = "❌ Error: " + err.message;
-  }
+  form.reset();
+  localStorage.setItem('pendingFeedback', JSON.stringify(formData));
+  window.location.href = "https://battorion-ap-is.vercel.app/";
 });
