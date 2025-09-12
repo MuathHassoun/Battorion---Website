@@ -15,7 +15,8 @@ async function submitEmail() {
   }
 
   document.getElementById('email-request').style.display = 'none';
-  if (getUserEmail().trim() !== '' && getUserEmail().trim() !== null && getUserEmail().trim().includes('@')) {
+  const currentEmail = getUserEmail();
+  if (currentEmail && currentEmail.trim() !== '' && currentEmail.includes('@')) {
     setUserEmail(email);
     await saveEmailToDatabase(email);
     showChatWindow();
