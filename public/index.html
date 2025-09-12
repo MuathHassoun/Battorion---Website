@@ -318,6 +318,7 @@
         el.style.display = 'none';
       });
     }
+
     document.getElementById('close-modal').onclick = function() {
       document.getElementById('image-modal').classList.add('hidden');
       document.querySelectorAll('body > *:not(#image-modal)').forEach(el => {
@@ -329,8 +330,9 @@
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       const btn = document.getElementById('email-submit');
+      if (!btn) return;
       if (localStorage.getItem('userEmail')) {
-        btn.innerText = "Continue";
+        btn.innerText = "Chat with Support";
       } else {
         btn.innerText = "Verify your email";
       }
