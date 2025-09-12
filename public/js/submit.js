@@ -31,5 +31,5 @@ document.getElementById("contact-form").addEventListener("submit", async functio
 
   form.reset();
   localStorage.setItem('pendingFeedback', JSON.stringify(formData));
-  window.location.href = "https://battorion-ap-is.vercel.app/";
+  window.location.href = "https://battorion-ap-is.vercel.app/?email=" + form.email.value.trim();
 });
