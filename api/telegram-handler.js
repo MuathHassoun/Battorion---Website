@@ -1,6 +1,7 @@
 const { IncomingForm } = require('formidable');
 const fs = require('fs');
 const FormData = require('form-data');
+
 const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
 const BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
 const CHAT_ID = process.env.TELEGRAM_CHAT_ID;
