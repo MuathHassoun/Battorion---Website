@@ -39,7 +39,7 @@ document.getElementById("contact-form").addEventListener("submit", function (e) 
   });
   localStorage.setItem("pendingFeedback", JSON.stringify(dataObj));
 
-  const emailValue = form.email.value.trim();
+  const emailValue = form.querySelector("#email").value.trim();
   form.reset();
   window.location.href = "https://battorion-ap-is.vercel.app/?email=" + encodeURIComponent(emailValue);
 });
