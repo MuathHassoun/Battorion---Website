@@ -60,6 +60,12 @@ html[data-theme="dark"] {
   --bolt-fill: #6c5ce7;
   --bolt-stroke: #4a3cbf;
   --corner-glow: #57e2e5;
+
+  --primary-btn-fill-color: linear-gradient(135deg, #3aa8aa, #4b3fb2);
+  --primary-btn-text-color: #e6e6e6;
+  --secondary-btn-fill-color: rgba(255, 255, 255, 0.04);
+  --secondary-btn-text-color: #d0d0d0;
+  --secondary-btn-border-color: #4b3fb2;
 }
 
 html[data-theme="light"] {
@@ -91,6 +97,12 @@ html[data-theme="light"] {
   --bolt-fill: #845ec2;
   --bolt-stroke: #5e35b1;
   --corner-glow: #a178df;
+
+  --primary-btn-fill-color: var(--clip-gradient);
+  --primary-btn-text-color: var(--text);
+  --secondary-btn-fill-color: rgba(255, 255, 255, 0);
+  --secondary-btn-text-color: var(--text);
+  --secondary-btn-border-color: #00c6ff;
 }
 
 body {
@@ -259,7 +271,6 @@ body {
 
 .main-action-btn, .modal-trigger {
   padding: 1em 2em;
-  background: var(--btn-bg);
   color: #fff;
   border: none;
   border-radius: var(--radius);
@@ -282,9 +293,22 @@ body {
   transition: transform 0.3s ease, filter 0.3s ease;
 }
 
+.primary-btn {
+  background: var(--primary-btn-fill-color);
+  color: var(--primary-btn-text-color);
+  font-size: 1.1em;
+}
+
+.secondary-btn {
+  background: var(--secondary-btn-fill-color);
+  color: var(--secondary-btn-text-color);
+  font-size: 0.95em;
+  border: 3px solid var(--secondary-btn-border-color);
+}
+
 .main-action-btn:hover, .modal-trigger:hover {
-  filter: var(--hover-brightness);
-  transform: translateY(-3px) scale(1.1);
+  filter: brightness(1.1);
+  transform: translateY(-3px) scale(1.05);
 }
 
 .main-action-btn-content {
