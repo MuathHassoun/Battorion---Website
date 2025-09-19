@@ -1,0 +1,210 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap');
+* {
+  font-family: 'Merriweather', serif;
+}
+
+:root {
+  --bg-color: #f5f7fa;
+  --text-color: #1e1e2f;
+  --card-bg: rgba(255, 255, 255, 0.96);
+  --card-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  --badge-bg: #845ec2;
+  --os-badge-bg: #00c6ff;
+  --hover-color: #e4e9f0;
+  --link-color: #845ec2;
+  --footer-color: #555f68;
+}
+
+body.dark {
+  --bg-color: linear-gradient(to bottom, #0f2027, #203a43, #2c5364);
+  --text-color: #f0f0f0;
+  --card-bg: rgba(255, 255, 255, 0.06);
+  --card-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  --hover-color: #1f1f1f;
+  --link-color: #6c5ce7;
+  --footer-color: #a8a8a8;
+}
+
+body {
+    font-family: "Inter", "Segoe UI", sans-serif;
+    background: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.3s, color 0.3s;
+    line-height: 1.6;
+}
+
+header {
+    background: var(--card-bg);
+    padding: 32px 20px;
+    text-align: center;
+    box-shadow: var(--card-shadow);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    backdrop-filter: blur(10px);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+
+#stats {
+    margin: 8px 0;
+    font-size: 15px;
+    opacity: 0.7;
+}
+
+.top-controls {
+    margin-top: 16px;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+#searchInput {
+    padding: 10px 16px;
+    width: 280px;
+    font-size: 15px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    outline: none;
+    background-color: #fff;
+    transition: border-color 0.3s;
+}
+
+#searchInput:focus {
+    border-color: var(--link-color);
+}
+
+#toggle-dark {
+    padding: 10px 18px;
+    font-size: 15px;
+    background-color: var(--badge-bg);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+#toggle-dark:hover {
+    background-color: #155cc2;
+}
+
+main {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 32px;
+    padding: 40px 30px;
+}
+
+.program-card {
+    background-color: var(--card-bg);
+    border-radius: 16px;
+    box-shadow: var(--card-shadow);
+    padding: 24px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    animation: fadeInUp 0.4s ease;
+    backdrop-filter: blur(8px);
+}
+
+.program-card:hover {
+    transform: translateY(-8px);
+    background-color: var(--hover-color);
+}
+
+.program-card h3 {
+    margin-top: 0;
+    font-size: 1.25rem;
+    color: var(--text-color);
+}
+
+.program-card p {
+    margin: 6px 0;
+    font-size: 14.5px;
+}
+
+.badge {
+    display: inline-block;
+    background-color: var(--badge-bg);
+    color: white;
+    padding: 4px 10px;
+    font-size: 12px;
+    border-radius: 100px;
+    margin-top: 4px;
+}
+
+.badge.os {
+    background-color: var(--os-badge-bg);
+}
+
+.program-image {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    margin: 16px 0;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+}
+
+.links {
+    margin-top: 14px;
+}
+
+.links a {
+    display: inline-block;
+    font-size: 13px;
+    color: var(--link-color);
+    margin: 4px 0;
+    text-decoration: none;
+    transition: opacity 0.3s;
+}
+
+.links a:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+}
+
+#scrollTopBtn {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background-color: var(--badge-bg);
+    color: #fff;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+    display: none;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    transition: background 0.3s;
+}
+
+#scrollTopBtn:hover {
+    background-color: #155cc2;
+}
+
+footer {
+    text-align: center;
+    margin-top: 60px;
+    font-size: 0.95rem;
+    color: var(--footer-color);
+    padding-bottom: 20px;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
