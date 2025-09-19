@@ -23,3 +23,7 @@ fetch("https://api.github.com/repos/MuathHassoun/battorion-version/releases/late
   }).catch(error => {
     console.error("Failed to fetch version info:", error);
   });
+
+function openLatestReleaseInfo() {
+  window.location.href = "../public/html/latest_version.html";
+}

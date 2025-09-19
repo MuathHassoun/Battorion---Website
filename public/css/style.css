@@ -340,6 +340,10 @@ body {
   }
 }
 
+.click_available {
+  cursor: pointer;
+}
+
 .battery-section {
   display: flex;
   justify-content: center;
