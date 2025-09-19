@@ -266,7 +266,7 @@ body {
   justify-content: center;
   gap: 1em;
   flex-wrap: wrap;
-  margin-top: 2em;
+  margin-top: 1em;
 }
 
 .main-action-btn, .modal-trigger {
@@ -349,6 +349,10 @@ body {
   justify-content: center;
   align-items: center;
   margin-top: -2rem;
+}
+
+.release_section {
+  margin-top: -1em;
 }
 
 .battery-container {
