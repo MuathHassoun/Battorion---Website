@@ -2,16 +2,80 @@
 <html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Battorion | Intelligent Battery Awareness</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+  <meta name="robots" content="index, follow" />
+
+  <title>Battorion — Intelligent Battery Awareness & System Monitor</title>
+  <meta name="description" content="Battorion is an intelligent battery monitoring and system optimization tool that provides real-time insights, smart alerts, and advanced analytics to extend your device’s battery life and performance." />
+  <meta name="keywords" content="Battorion, battery monitor, smart battery, battery health, power management, system intelligence, Windows battery app, battery optimization" />
+
+  <!-- Open Graph / Facebook / LinkedIn -->
+  <meta property="og:title" content="Battorion — Intelligent Battery Awareness" />
+  <meta property="og:description" content="Monitor your battery health and system power usage with Battorion — the next-generation smart battery awareness app." />
+  <meta property="og:image" content="https://battorion.vercel.app/img/logo.svg" />
+  <meta property="og:url" content="https://battorion.vercel.app/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Battorion — Intelligent Battery Awareness" />
+  <meta name="twitter:description" content="Smart, real-time battery monitoring and system awareness for your Windows device." />
+  <meta name="twitter:image" content="https://battorion.vercel.app/img/logo.svg" />
+
+  <!-- Favicon & Fonts -->
   <link rel="icon" href="img/logo.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- Styles -->
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/notification-style.css" />
   <link rel="stylesheet" href="css/viewport-home-page.css" />
   <link rel="stylesheet" href="css/chat-style.css" />
+
+  <!-- JS Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <!-- Theme Color for Mobile -->
+  <meta name="theme-color" content="#1de9b6" />
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Battorion",
+      "operatingSystem": "Windows",
+      "applicationCategory": "UtilityApplication",
+      "description": "Battorion intelligently monitors battery usage, provides real-time alerts, and helps extend battery lifespan with smart system insights.",
+      "url": "https://battorion.vercel.app/",
+      "image": "https://battorion.vercel.app/img/logo.svg",
+      "author": {
+        "@type": "Person",
+        "name": "Muath Hassoun"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Battorion Project",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://battorion.vercel.app/img/logo.svg"
+        }
+      },
+      "softwareVersion": "latest",
+      "license": "https://github.com/MuathHassoun/battorion-version/blob/main/LICENSE"
+    }
+  </script>
+
+  <style>
+    /* Custom Font Awesome Aliases */
+    .fa-battery-bolt::before { content: "\f0e7"; font-family: "Font Awesome 6 Free",serif; font-weight: 900; }
+    .fa-monitor-heart::before { content: "\f21e"; font-family: "Font Awesome 6 Free",serif; font-weight: 900; }
+  </style>
 </head>
 <body>
   <svg class="corner-decoration" viewBox="0 0 120 160" xmlns="http://www.w3.org/2000/svg">
