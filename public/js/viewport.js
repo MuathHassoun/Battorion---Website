@@ -1,7 +1,7 @@
 function applyResponsiveStyles() {
   const width = window.innerWidth;
   const body = document.body;
-  body.classList.remove('media-480', 'media-768', 'media-1024', 'media-1250', 'media-1990');
+  body.classList.remove('media-480', 'media-768', 'media-1024', 'media-1250', 'media-1500','media-1750', 'media-1990');
 
   if (width <= 480) {
     body.classList.add('media-480');
@@ -11,6 +11,10 @@ function applyResponsiveStyles() {
     body.classList.add('media-1024');
   } else if (width <= 1250) {
     body.classList.add('media-1250');
+  } else if (width <= 1500) {
+    body.classList.add('media-1500');
+  } else if (width <= 1750) {
+    body.classList.add('media-1750');
   } else if (width >= 1990) {
     body.classList.add('media-1990');
   }

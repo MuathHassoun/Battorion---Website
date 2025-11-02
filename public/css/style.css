@@ -147,7 +147,7 @@ body {
   height: auto;
   filter: drop-shadow(0 4px 6px var(--header-logo-svg));
   margin-bottom: 1rem;
-  margin-left: 40px;
+  margin-left: 250px;
   z-index: 100;
 }
 
