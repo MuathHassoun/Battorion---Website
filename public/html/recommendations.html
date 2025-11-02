@@ -9,15 +9,16 @@
 </head>
 <body class="dark">
   <header>
-    <div class="return-home" id="return-home">
-      <img src="../img/logo.svg" alt="">
-      <label>Battorion - Home Page</label>
+    <div class="header-title">
+      <h1>🔧 Recommended Related Software</h1>
+      <p id="stats">Loading stats...</p>
     </div>
 
     <div class="header-content">
-      <h1>🔧 Recommended Related Software</h1>
-      <p id="stats">Loading stats...</p>
-      <br>
+      <div class="return-home" id="return-home">
+        <img src="../img/logo.svg" alt="">
+        <label id="return-label">Battorion - Home Page</label>
+      </div>
 
       <div class="top-controls">
         <div class="control-group">
@@ -56,6 +57,7 @@
     const input = document.getElementById("searchInput");
     const stats = document.getElementById("stats");
     const back_to_home = document.getElementById("return-home");
+    const return_label = document.getElementById("return-label");
     const scrollTopBtn = document.getElementById("scrollTopBtn");
 
     const updateStats = () => {
@@ -145,6 +147,10 @@
     };
 
     back_to_home.addEventListener("click",()=>{
+      window.location.href="../index.html";
+    })
+
+    return_label.addEventListener("click",()=>{
       window.location.href="../index.html";
     })
 

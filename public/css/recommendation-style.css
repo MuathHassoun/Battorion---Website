@@ -37,12 +37,12 @@ body {
 
 header {
   display: grid;
-  grid-template-columns: 1fr 7fr;
-  grid-auto-rows: minmax(120px, auto);
+  grid-template-rows: 1fr 0.5fr;
+  grid-auto-columns: 100%;
   justify-content: center;
   align-items: stretch;
-  gap: 30px;
-  padding: 20px 30px;
+  gap: 20px;
+  padding: 20px 20px;
   background: var(--card-bg);
   box-shadow: var(--card-shadow);
   position: sticky;
@@ -54,11 +54,11 @@ header {
 
 header > * {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   gap: 10px;
-  padding: 16px 24px;
+  padding: 16px 16px;
   background: var(--card-bg);
   border-radius: 16px;
   box-shadow: var(--card-shadow);
@@ -80,19 +80,55 @@ header > *:hover {
   }
 }
 
-.return-home {
+.header-title {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
+  gap: 0;
+  padding: 16px 16px;
+  background: var(--card-bg);
+  border-radius: 16px;
+  box-shadow: var(--card-shadow);
+}
+
+.header-title h1 {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 600;
+  text-align: center;
+  color: var(--text-color);
+}
+
+.header-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   justify-content: center;
+  gap: 70px;
+  padding: 0 16px;
+  background: var(--card-bg);
+  border-radius: 16px;
+  box-shadow: var(--card-shadow);
+}
+
+#stats {
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+.return-home {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
   gap: 10px;
-  padding: 16px;
+  padding: 13px 50px;
   background: var(--card-bg);
   border-radius: 16px;
   box-shadow: var(--card-shadow);
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s;
-  min-height: 245px;
 }
 
 .return-home:hover {
@@ -102,8 +138,8 @@ header > *:hover {
 }
 
 .return-home img {
-  width: 200px;
-  height: 200px;
+  width: 40px;
+  height: 40px;
   object-fit: contain;
 }
 
@@ -111,32 +147,7 @@ header > *:hover {
   font-size: 1rem;
   font-weight: 600;
   color: var(--text-color);
-}
-
-.header-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 16px 24px;
-  background: var(--card-bg);
-  border-radius: 16px;
-  box-shadow: var(--card-shadow);
-  min-height: 180px;
-}
-
-.header-content h1 {
-  margin: 0;
-  font-size: 2rem;
-  font-weight: 600;
-  text-align: center;
-  color: var(--text-color);
-}
-
-#stats {
-  font-size: 0.9rem;
-  opacity: 0.7;
+  cursor: pointer;
 }
 
 /* Responsive */
@@ -146,8 +157,8 @@ header > *:hover {
     gap: 20px;
   }
   .return-home img {
-    width: 60px;
-    height: 60px;
+    width: 20px;
+    height: 20px;
   }
   .header-content h1 {
     font-size: 1.5rem;
@@ -155,7 +166,6 @@ header > *:hover {
 }
 
 .top-controls {
-    margin-top: 16px;
     display: flex;
     justify-content: center;
     gap: 12px;
