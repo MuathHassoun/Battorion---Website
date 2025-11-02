@@ -354,29 +354,34 @@ footer {
 @media (max-width: 768px) {
   header {
     grid-template-columns: 1fr;
-    gap: 16px;
+    gap: 8px;
+    padding: 5px;
+  }
+
+  .header-title {
+    display: none;
   }
 
   .header-content {
     grid-template-columns: 1fr;
     grid-template-rows: auto auto auto;
     text-align: center;
-    gap: 16px;
+    gap: 8px;
     padding: 12px;
   }
 
   .return-home {
     justify-content: center;
-    padding: 10px 20px;
+    padding: 7px;
   }
 
   .return-home img {
-    width: 28px;
-    height: 28px;
+    width: 24px;
+    height: 24px;
   }
 
   .header-content h1 {
-    font-size: 1.4rem;
+    font-size: 1rem;
   }
 }
 
