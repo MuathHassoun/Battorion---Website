@@ -156,6 +156,11 @@
 
     window.onscroll = () => scrollTopBtn.style.display = window.scrollY > 200? "block":"none";
     scrollTopBtn.onclick = () => window.scrollTo({ top: 0, behavior: "smooth" });
+
+    const width = window.innerWidth;
+    if (width <= 768) {
+      compactToggle.click();
+    }
     render();
     updateStats();
   </script>
