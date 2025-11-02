@@ -1,0 +1,20 @@
+// 🔹 Export
+document.getElementById("exportList").onclick=()=>{
+  const format=document.getElementById("exportFormat").value;
+  if(format==="json"){
+    const blob=new Blob([JSON.stringify(programs,null,2)],{type:"application/json"});
+    const a=document.createElement("a");
+    a.href=URL.createObjectURL(blob);
+    a.download="recommended_software.json";
+    a.click();
+  } else {
+    const csv=programs.map(p=>[
+      p.name, p.company, p.os, p.license, p.size, `"${p.description}"`
+    ].join(",")).join("\n");
+    const blob=new Blob([csv],{type:"text/csv"});
+    const a=document.createElement("a");
+    a.href=URL.createObjectURL(blob);
+    a.download="recommended_software.csv";
+    a.click();
+  }
+};
