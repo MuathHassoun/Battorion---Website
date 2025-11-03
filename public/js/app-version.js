@@ -1,4 +1,6 @@
-fetch("https://api.github.com/repos/MuathHassoun/battorion-version/releases/latest")
+const link = "https://api.github.com/repos/MuathHassoun/battorion-version/releases/latest";
+
+fetch(link)
   .then(res => res.json())
   .then(data => {
     const version = data.tag_name.replace("v", "");
@@ -24,6 +26,9 @@ fetch("https://api.github.com/repos/MuathHassoun/battorion-version/releases/late
     console.error("Failed to fetch version info:", error);
   });
 
-function openLatestReleaseInfo() {
-  window.location.href = "./html/latest_version.html";
+function getVersion() {
+  return fetch(link)
+    .then(res => res.json())
+    .then(data => data.tag_name || "v?.?.?")
+    .catch(() => "v?.?.?");
 }
