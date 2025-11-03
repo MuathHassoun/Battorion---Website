@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>What's New? | Battorion</title>
+  <link rel="icon" href="../img/logo.svg" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap');
+    :root {
+      --radius: 20px;
+      --card-bg: rgba(255, 255, 255, 0.06);
+      --card-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+      --accent: #6c5ce7;
+      --hover-brightness: 1.13;
+      --text: #f0f0f0;
+      --subtitle: #a8a8a8;
+    }
+    html[data-theme="dark"] {
+      --bg: linear-gradient(to bottom, #0f2027, #203a43, #2c5364);
+    }
+    body {
+      margin: 0;
+      background: var(--bg);
+      font-family: 'Merriweather', serif;
+      color: var(--text);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 2.5rem 1rem;
+    }
+    .container { max-width: 900px; width: 100%; }
+    h1 {
+      text-align: center;
+      font-size: 2.3em;
+      margin-bottom: 0.8rem;
+      color: var(--text);
+      text-shadow: 0 0 12px var(--accent);
+      letter-spacing: 1px;
+    }
+    .version-badge {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      font-weight: bold;
+      padding: 0.4rem 1rem;
+      border-radius: 999px;
+      box-shadow: 0 0 15px rgba(108, 92, 231, 0.7);
+      font-size: 1.1em;
+      margin-bottom: 2rem;
+      animation: glow 2.5s ease-in-out infinite alternate;
+    }
+    @keyframes glow {
+      from { box-shadow: 0 0 10px rgba(108, 92, 231, 0.6); transform: scale(1); }
+      to { box-shadow: 0 0 25px rgba(108, 92, 231, 0.9); transform: scale(1.05); }
+    }
+    .note-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--card-shadow);
+      padding: 2rem;
+      margin-bottom: 1.8rem;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      animation: fadeIn 0.8s ease;
+    }
+    .note-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+    }
+    .note-card h2 {
+      margin-top: 0;
+      color: var(--accent);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+      padding-bottom: 0.5rem;
+    }
+    .note-card h3 { color: var(--accent); margin-top: 1em; }
+    .note-card ul { list-style: disc; padding-left: 1.5em; }
+    .note-card li { margin: 0.4em 0; }
+    blockquote {
+      border-left: 3px solid var(--accent);
+      padding-left: 1em;
+      margin: 1em 0;
+      color: var(--subtitle);
+      font-style: italic;
+    }
+    code { background: rgba(255,255,255,0.1); padding: 2px 5px; border-radius: 6px; }
+    hr { border: none; border-top: 1px solid rgba(255,255,255,0.15); margin: 1.5em 0; }
+    .loading { text-align: center; color: var(--subtitle); font-size: 1.2em; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>What's New?</h1>
+  <div class="version-badge" id="version"></div>
+  <div id="releaseNotes">
+    <p class="loading">Loading latest updates...</p>
+  </div>
+</div>
+<footer>
+  <p>&copy; 2025 Battorion Recommendations – All rights reserved.</p>
+</footer>
+
+<script src="../js/app.js"></script>
+<script src="../js/_xhtr.js"></script>
+<script>
+  const version = localStorage.getItem("bat-version") || "v?.?.?";
+  document.querySelector("#version").innerText = version;
+
+  async function fetchReleaseNotes() {
+    const url = "https://raw.githubusercontent.com/MuathHassoun/battorion-version/main/release_notes.md";
+    const container = document.getElementById("releaseNotes");
+
+    try {
+      const res = await fetch(url);
+      const text = await res.text();
+
+      const sections = text.split(/^##\s+/gm).slice(1);
+      let html = "";
+
+      sections.forEach(sec => {
+        const lines = sec.trim().split("\n");
+        const title = lines[0].trim();
+        let body = lines.slice(1).join("\n");
+
+        const formatted = body
+          .replace(/^###\s?(.*)$/gm, "<h3>$1</h3>")
+          .replace(/^>\s?(.*)$/gm, "<blockquote>$1</blockquote>")
+          .replace(/`([^`]+)`/g, "<code>$1</code>")
+          .replace(/\*\*(.*?)\*\*/g, "<b>$1</b>")
+          .replace(/\*(.*?)\*/g, "<i>$1</i>")
+          .replace(/^- (.*(?:\n(?!- ).+)*)/gm, "<ul><li>$1</li></ul>")
+          .replace(/\n- /g, "</li><li>")
+          .replace(/^---$/gm, "<hr>")
+          .replace(/\n{2,}/g, "<br>");
+
+        html += `<div class="note-card"><h2>${title}</h2>${formatted}</div>`;
+      });
+
+      container.innerHTML = html || "<p class='loading'>No updates found.</p>";
+    } catch (err) {
+      container.innerHTML = "<p class='loading' style='color:red;'>Failed to load release notes.</p>";
+    }
+  }
+
+  fetchReleaseNotes();
+</script>
+</body>
+</html>

@@ -32,6 +32,8 @@
       color: var(--text);
       display: flex;
       justify-content: center;
+      align-items: center;
+      flex-direction: column;
       padding: 2rem;
       margin: 0;
     }
@@ -133,7 +135,6 @@
   </style>
 </head>
 <body>
-
 <div class="release-card">
   <h1 id="version-text">Loading...</h1>
   <div class="author" id="author-info"></div>
@@ -154,13 +155,20 @@
     <div class="release-title">Zipball URL:</div><div class="release-value"><a id="zipball-url" href="#" target="_blank">Download Zip</a></div>
   </div>
   <div class="description"><span class="release-title">Description:</span> <span id="release-body"></span></div>
-  <div class="button-container"><a id="download-link" class="button" href="#" target="_blank">Download Latest Setup</a></div>
+  <div class="button-container">
+    <a id="whats-new-link" class="button" href="whats-new.html" target="_blank">What's New?</a>
+    <a id="download-link" class="button" href="#" target="_blank">Download Latest Setup</a>
+  </div>
 </div>
+<footer>
+  <p>&copy; 2025 Battorion Recommendations – All rights reserved.</p>
+</footer>
 
 <script>
   fetch("https://api.github.com/repos/MuathHassoun/battorion-version/releases/latest")
     .then(res => res.json())
     .then(data => {
+      localStorage.setItem("bat-version", data.tag_name);
       document.getElementById("version-text").innerText = `Latest Version: ${data.tag_name}`;
       const authorDiv = document.getElementById("author-info");
       const author = data.author;

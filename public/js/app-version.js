@@ -25,5 +25,5 @@ fetch("https://api.github.com/repos/MuathHassoun/battorion-version/releases/late
   });
 
 function openLatestReleaseInfo() {
-  window.location.href = "../html/latest_version.html";
+  window.location.href = "./html/latest_version.html";
 }
